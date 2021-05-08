@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">videotecamoviltp</string>
+    <string name="boton_home">boton_home</string>
+    <string name="boton_search">boton_search</string>
+    <string name="boton_favs">boton_favs</string>
+    <string name="boton_user">boton_user</string>
+    <string name="videoteca_movil">Videoteca Movil</string>
+    <string name="accion">Acción</string>
+    <string name="la_torre_oscura">La torre oscura</string>
+    <string name="godzkilla_vs_kong">Godzkilla vs Kong</string>
+    <string name="mortal_kombat">Mortal Kombat</string>
+    <string name="comedia">Comedia</string>
 </resources>
