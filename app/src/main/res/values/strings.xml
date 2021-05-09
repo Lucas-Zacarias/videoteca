@@ -12,4 +12,14 @@
     <string name="comedia">Comedia</string>
     <string name="recomendados_para_ti">Recomendados para ti</string>
     <string name="terror">Terror</string>
+    <string name="nombre_de_la_aplicacion">Videoteca Móvil</string>
+    <string name="bienvenido_inicie_sesion_para_comenzar_la_diversion">Bienvenido!!! Inicie sesión para comenzar la diversión</string>
+    <string name="email">Email</string>
+    <string name="ingrese_aqui_su_email">Ingrese aquí su email</string>
+    <string name="password">Contraseña</string>
+    <string name="ingrese_aqui_su_contrasenia">Ingrese aquí su contraseña</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="si_no_tenes_cuenta">Si no tenés cuenta</string>
+    <string name="registrate">Registrate</string>
+    <string name="icono_de_la_aplicacion">Ícono de la aplicación</string>
 </resources>
