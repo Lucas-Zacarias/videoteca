@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".LogInActivity"
     android:background="#1f2e81">
 
     <TextView
@@ -138,4 +139,5 @@
         android:text="@string/registrate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logInButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
