@@ -12,4 +12,5 @@
     <string name="comedia">Comedia</string>
     <string name="recomendados_para_ti">Recomendados para ti</string>
     <string name="terror">Terror</string>
+    <string name="favoritos">Favoritos</string>
 </resources>
