@@ -13,7 +13,7 @@
     <string name="recomendados_para_ti">Recomendados para ti</string>
     <string name="terror">Terror</string>
 
-    
+
     <!--  Strings used in 'activity_user' and 'activity_detalle_peli' -->
     <string name="nombreUsuario">Nombre de usuario</string>
     <string name="userimage">UserImage</string>
