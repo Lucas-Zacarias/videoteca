@@ -12,4 +12,23 @@
     <string name="comedia">Comedia</string>
     <string name="recomendados_para_ti">Recomendados para ti</string>
     <string name="terror">Terror</string>
+
+
+    <!--  Strings used in 'activity_user' and 'activity_detalle_peli' -->
+    <string name="nombreUsuario">Nombre de usuario</string>
+    <string name="userimage">UserImage</string>
+    <string name="ver_datos_personales">Ver datos personales</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+    <string name="ficha">Ficha técnica</string>
+    <string name="titulo">Título</string>
+    <string name="director">Director</string>
+    <string name="pais">País</string>
+    <string name="anio">Año</string>
+    <string name="duracion">Duración</string>
+    <string name="genero">Género</string>
+    <string name="calificacion">Calificación</string>
+    <string name="reparto">Reparto</string>
+    <string name="sinopsis">Sinópsis</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac ex sit amet lacus tincidunt lacinia sit amet luctus nisi. Fusce nec condimentum nisi. Suspendisse dolor lectus, dignissim sed consequat non, accumsan in felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut vestibulum magna vehicula libero semper tincidunt.</string>
+    <string name="cover">Tapa de pelicula</string>
 </resources>
