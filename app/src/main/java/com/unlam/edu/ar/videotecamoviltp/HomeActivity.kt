@@ -1,11 +1,11 @@
 package com.unlam.edu.ar.videotecamoviltp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_log_in)
-    }
+        setContentView(R.layout.activity_home)
+        }
 }
