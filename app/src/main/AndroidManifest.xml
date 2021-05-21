@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Videotecamoviltp">
-        <activity android:name=".LogInActivity"></activity>
-        <activity android:name=".MovieDetailsActivity"></activity>
+        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".LogInActivity" />
+        <activity android:name=".MovieDetailsActivity" />
         <activity android:name=".UserActivity" />
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".HomeActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
