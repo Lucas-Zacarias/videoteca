@@ -21,40 +21,16 @@
         app:layout_constraintTop_toTopOf="parent"
         android:gravity="center_vertical"/>
 
-    <ScrollView
-        android:id="@+id/favsScrollView"
-        android:layout_width="match_parent"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:scrollbars="vertical"
-        app:layout_constraintBottom_toTopOf="@id/barContent"
-        app:layout_constraintTop_toBottomOf="@id/favsTextView">
-
-
-        <LinearLayout
-            android:id="@+id/favsLinearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/imageButton3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/_097205_jpg_c_310_420_x_f_jpg_q_x_xxyxx" />
-
-            <ImageButton
-                android:id="@+id/imageButton4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/la_torre_oscura_pelicula_carteleras_de_cine" />
-
-            <ImageButton
-                android:id="@+id/imageButton5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/mortal_kombat_9654" />
-        </LinearLayout>
-    </ScrollView>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/favsTextView"
+        tools:listitem="@layout/list_item_movie"
+        app:layout_constraintBottom_toTopOf="@id/barContent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/barContent"
