@@ -44,4 +44,8 @@
     <string name="titulo_de_la_pelicula">Titulo de la película</string>
     <string name="lista_de_generos">Lista de géneros</string>
     <string name="boton_de_favorito">Botón de favorito</string>
+    <string name="nombreDeUsuario">Nombre</string>
+    <string name="ingrese_aqui_su_nombre">Ingrese aquí su nombre</string>
+    <string name="contrasenia">Contraseña</string>
+    <string name="registrarse">Registrarse</string>
 </resources>
