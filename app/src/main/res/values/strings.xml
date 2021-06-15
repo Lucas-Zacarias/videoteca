@@ -40,4 +40,6 @@
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac ex sit amet lacus tincidunt lacinia sit amet luctus nisi. Fusce nec condimentum nisi. Suspendisse dolor lectus, dignissim sed consequat non, accumsan in felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut vestibulum magna vehicula libero semper tincidunt.</string>
     <string name="cover">Tapa de pelicula</string>
     <string name="search_title">title</string>
+    <string name="buscar1">buscar</string>
+    <string name="error_movies">Ups, no se ha encontrado la pelicula</string>
 </resources>
