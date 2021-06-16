@@ -25,12 +25,12 @@ class MoviesAdapter (
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val movie = moviesList[position]
-        holder.binding.tvTitle.text = movie.title
-        holder.binding.tvDescription.text = movie.descripcion
+        holder.binding.titleTxt.text = movie.title
+        holder.binding.descriptionTxt.text = movie.descripcion
 
         Picasso.get()
             .load("${IMG_API_PATH}${movie.poster}")
-            .into(holder.binding.ivMovie)
+            .into(holder.binding.moviePoster)
 
         holder.itemView.setOnClickListener { clickListener(movie) }
     }
@@ -40,7 +40,7 @@ class MoviesAdapter (
         if (results != null) {
             moviesList.addAll(results)
         }
-}
+    }
 }
 class MovieViewHolder(val binding: ListItemMovieBinding ) : RecyclerView.ViewHolder(binding.root)
 

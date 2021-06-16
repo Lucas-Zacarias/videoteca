@@ -15,8 +15,8 @@
         <activity android:name=".LogInActivity"></activity>
         <activity android:name=".MovieDetailsActivity"></activity>
         <activity android:name=".UserActivity" />
-        <activity android:name=".HomeActivity"></activity>
-        <activity android:name=".SearchActivity">
+        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
