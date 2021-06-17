@@ -8,20 +8,16 @@ import com.unlam.edu.ar.videotecamoviltp.Classes.User
 interface UserDAO {
 
     @Query("SELECT * FROM users")
-    fun getAllUsers():List<User>?
-    //obtiene todos los usuarios de la bd y los devuelve en una lista de la clase User, sino devuelve null
+    fun getAllUsers():List<User>
+    //obtiene todos los usuarios de la bd y los devuelve en una lista de la clase User
 
     @Query("SELECT * FROM users WHERE users.id = :id")
-    fun getUserByID(id:Int):User?
-    //devuelve el usuario de la bd que posea el id pasado como parametro, sino devuelve null
-
-    @Query("SELECT * FROM users WHERE users.email like :email")
-    fun getUserByID(email: String):User?
-    //devuelve el usuario de la bd que posea el email pasado como parametro, sino devuelve null
+    fun getUserByID(id:Int):User
+    //devuelve el usuario de la bd que posea el id pasado como parametro
 
     @Query("SELECT * FROM users WHERE users.email like :email")
     fun getUserByEmail(email:String):User?
-    //devuelve el usuario de la bd que posea el email pasado como parametro, sino devuelve null
+    //devuelve el usuario de la bd que posea el email pasado como parametro
 
     @Query("UPDATE users SET name = :newName WHERE email like :email")
     fun updateUserName(newName:String, email:String)

@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.room.Room
+import com.unlam.edu.ar.videotecamoviltp.Classes.User
 import com.unlam.edu.ar.videotecamoviltp.data.UserEntity
 import com.unlam.edu.ar.videotecamoviltp.data.VideotecaDatabase
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivitySignUpBinding
@@ -73,7 +74,7 @@ class SignUpActivity : AppCompatActivity() {
 
                                  if(validateEmail(email)){
 
-                                     if(database.userDAO().getUserByEmail(email.getText().toString().trim())!=null){
+                                     if(database.userDAO().getUserByEmail(email.getText().toString().trim()) !is User){
                                          database.userDAO()
                                                  .insert(UserEntity(email = email.getText().toString().trim(),
                                                                     password = password.getText().toString(),
