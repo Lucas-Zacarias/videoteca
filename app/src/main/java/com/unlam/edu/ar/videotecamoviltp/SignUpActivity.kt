@@ -26,7 +26,6 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var signUp : Button
     lateinit var binding : ActivitySignUpBinding
     lateinit var database : VideotecaDatabase
-    var listUsers = ListUsers()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
