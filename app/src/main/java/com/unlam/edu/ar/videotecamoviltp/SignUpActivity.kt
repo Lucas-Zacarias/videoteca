@@ -3,13 +3,13 @@ package com.unlam.edu.ar.videotecamoviltp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.unlam.edu.ar.videotecamoviltp.Classes.ListUsers
-import com.unlam.edu.ar.videotecamoviltp.Classes.User
+import androidx.room.Room
+import com.unlam.edu.ar.videotecamoviltp.data.UserEntity
+import com.unlam.edu.ar.videotecamoviltp.data.VideotecaDatabase
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivitySignUpBinding
 
 class SignUpActivity : AppCompatActivity() {
@@ -24,19 +24,31 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var email : EditText
     private lateinit var password : EditText
     private lateinit var signUp : Button
-    private lateinit var binding : ActivitySignUpBinding
+    lateinit var binding : ActivitySignUpBinding
+    lateinit var database : VideotecaDatabase
     var listUsers = ListUsers()
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
 
+        createDatabase()
         getViews()
         setListener()
 
     }
 
+    private fun createDatabase() {
+        database = Room.databaseBuilder(
+                    this,
+                    VideotecaDatabase::class.java,
+                    "videoteca_db"
+                    )
+                    .allowMainThreadQueries()
+                    .build()
+
+    }
 
 
     private fun getViews() {
@@ -62,15 +74,17 @@ class SignUpActivity : AppCompatActivity() {
 
                                  if(validateEmail(email)){
 
-                                     if(listUsers.addUserToTheList(User(name = name.getText().toString().trim(),
-                                                                        email = email.getText().toString().trim(),
-                                                                        password = password.getText().toString() ))){
-                                                         Toast.makeText(
-                                                             this@SignUpActivity,
-                                                             "Registración exitosa",
-                                                             Toast.LENGTH_LONG
-                                                         ).show()
-                                                        navigateToHome()
+                                     if(database.userDAO().getUserByEmail(email.getText().toString().trim())!=null){
+                                         database.userDAO()
+                                                 .insert(UserEntity(email = email.getText().toString().trim(),
+                                                                    password = password.getText().toString(),
+                                                                    name =  name.getText().toString().trim()))
+                                         Toast.makeText(
+                                                this@SignUpActivity,
+                                                "Registración exitosa",
+                                                Toast.LENGTH_LONG
+                                                ).show()
+                                                navigateToHome()
                                                      }else{
                                                          Toast.makeText(
                                                              this@SignUpActivity,
