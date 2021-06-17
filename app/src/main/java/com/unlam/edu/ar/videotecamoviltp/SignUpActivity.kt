@@ -4,11 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.unlam.edu.ar.videotecamoviltp.Classes.ListUsers
 import com.unlam.edu.ar.videotecamoviltp.Classes.User
+import com.unlam.edu.ar.videotecamoviltp.databinding.ActivitySignUpBinding
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -18,15 +20,17 @@ class SignUpActivity : AppCompatActivity() {
 
     }
 
-    lateinit var name : EditText
-    lateinit var email : EditText
-    lateinit var password : EditText
-    lateinit var signUp : Button
-    var listUsers : ListUsers = ListUsers()
-
+    private lateinit var name : EditText
+    private lateinit var email : EditText
+    private lateinit var password : EditText
+    private lateinit var signUp : Button
+    private lateinit var binding : ActivitySignUpBinding
+    var listUsers = ListUsers()
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+        binding = ActivitySignUpBinding.inflate(LayoutInflater.from(this))
+        setContentView(binding.root)
 
         getViews()
         setListener()
@@ -36,10 +40,10 @@ class SignUpActivity : AppCompatActivity() {
 
 
     private fun getViews() {
-        name = findViewById(R.id.nameEditTxt)
-        email = findViewById(R.id.emailEditTxt)
-        password = findViewById(R.id.passEditTxt)
-        signUp = findViewById(R.id.signUpBtn)
+        name = binding.nameEditTxt
+        email = binding.emailEditTxt
+        password = binding.passEditTxt
+        signUp = binding.signUpBtn
     }
 
    private fun setListener() {
