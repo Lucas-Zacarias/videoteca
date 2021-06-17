@@ -1,5 +1,6 @@
 package com.unlam.edu.ar.videotecamoviltp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -20,7 +21,9 @@ class LogInActivity : AppCompatActivity() {
         binding = ActivityLogInBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
         getViews()
+        setListeners()
     }
+
 
     private fun getViews() {
         email = binding.emailEditText
@@ -28,5 +31,15 @@ class LogInActivity : AppCompatActivity() {
         btnLogIn = binding.logInButton
         btnSignUp = binding.signUpButton
     }
-    
+
+    private fun setListeners() {
+        btnSignUp.setOnClickListener{
+            navigateToSignUpActivity()
+        }
+    }
+
+    private fun navigateToSignUpActivity() {
+        val intent = Intent(this, SignUpActivity::class.java)
+        startActivity(intent)
+    }
 }
