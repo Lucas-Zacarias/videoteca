@@ -6,7 +6,7 @@ import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity (tableName = "users", indices = arrayOf(Index(value = ["email"], unique = true)))
+@Entity (tableName = "users")
 data class UserEntity (
     @NonNull
     @PrimaryKey(autoGenerate = true)
@@ -23,5 +23,5 @@ data class UserEntity (
 
     @NonNull
     @ColumnInfo(name = "name")
-    val name : String
+    var name : String
 )

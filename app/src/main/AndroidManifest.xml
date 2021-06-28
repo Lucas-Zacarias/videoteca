@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Videotecamoviltp">
-        <activity android:name=".SignUpActivity"/>
+        <activity android:name=".SignUpActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait"/>
         <activity android:name=".FavActivity"></activity>
         <activity android:name=".LogInActivity"></activity>
         <activity android:name=".MovieDetailsActivity"></activity>
