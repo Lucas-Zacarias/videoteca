@@ -12,6 +12,7 @@ class FavActivity : AppCompatActivity() {
     private lateinit var btnSearch: ImageButton
     private lateinit var btnUser: ImageButton
     private lateinit var binding: ActivityFavBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFavBinding.inflate(LayoutInflater.from(this))
@@ -33,6 +34,9 @@ class FavActivity : AppCompatActivity() {
         btnUser.setOnClickListener{
             navigateToUser()
         }
+        btnSearch.setOnClickListener{
+            navigateToSearch()
+        }
     }
 
     private fun navigateToHome() {
@@ -42,6 +46,11 @@ class FavActivity : AppCompatActivity() {
 
     private fun navigateToUser() {
         val intent = Intent(this, UserActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun navigateToSearch() {
+        val intent = Intent(this, SearchActivity::class.java)
         startActivity(intent)
     }
 }
