@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Videotecamoviltp">
         <activity android:name=".SignUpActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait"/>
-        <activity android:name=".FavActivity"></activity>
+        <activity android:name=".FavActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".LogInActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait"></activity>
         <activity android:name=".MovieDetailsActivity"></activity>
         <activity android:name=".UserActivity" />
