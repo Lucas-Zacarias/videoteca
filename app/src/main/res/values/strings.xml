@@ -40,6 +40,8 @@
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac ex sit amet lacus tincidunt lacinia sit amet luctus nisi. Fusce nec condimentum nisi. Suspendisse dolor lectus, dignissim sed consequat non, accumsan in felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut vestibulum magna vehicula libero semper tincidunt.</string>
     <string name="cover">Tapa de pelicula</string>
     <string name="search_title">title</string>
+    <string name="buscar1">buscar</string>
+    <string name="error_movies">Ups, no se ha encontrado la pelicula</string>
     <string name="portada_de_pelicula">Portada de película</string>
     <string name="titulo_de_la_pelicula">Titulo de la película</string>
     <string name="lista_de_generos">Lista de géneros</string>
@@ -48,4 +50,5 @@
     <string name="ingrese_aqui_su_nombre">Ingrese aquí su nombre</string>
     <string name="contrasenia">Contraseña</string>
     <string name="registrarse">Registrarse</string>
+    <string name="drama">Drama</string>
 </resources>
