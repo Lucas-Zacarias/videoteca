@@ -6,10 +6,10 @@ import androidx.lifecycle.ViewModel
 import com.unlam.edu.ar.videotecamoviltp.data.UserEntity
 import com.unlam.edu.ar.videotecamoviltp.data.UserEntityRepository
 
-class SignUpViewModel(application: Application):AndroidViewModel(application) {
-    private val userRepository = UserEntityRepository(application)
+class SignUpViewModel(private val userEntityRepository: UserEntityRepository):ViewModel() {
+
 
     fun saveNewUser(newUser:UserEntity):Boolean{
-       return userRepository.insertNewUser(newUser)
+       return userEntityRepository.insertNewUser(newUser)
     }
 }

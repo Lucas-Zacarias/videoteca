@@ -10,6 +10,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.unlam.edu.ar.videotecamoviltp.data.UserEntity
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivitySignUpBinding
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -24,7 +25,7 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var password: EditText
     private lateinit var signUp: Button
     private lateinit var binding: ActivitySignUpBinding
-    private val signUpViewModel: SignUpViewModel by viewModels<SignUpViewModel>()
+    private val signUpViewModel: SignUpViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

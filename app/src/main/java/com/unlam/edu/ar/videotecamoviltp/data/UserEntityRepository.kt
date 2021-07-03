@@ -4,9 +4,8 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 
 
-class UserEntityRepository(application: Application) {
+class UserEntityRepository(private val userDAO: UserDAO) {
 
-   private val userDAO: UserDAO? = VideotecaDatabase.getInstance(context = application)?.userDAO()
 
     fun getUserByEmail(email:String): UserEntity? {
         return userDAO?.getUserByEmail(email = email)

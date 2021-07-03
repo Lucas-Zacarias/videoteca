@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.viewModels
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityLogInBinding
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class LogInActivity : AppCompatActivity() {
 
@@ -17,7 +17,7 @@ class LogInActivity : AppCompatActivity() {
     private lateinit var btnLogIn : Button
     private lateinit var btnSignUp : Button
     private lateinit var binding: ActivityLogInBinding
-    private val logInViewModel: LogInViewModel by viewModels<LogInViewModel>()
+    private val logInViewModel: LogInViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

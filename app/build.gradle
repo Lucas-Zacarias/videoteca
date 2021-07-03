@@ -70,4 +70,9 @@ dependencies {
 
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+    ext.koin_version= "2.0.0-GA2"
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-android-viewmodel:$koin_version"
+    testCompile "org.koin:koin-test:$koin_version"
+
 }

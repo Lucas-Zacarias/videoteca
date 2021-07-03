@@ -4,22 +4,25 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 
 
 @Database(
-    version = 2,
-    entities = [UserEntity::class]
+    version = 3,
+    entities = [UserEntity::class, FavEntity::class]
 )
 
 
 abstract class VideotecaDatabase : RoomDatabase() {
     abstract fun userDAO(): UserDAO
+    abstract fun favDAO() : FavDAO
 
     companion object {
         private const val DATABASE_NAME = "videoteca_db"
         private var INSTANCE: VideotecaDatabase? = null
 
-        fun getInstance(context: Context): VideotecaDatabase? {
+        fun getInstance(context: Context): VideotecaDatabase {
 
             INSTANCE ?: synchronized(this) {
                 INSTANCE = Room.databaseBuilder(
@@ -31,7 +34,7 @@ abstract class VideotecaDatabase : RoomDatabase() {
                         .build()
             }
 
-            return INSTANCE
+            return INSTANCE!!
         }
     }
 }
