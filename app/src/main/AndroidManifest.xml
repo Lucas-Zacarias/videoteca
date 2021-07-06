@@ -9,14 +9,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Videotecamoviltp">
+        android:theme="@style/Theme.Videotecamoviltp"
+        android:name=".injectDependencies.MoviesApp">
         <activity android:name=".SignUpActivity"/>
-        <activity android:name=".FavActivity"></activity>
-        <activity android:name=".LogInActivity"></activity>
-        <activity android:name=".MovieDetailsActivity"></activity>
-        <activity android:name=".UserActivity" />
-        <activity android:name=".SearchActivity"></activity>
-        <activity android:name=".HomeActivity">
+        <activity android:name=".FavActivity" />
+        <activity android:name=".LogInActivity" />
+        <activity android:name=".MovieDetailsActivity" />
+        <activity android:name=".UserActivity"/>
+        <activity android:name=".ui.SearchActivity" />
+        <activity android:name=".ui.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

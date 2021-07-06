@@ -3,12 +3,12 @@ package com.unlam.edu.ar.videotecamoviltp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.unlam.edu.ar.videotecamoviltp.Classes.ListUsers
 import com.unlam.edu.ar.videotecamoviltp.Classes.User
+import com.unlam.edu.ar.videotecamoviltp.ui.HomeActivity
 
 class SignUpActivity : AppCompatActivity() {
 
