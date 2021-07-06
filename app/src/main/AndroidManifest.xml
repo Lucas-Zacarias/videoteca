@@ -9,12 +9,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Videotecamoviltp">
-        <activity android:name=".SignUpActivity"/>
-        <activity android:name=".FavActivity"></activity>
-        <activity android:name=".LogInActivity"></activity>
-        <activity android:name=".MovieDetailsActivity"></activity>
-        <activity android:name=".UserActivity" />
+        android:theme="@style/Theme.Videotecamoviltp"
+        android:name=".VideotecaApp">
+        <activity android:name=".SignUpActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait"/>
+        <activity android:name=".FavActivity" android:screenOrientation="portrait" android:theme="@style/Theme.Videotecamoviltp.NoActionBar"></activity>
+        <activity android:name=".LogInActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait"></activity>
+        <activity android:name=".MovieDetailsActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait"></activity>
+        <activity android:name=".UserActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait" />
         <activity android:name=".SearchActivity"></activity>
         <activity android:name=".HomeActivity">
             <intent-filter>

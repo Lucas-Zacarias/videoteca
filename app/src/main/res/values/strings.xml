@@ -51,4 +51,6 @@
     <string name="contrasenia">Contraseña</string>
     <string name="registrarse">Registrarse</string>
     <string name="drama">Drama</string>
+    <string name="ingresos">Ingresos</string>
+    <string name="presupuesto">Presupuesto</string>
 </resources>

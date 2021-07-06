@@ -46,71 +46,89 @@
 
     <TextView
         android:id="@+id/nameTxtView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
         android:text="@string/nombreDeUsuario"
         android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@+id/guide"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signUpTxtView" />
 
     <EditText
         android:id="@+id/nameEditTxt"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
         android:ems="10"
         android:hint="@string/ingrese_aqui_su_nombre"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:textColorHint="@color/white"
-        app:layout_constraintStart_toStartOf="@+id/guide"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameTxtView" />
 
     <TextView
         android:id="@+id/emailTxtView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
         android:text="@string/email"
         android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@+id/guide"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameEditTxt" />
 
     <EditText
         android:id="@+id/emailEditTxt"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
         android:ems="10"
         android:hint="@string/ingrese_aqui_su_email"
         android:importantForAutofill="no"
         android:inputType="textEmailAddress"
         android:textColorHint="@color/white"
-        app:layout_constraintStart_toStartOf="@+id/guide"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailTxtView" />
 
     <TextView
         android:id="@+id/passTxtView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
         android:text="@string/contrasenia"
         android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@+id/guide"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailEditTxt" />
 
     <EditText
         android:id="@+id/passEditTxt"
-        android:layout_width="232dp"
+        android:layout_width="0dp"
         android:layout_height="40dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
         android:ems="10"
         android:hint="@string/ingrese_aqui_su_contrasenia"
         android:importantForAutofill="no"
         android:inputType="textPassword"
         android:textColorHint="@color/white"
-        app:layout_constraintStart_toStartOf="@+id/guide"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passTxtView" />
 
     <Button
@@ -125,10 +143,4 @@
         app:layout_constraintTop_toBottomOf="@+id/passEditTxt"
         app:layout_constraintVertical_bias="0.4" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guide"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="107dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

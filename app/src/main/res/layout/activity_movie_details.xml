@@ -7,24 +7,19 @@
     android:background="#1F2E81"
     tools:context=".MovieDetailsActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/infoContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
+
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtFicha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/ficha"
+            android:textColor="@color/white"
             android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textColor="@color/white">
-        </com.google.android.material.textview.MaterialTextView>
+            app:layout_constraintTop_toTopOf="parent"></com.google.android.material.textview.MaterialTextView>
 
         <ImageButton
             android:id="@+id/btnSelectFavourite"
@@ -32,11 +27,11 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
             android:background="#00000000"
+            android:contentDescription="@string/boton_favs"
             app:layout_constraintBottom_toTopOf="@+id/divider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_favorite_border_24"
-            android:contentDescription="@string/boton_favs"/>
+            app:srcCompat="@drawable/ic_fav_default" />
 
         <View
             android:id="@+id/divider"
@@ -52,10 +47,10 @@
             android:layout_height="206dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:contentDescription="@string/cover"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider"
-            app:srcCompat="@drawable/coverinferno"
-            android:contentDescription="@string/cover"/>
+            app:srcCompat="@drawable/coverinferno" />
 
         <TextView
             android:id="@+id/txtTitulo"
@@ -79,24 +74,14 @@
             app:layout_constraintTop_toBottomOf="@+id/txtTitulo" />
 
         <TextView
-            android:id="@+id/txtPais"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/pais"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="@+id/txtDirector"
-            app:layout_constraintTop_toBottomOf="@+id/txtDirector" />
-
-        <TextView
             android:id="@+id/txtAnio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="@string/anio"
             android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="@+id/txtPais"
-            app:layout_constraintTop_toBottomOf="@+id/txtPais" />
+            app:layout_constraintStart_toStartOf="@+id/txtDirector"
+            app:layout_constraintTop_toBottomOf="@+id/txtDirector" />
 
         <TextView
             android:id="@+id/txtDuracion"
@@ -119,24 +104,24 @@
             app:layout_constraintTop_toBottomOf="@+id/txtDuracion" />
 
         <TextView
-            android:id="@+id/txtCalificacion"
+            android:id="@+id/txtPresupuesto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="@string/calificacion"
+            android:text="@string/presupuesto"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="@+id/txtGenero"
             app:layout_constraintTop_toBottomOf="@+id/txtGenero" />
 
         <TextView
-            android:id="@+id/txtReparto"
+            android:id="@+id/txtIngresos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="@string/reparto"
+            android:text="@string/ingresos"
             android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="@+id/txtCalificacion"
-            app:layout_constraintTop_toBottomOf="@+id/txtCalificacion" />
+            app:layout_constraintStart_toStartOf="@+id/txtPresupuesto"
+            app:layout_constraintTop_toBottomOf="@+id/txtPresupuesto" />
 
         <TextView
             android:id="@+id/txtSinopsis"
@@ -162,82 +147,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtSinopsis" />
 
-        <RatingBar
-            android:id="@+id/ratingBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtDescripcionSinopsis" />
+    <ImageButton
+        android:id="@+id/arrow_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:background="color"
+        app:layout_constraintBottom_toBottomOf="@+id/txtFicha"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtFicha"
+        app:srcCompat="@drawable/ic_arrow_back"
+        tools:ignore="ContentDescription" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/barContent"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#0C164A"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageButton
-            android:id="@+id/btnHome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:background="#00FFFFFF"
-            android:contentDescription="@string/boton_home"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnUser"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_home_24" />
-
-        <ImageButton
-            android:id="@+id/btnSearch"
-            android:layout_width="44dp"
-            android:layout_height="wrap_content"
-            android:background="#00FFFFFF"
-            android:contentDescription="@string/boton_search"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnUser"
-            app:layout_constraintHorizontal_bias="0.29"
-            app:layout_constraintStart_toEndOf="@+id/btnHome"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_search_24" />
-
-        <ImageButton
-            android:id="@+id/btnFavourites"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#00FFFFFF"
-            android:contentDescription="@string/boton_favs"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnUser"
-            app:layout_constraintHorizontal_bias="0.52"
-            app:layout_constraintStart_toEndOf="@+id/btnSearch"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_favorite_border_24" />
-
-        <ImageButton
-            android:id="@+id/btnUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:background="#00FFFFFF"
-            android:contentDescription="@string/boton_user"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_person_outline_24" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
