@@ -50,6 +50,6 @@ class MoviesRepository(val retrofitApiServices: RetrofitApiService) :
     }
 
     override fun getMovieID(query: Int, callback: (MovieGenre) -> Unit, onError: (String) -> Unit) {
-       
+
     }
 }
