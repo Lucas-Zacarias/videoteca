@@ -29,13 +29,5 @@ class API {
         return getAPI1.getGenreID(genres)
     }
 
-    private val getAPIByID:ApiInterface = Retrofit.Builder()
-        .baseUrl("https://api.themoviedb.org/3/")
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-        .create(ApiInterface::class.java)
 
-    fun getMovieByID(id: Int,callback: Callback<MovieFav_Details_Model>){
-        getAPIByID.getMovieByID(id).enqueue(callback)
-    }
 }

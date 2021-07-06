@@ -14,8 +14,8 @@
         <activity android:name=".SignUpActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait"/>
         <activity android:name=".FavActivity" android:screenOrientation="portrait" android:theme="@style/Theme.Videotecamoviltp.NoActionBar"></activity>
         <activity android:name=".LogInActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait"></activity>
-        <activity android:name=".MovieDetailsActivity"></activity>
-        <activity android:name=".UserActivity" />
+        <activity android:name=".MovieDetailsActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait"></activity>
+        <activity android:name=".UserActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait" />
         <activity android:name=".SearchActivity"></activity>
         <activity android:name=".HomeActivity">
             <intent-filter>

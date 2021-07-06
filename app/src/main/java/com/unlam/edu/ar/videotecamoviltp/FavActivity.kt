@@ -6,12 +6,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.ImageButton
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityFavBinding
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class FavActivity : AppCompatActivity() {
     private lateinit var btnHome: ImageButton
     private lateinit var btnSearch: ImageButton
     private lateinit var btnUser: ImageButton
     private lateinit var binding: ActivityFavBinding
+    private val favViewModel: FavViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
