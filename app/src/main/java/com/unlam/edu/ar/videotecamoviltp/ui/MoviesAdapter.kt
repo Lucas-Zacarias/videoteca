@@ -11,7 +11,6 @@ class MoviesAdapter (
     private val clickListener : (MovieSearch) -> Unit
 ): RecyclerView.Adapter<MovieViewHolder>(){
     private val moviesList = mutableListOf<MovieSearch>()
-
     override fun getItemCount() = moviesList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -27,7 +26,6 @@ class MoviesAdapter (
         val movie = moviesList[position]
         holder.binding.titleTxt.text = movie.title
         holder.binding.descriptionTxt.text = movie.descripcion
-
         Picasso.get()
             .load("${IMG_API_PATH}${movie.poster}")
             .into(holder.binding.moviePoster)
