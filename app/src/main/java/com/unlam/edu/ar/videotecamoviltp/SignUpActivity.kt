@@ -1,97 +1,105 @@
 package com.unlam.edu.ar.videotecamoviltp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+<<<<<<< HEAD
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.unlam.edu.ar.videotecamoviltp.Classes.ListUsers
 import com.unlam.edu.ar.videotecamoviltp.Classes.User
 import com.unlam.edu.ar.videotecamoviltp.ui.HomeActivity
+=======
+import android.view.LayoutInflater
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import com.unlam.edu.ar.videotecamoviltp.data.UserEntity
+import com.unlam.edu.ar.videotecamoviltp.databinding.ActivitySignUpBinding
+import org.koin.android.viewmodel.ext.android.viewModel
+>>>>>>> 7115ab07dc21a980918150ab166ff41472c37325
 
 class SignUpActivity : AppCompatActivity() {
 
     companion object {
 
-        const val REGEX_EMAIL : String = "^[0-9a-zA-Z._.-]+\\@[0-9a-zA-Z._.-]+\\.[0-9a-zA-Z]+\$"
+        const val REGEX_EMAIL: String = "^[0-9a-zA-Z._.-]+\\@[0-9a-zA-Z._.-]+\\.[0-9a-zA-Z]+\$"
 
     }
 
-    lateinit var name : EditText
-    lateinit var email : EditText
-    lateinit var password : EditText
-    lateinit var signUp : Button
-    var listUsers : ListUsers = ListUsers()
+    private lateinit var name: EditText
+    private lateinit var email: EditText
+    private lateinit var password: EditText
+    private lateinit var signUp: Button
+    private lateinit var binding: ActivitySignUpBinding
+    private val signUpViewModel: SignUpViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
-
+        binding = ActivitySignUpBinding.inflate(LayoutInflater.from(this))
+        setContentView(binding.root)
         getViews()
         setListener()
-
     }
-
 
 
     private fun getViews() {
-        name = findViewById(R.id.nameEditTxt)
-        email = findViewById(R.id.emailEditTxt)
-        password = findViewById(R.id.passEditTxt)
-        signUp = findViewById(R.id.signUpBtn)
+        name = binding.nameEditTxt
+        email = binding.emailEditTxt
+        password = binding.passEditTxt
+        signUp = binding.signUpBtn
     }
 
-   private fun setListener() {
+    private fun setListener() {
         signUp.setOnClickListener {
-
-           createUser()
-
+            createUser()
         }
     }
 
     private fun createUser() {
 
-        if(email.getText().toString().isNotEmpty()
-                && name.getText().toString().isNotEmpty()
-                        && password.getText().toString().isNotEmpty()){
+        if (email.text.toString().isNotEmpty()
+                && name.text.toString().isNotEmpty()
+                && password.text.toString().isNotEmpty()) {
 
-                                 if(validateEmail(email)){
+            if (validateEmail(email)) {
 
-                                     if(listUsers.addUserToTheList(User(name = name.getText().toString().trim(),
-                                                                        email = email.getText().toString().trim(),
-                                                                        password = password.getText().toString() ))){
-                                                         Toast.makeText(
-                                                             this@SignUpActivity,
-                                                             "Registración exitosa",
-                                                             Toast.LENGTH_LONG
-                                                         ).show()
-                                                        navigateToHome()
-                                                     }else{
-                                                         Toast.makeText(
-                                                             this@SignUpActivity,
-                                                             "Usuario ya existente con email ${email.getText()}",
-                                                             Toast.LENGTH_LONG
-                                                         ).show()
-                                                     }
-                                                    }else{
-                                                        Toast.makeText(
-                                                            this@SignUpActivity,
-                                                            "Formato de email incorrecto, pruebe con uno estilo juanperez@gmail.com",
-                                                            Toast.LENGTH_LONG
-                                                        ).show()
-                                                    }
-                                                }else{
-                                                    Toast.makeText(
-                                                        this@SignUpActivity,
-                                                        "Por favor rellene todos los campos",
-                                                        Toast.LENGTH_LONG
-                                                    ).show()
-                                                }
+                if (signUpViewModel.saveNewUser(UserEntity(email = email.text.toString().trim(),
+                                password = password.text.toString().trim(),
+                                name = name.text.toString().trim()))){
+                    Toast.makeText(
+                            this@SignUpActivity,
+                            "Registración exitosa",
+                            Toast.LENGTH_LONG
+                    ).show()
+                    navigateToHome()
+                } else {
+                    Toast.makeText(
+                            this@SignUpActivity,
+                            "Usuario ya existente con email ${email.text}",
+                            Toast.LENGTH_LONG
+                    ).show()
+                }
+            } else {
+                Toast.makeText(
+                        this@SignUpActivity,
+                        "Formato de email incorrecto, pruebe con uno estilo juanperez@gmail.com",
+                        Toast.LENGTH_LONG
+                ).show()
+            }
+        } else {
+            Toast.makeText(
+                    this@SignUpActivity,
+                    "Por favor rellene todos los campos",
+                    Toast.LENGTH_LONG
+            ).show()
+        }
     }
 
     private fun validateEmail(email: EditText): Boolean {
-        return email.getText().toString().trim().matches(Regex(pattern = REGEX_EMAIL))
+        return email.text.toString().trim().matches(Regex(pattern = REGEX_EMAIL))
     }
 
     private fun navigateToHome() {

@@ -26,7 +26,6 @@
         android:text="@string/titulo_de_la_pelicula"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton"
         app:layout_constraintStart_toEndOf="@+id/guideVertical"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,18 +57,6 @@
         app:layout_constraintTop_toBottomOf="@+id/genres"
         tools:text="@tools:sample/lorem/random"
         android:textColor="@color/white"/>
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="2dp"
-        android:backgroundTint="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="@+id/titleTxt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/titleTxt"
-        app:srcCompat="@drawable/ic_fav_default"
-        android:contentDescription="@string/boton_de_favorito"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideVertical"
