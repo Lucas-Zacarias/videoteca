@@ -1,10 +1,8 @@
 package com.unlam.edu.ar.videotecamoviltp.retrofit
 
 import com.unlam.edu.ar.videotecamoviltp.model.Genres
-import com.unlam.edu.ar.videotecamoviltp.model.MovieFav_Details_Model
 import com.unlam.edu.ar.videotecamoviltp.model.MovieGenre
 import com.unlam.edu.ar.videotecamoviltp.model.Movies
-import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -38,7 +36,7 @@ class APIImplementation : RetrofitApiService {
         serviceDiscover.getGenreID(title).enqueue(callback)
     }
 
-    override fun getMovieID(title: Int, callback: Callback<MovieGenre>){
-        serviceMovie.getMovieID(title).enqueue(callback)
+    override fun getMovieID(id: Int, callback: Callback<MovieGenre>){
+        serviceMovie.getMovieID(id).enqueue(callback)
     }
 }
