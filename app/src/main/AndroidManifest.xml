@@ -12,7 +12,6 @@
         android:theme="@style/Theme.Videotecamoviltp"
         android:name=".injectDependencies.MoviesApp">
         <activity android:name=".ui.SearchActivity" />
-        android:name=".VideotecaApp">
         <activity android:name=".SignUpActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait"/>
         <activity android:name=".FavActivity" android:screenOrientation="portrait" android:theme="@style/Theme.Videotecamoviltp.NoActionBar"></activity>
         <activity android:name=".LogInActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait"></activity>
