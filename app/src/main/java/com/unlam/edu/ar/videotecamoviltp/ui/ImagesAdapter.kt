@@ -17,7 +17,6 @@ class ImagesAdapter (
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
             val imageBinding = HomeImagesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             return ImageViewHolder(imageBinding)
-
         }
 
         companion object {
@@ -25,13 +24,11 @@ class ImagesAdapter (
         }
 
         override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-
             val movie = moviesList[position]
             Picasso.get()
                 .load("${IMG_API_PATH}${movie.poster}")
                 .into(holder.binding.imageViewAction)
-
-        }
+            }
 
         fun updateMovies(results: List<GenreID>?) {
             moviesList.clear()
