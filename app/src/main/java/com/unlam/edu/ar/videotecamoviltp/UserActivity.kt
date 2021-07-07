@@ -1,6 +1,8 @@
 package com.unlam.edu.ar.videotecamoviltp
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +10,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityUserBinding
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class UserActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUserBinding
@@ -16,13 +19,17 @@ class UserActivity : AppCompatActivity() {
     private lateinit var btnFav: ImageButton
     private lateinit var btnSignOff: Button
     private lateinit var txtUserName: TextView
+    private val userViewModel: UserViewModel by viewModel()
+    private lateinit var sharedPref:SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUserBinding.inflate(LayoutInflater.from(this))
+        sharedPref = this.getSharedPreferences("FILE_PREFERENCES_USER_ID", Context.MODE_PRIVATE)
         setContentView(binding.root)
         getViews()
         setListeners()
+        setUserName()
     }
 
     private fun getViews() {
@@ -44,6 +51,9 @@ class UserActivity : AppCompatActivity() {
         btnSearch.setOnClickListener{
             navigateToSearch()
         }
+        btnSignOff.setOnClickListener{
+            signOff()
+        }
     }
 
     private fun navigateToHome() {
@@ -58,6 +68,31 @@ class UserActivity : AppCompatActivity() {
 
     private fun navigateToSearch() {
         val intent = Intent(this, SearchActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun setUserName() {
+        var userName = userViewModel.getUserNameById(getSharedPreferenceUserId())
+        if(userName != ""){
+            txtUserName.text = userName
+        }else{
+            txtUserName.text = getString(R.string.nombre_de_usuario_no_encontrado)
+        }
+    }
+
+    private fun getSharedPreferenceUserId():Int{
+        return sharedPref.getInt("userId", 0)
+    }
+
+    private fun signOff() {
+        sharedPref.edit().clear().apply()
+        navigateToLogIn()
+        finish()
+    }
+    //borra los datos del shared preferences para que se vuelvan a cargar cuando un nuevo user haga inicio de sesion
+
+    private fun navigateToLogIn() {
+        val intent = Intent(this, LogInActivity::class.java)
         startActivity(intent)
     }
 }

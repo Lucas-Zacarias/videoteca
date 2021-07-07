@@ -1,9 +1,7 @@
 package com.unlam.edu.ar.videotecamoviltp
 
 import android.app.Application
-import com.unlam.edu.ar.videotecamoviltp.data.FavDAO
-import com.unlam.edu.ar.videotecamoviltp.data.UserDAO
-import com.unlam.edu.ar.videotecamoviltp.data.VideotecaDatabase
+import com.unlam.edu.ar.videotecamoviltp.data.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.android.viewmodel.dsl.viewModel
@@ -17,6 +15,10 @@ class VideotecaApp : Application(){
         viewModel { LogInViewModel(get()) }
         single<FavDAO>{VideotecaDatabase.getInstance(get()).favDAO()}
         viewModel { FavViewModel(get(),get()) }
+        single{ MoviesFavAdapter()}
+        viewModel { UserViewModel(get()) }
+        single{UserEntityRepository(get())}
+        single{FavEntityRepository(get())}
     }
 
     override fun onCreate() {
