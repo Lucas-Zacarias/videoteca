@@ -1,6 +1,8 @@
 package com.unlam.edu.ar.videotecamoviltp
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Button
@@ -65,6 +67,7 @@ class SignUpActivity : AppCompatActivity() {
                             "Registración exitosa",
                             Toast.LENGTH_LONG
                     ).show()
+                    saveSignUpSharedPreferences(signUpViewModel.getUserId(email.text.toString().trim()))
                     navigateToHome()
                 } else {
                     Toast.makeText(
@@ -97,4 +100,12 @@ class SignUpActivity : AppCompatActivity() {
         val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
     }
+
+    private fun saveSignUpSharedPreferences(userId: Int) {
+        val sharedPref = this.getSharedPreferences("FILE_PREFERENCES_USER_ID", Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putInt("userId",userId)
+        editor.apply()
+    }
+    //guarda en el shared preferences el id del usuario al hacer el sign up
 }

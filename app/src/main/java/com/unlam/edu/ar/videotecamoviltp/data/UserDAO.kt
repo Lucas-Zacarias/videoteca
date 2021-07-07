@@ -1,15 +1,13 @@
 package com.unlam.edu.ar.videotecamoviltp.data
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.unlam.edu.ar.videotecamoviltp.classes.UserModel
 
 
 @Dao
 interface UserDAO {
 
     @Query("SELECT * FROM users")
-    fun getAllUsers():LiveData<List<UserEntity>>
+    fun getAllUsers():List<UserEntity>
     //obtiene todos los usuarios de la bd y los devuelve en una lista de la clase User
 
     @Query("SELECT * FROM users WHERE users.id = :id")

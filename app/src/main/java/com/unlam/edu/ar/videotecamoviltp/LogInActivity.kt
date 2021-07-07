@@ -1,5 +1,6 @@
 package com.unlam.edu.ar.videotecamoviltp
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -52,10 +53,11 @@ class LogInActivity : AppCompatActivity() {
     private fun validateFields() {
         if(email.text.toString().isNotEmpty()
                 && password.text.toString().isNotEmpty()){
-                if(logInViewModel.getUser(
+                if(logInViewModel.validateUser(
                                 email = email.text.toString().trim(),
                                 password = password.text.toString().trim()
                         )){
+                    saveLogInSharedPreferences(logInViewModel.getUserId(email.text.toString().trim()))
                     navigateToHome()
                 }else{
                     Toast.makeText(
@@ -77,4 +79,12 @@ class LogInActivity : AppCompatActivity() {
         val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
     }
+
+    private fun saveLogInSharedPreferences(userId: Int) {
+        val sharedPref = this.getSharedPreferences("FILE_PREFERENCES_USER_ID", Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putInt("userId",userId)
+        editor.apply()
+    }
+    //guarda en el shared preferences el id del usuario que hizo el log in
 }
