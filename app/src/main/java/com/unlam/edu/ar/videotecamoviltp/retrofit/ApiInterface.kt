@@ -1,6 +1,7 @@
 package com.unlam.edu.ar.videotecamoviltp.retrofit
 
 import com.unlam.edu.ar.videotecamoviltp.model.Genres
+import com.unlam.edu.ar.videotecamoviltp.model.MovieGenre
 import com.unlam.edu.ar.videotecamoviltp.model.Movies
 import retrofit2.Call
 import retrofit2.http.GET

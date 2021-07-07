@@ -1,6 +1,7 @@
 package com.unlam.edu.ar.videotecamoviltp.repositories
 
 import com.unlam.edu.ar.videotecamoviltp.model.Genres
+import com.unlam.edu.ar.videotecamoviltp.model.MovieGenre
 import com.unlam.edu.ar.videotecamoviltp.model.Movies
 import com.unlam.edu.ar.videotecamoviltp.retrofit.RetrofitApiService
 import retrofit2.Call
