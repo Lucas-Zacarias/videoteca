@@ -3,6 +3,7 @@ package com.unlam.edu.ar.videotecamoviltp.retrofit
 import com.unlam.edu.ar.videotecamoviltp.model.Genres
 import com.unlam.edu.ar.videotecamoviltp.model.MovieGenre
 import com.unlam.edu.ar.videotecamoviltp.model.Movies
+import com.unlam.edu.ar.videotecamoviltp.model.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

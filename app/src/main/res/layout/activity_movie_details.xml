@@ -7,6 +7,11 @@
     android:background="#1F2E81"
     tools:context=".MovieDetailsActivity">
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> master
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtFicha"
             android:layout_width="wrap_content"
@@ -150,7 +155,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+<<<<<<< HEAD
         android:background="#00000000"
+=======
+        android:background="color"
+>>>>>>> master
         app:layout_constraintBottom_toBottomOf="@+id/txtFicha"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/txtFicha"
