@@ -4,9 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.widget.Toast
 import com.unlam.edu.ar.videotecamoviltp.*
-import com.unlam.edu.ar.videotecamoviltp.data.FavDAO
-import com.unlam.edu.ar.videotecamoviltp.data.UserDAO
-import com.unlam.edu.ar.videotecamoviltp.data.VideotecaDatabase
+import com.unlam.edu.ar.videotecamoviltp.data.*
 import com.unlam.edu.ar.videotecamoviltp.model.GenreID
 import com.unlam.edu.ar.videotecamoviltp.model.MovieSearch
 import com.unlam.edu.ar.videotecamoviltp.repositories.MovieRepository
@@ -34,6 +32,10 @@ class MoviesApp : Application() {
         viewModel { LogInViewModel(get()) }
         single<FavDAO>{ VideotecaDatabase.getInstance(get()).favDAO()}
         viewModel { FavViewModel(get(),get()) }
+        single{ UserEntityRepository(get()) }
+        single{ FavEntityRepository(get()) }
+        single{ MoviesFavAdapter()}
+        viewModel { UserViewModel(get()) }
     }
     override fun onCreate() {
         super.onCreate()

@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.widget.ImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityFavBinding
+import com.unlam.edu.ar.videotecamoviltp.ui.HomeActivity
+import com.unlam.edu.ar.videotecamoviltp.ui.SearchActivity
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 

@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityLogInBinding
+import com.unlam.edu.ar.videotecamoviltp.ui.HomeActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class LogInActivity : AppCompatActivity() {
@@ -59,6 +60,7 @@ class LogInActivity : AppCompatActivity() {
                         )){
                     saveLogInSharedPreferences(logInViewModel.getUserId(email.text.toString().trim()))
                     navigateToHome()
+                    finish()
                 }else{
                     Toast.makeText(
                             this@LogInActivity,

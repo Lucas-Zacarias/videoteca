@@ -2,16 +2,15 @@ package com.unlam.edu.ar.videotecamoviltp
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.unlam.edu.ar.videotecamoviltp.ui.HomeActivity
-import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import com.unlam.edu.ar.videotecamoviltp.data.UserEntity
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivitySignUpBinding
+import com.unlam.edu.ar.videotecamoviltp.ui.HomeActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class SignUpActivity : AppCompatActivity() {
@@ -69,6 +68,7 @@ class SignUpActivity : AppCompatActivity() {
                     ).show()
                     saveSignUpSharedPreferences(signUpViewModel.getUserId(email.text.toString().trim()))
                     navigateToHome()
+                    finish()
                 } else {
                     Toast.makeText(
                             this@SignUpActivity,
