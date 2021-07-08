@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.unlam.edu.ar.videotecamoviltp.sharedpreferences.Preferences
+import com.unlam.edu.ar.videotecamoviltp.ui.HomeActivity
 
 private lateinit var sharedPref: SharedPreferences
 

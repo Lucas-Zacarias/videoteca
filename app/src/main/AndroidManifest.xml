@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".VideotecaApp"
+        android:name=".injectDependencies.MoviesApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,34 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Videotecamoviltp">
         <activity android:name=".SplashActivity" android:theme="@style/SplashScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>/>
         </activity>
-        <activity
-            android:name=".SignUpActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Videotecamoviltp.NoActionBar" />
-        <activity
-            android:name=".FavActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Videotecamoviltp.NoActionBar" />
-        <activity
-            android:name=".LogInActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Videotecamoviltp.NoActionBar" />
-        <activity
-            android:name=".MovieDetailsActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Videotecamoviltp.NoActionBar" />
-        <activity
-            android:name=".UserActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Videotecamoviltp.NoActionBar" />
-        <activity android:name=".SearchActivity" />
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".SignUpActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait"/>
+        <activity android:name=".FavActivity" android:screenOrientation="portrait" android:theme="@style/Theme.Videotecamoviltp.NoActionBar"></activity>
+        <activity android:name=".LogInActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait"></activity>
+        <activity android:name=".MovieDetailsActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait"></activity>
+        <activity android:name=".UserActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait" />
+        <activity android:name=".ui.SearchActivity"></activity>
+        <activity android:name=".ui.HomeActivity"></activity>
     </application>
 
 </manifest>

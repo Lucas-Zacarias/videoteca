@@ -4,19 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
-
+    tools:context=".ui.HomeActivity">
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="412dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/barContent"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -57,9 +56,11 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview1"
-                android:layout_width="385dp"
+                android:layout_width="0dp"
                 android:layout_height="93dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.592"
                 app:layout_constraintStart_toStartOf="parent"
@@ -82,9 +83,11 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview2"
-                android:layout_width="385dp"
+                android:layout_width="0dp"
                 android:layout_height="93dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.592"
                 app:layout_constraintStart_toStartOf="parent"
@@ -105,9 +108,11 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview3"
-                android:layout_width="385dp"
+                android:layout_width="0dp"
                 android:layout_height="93dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.592"
                 app:layout_constraintStart_toStartOf="parent"
@@ -128,14 +133,20 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview4"
-                android:layout_width="385dp"
+                android:layout_width="0dp"
                 android:layout_height="93dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.592"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/drama"
-                tools:listitem="@layout/home_images" />
+                tools:listitem="@layout/home_images">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
@@ -147,7 +158,6 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
@@ -201,6 +211,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_baseline_person_outline_24" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
