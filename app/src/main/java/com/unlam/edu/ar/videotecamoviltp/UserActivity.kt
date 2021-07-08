@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityUserBinding
+import com.unlam.edu.ar.videotecamoviltp.sharedpreferences.Preferences
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class UserActivity : AppCompatActivity() {
@@ -72,16 +73,12 @@ class UserActivity : AppCompatActivity() {
     }
 
     private fun setUserName() {
-        var userName = userViewModel.getUserNameById(getSharedPreferenceUserId())
+        val userName = userViewModel.getUserNameById(Preferences.getSharedPreferenceUserId(sharedPref))
         if(userName != ""){
             txtUserName.text = userName
         }else{
             txtUserName.text = getString(R.string.nombre_de_usuario_no_encontrado)
         }
-    }
-
-    private fun getSharedPreferenceUserId():Int{
-        return sharedPref.getInt("userId", 0)
     }
 
     private fun signOff() {

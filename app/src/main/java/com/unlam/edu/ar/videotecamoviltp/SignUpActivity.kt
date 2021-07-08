@@ -69,6 +69,7 @@ class SignUpActivity : AppCompatActivity() {
                     ).show()
                     saveSignUpSharedPreferences(signUpViewModel.getUserId(email.text.toString().trim()))
                     navigateToHome()
+                    finish()
                 } else {
                     Toast.makeText(
                             this@SignUpActivity,

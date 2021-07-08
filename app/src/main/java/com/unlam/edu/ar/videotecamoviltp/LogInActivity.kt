@@ -59,6 +59,7 @@ class LogInActivity : AppCompatActivity() {
                         )){
                     saveLogInSharedPreferences(logInViewModel.getUserId(email.text.toString().trim()))
                     navigateToHome()
+                    finish()
                 }else{
                     Toast.makeText(
                             this@LogInActivity,
