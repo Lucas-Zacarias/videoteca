@@ -10,6 +10,8 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityUserBinding
+import com.unlam.edu.ar.videotecamoviltp.ui.HomeActivity
+import com.unlam.edu.ar.videotecamoviltp.ui.SearchActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class UserActivity : AppCompatActivity() {
