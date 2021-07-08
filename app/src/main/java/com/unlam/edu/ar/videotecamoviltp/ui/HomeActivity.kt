@@ -1,20 +1,20 @@
 package com.unlam.edu.ar.videotecamoviltp.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.unlam.edu.ar.videotecamoviltp.ImagesAdapter
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityHomeBinding
-import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {
 
-    private val imagesAdapterAccion: ImagesAdapter by inject()
-    private val imagesAdapterDrama: ImagesAdapter by inject()
-    private val imagesAdapterTerror: ImagesAdapter by inject()
-    private val imagesAdapterComedia: ImagesAdapter by inject()
+    private lateinit var imagesAdapterAccion: ImagesAdapter
+    private lateinit var imagesAdapterDrama: ImagesAdapter
+    private lateinit var imagesAdapterComedia: ImagesAdapter
+    private lateinit var imagesAdapterTerror: ImagesAdapter
     private lateinit var binding: ActivityHomeBinding
     private val vmHome: HomeViewModel by viewModel()
 
@@ -24,19 +24,46 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
         setupRecyclerView()
         setupImagesDrama()
+        setupImagesAccion()
+        setupImagesComedia()
+        setupImagesTerror()
         }
 
     private fun setupRecyclerView() {
         binding.recyclerview1.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        imagesAdapterAccion = ImagesAdapter{ s: String, s1: String, s2: String, s3: String,i: Int, i1: Int, i2: Int ->
+            navigateToDetail (s, s1, s2, s3, i, i1, i2)
+        }
         binding.recyclerview1.adapter = imagesAdapterAccion
         binding.recyclerview2.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        imagesAdapterComedia = ImagesAdapter{ s: String, s1: String, s2: String, s3: String, i: Int, i1: Int, i2: Int ->
+            navigateToDetail(s, s1, s2, s3, i, i1, i2)
+        }
         binding.recyclerview2.adapter = imagesAdapterComedia
         binding.recyclerview3.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        imagesAdapterTerror = ImagesAdapter { s: String, s1: String, s2: String, s3: String, i: Int, i1: Int, i2: Int ->
+            navigateToDetail(s, s1, s2, s3, i, i1, i2)
+        }
         binding.recyclerview3.adapter = imagesAdapterTerror
         binding.recyclerview4.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        imagesAdapterDrama = ImagesAdapter { s: String, s1: String, s2: String, s3: String, i: Int, i1: Int, i2: Int ->
+            navigateToDetail(s, s1, s2, s3, i, i1, i2)
+        }
         binding.recyclerview4.adapter = imagesAdapterDrama
     }
 
+    private fun navigateToDetail(title: String, descripcion: String, poster: String, estreno: String, presupuesto: Int, duracion: Int, ingresos: Int){
+        val intent = Intent (this, MovieDetailsActivity::class.java).apply {
+            putExtra("title", title )
+            putExtra("descripcion", descripcion)
+            putExtra("poster", poster)
+            putExtra("estreno", estreno)
+            putExtra("presupuesto", presupuesto)
+            putExtra("duracion", duracion)
+            putExtra("ingresos", ingresos)
+        }
+        startActivity(intent)
+    }
     private fun setupObserversDrama(){
         vmHome.moviesListDataDrama.observe(this,{
             imagesAdapterDrama.updateMovies(it.results)

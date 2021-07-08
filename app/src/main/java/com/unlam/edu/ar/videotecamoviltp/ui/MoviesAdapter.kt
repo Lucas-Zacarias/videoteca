@@ -8,7 +8,7 @@ import com.unlam.edu.ar.videotecamoviltp.databinding.ListItemMovieBinding
 import com.unlam.edu.ar.videotecamoviltp.model.MovieSearch
 
 class MoviesAdapter (
-    private val clickListener : (MovieSearch) -> Unit
+    private val clickListener : (String, String, String, String, Int, Int, Int) -> Unit
 ): RecyclerView.Adapter<MovieViewHolder>(){
     private val moviesList = mutableListOf<MovieSearch>()
     override fun getItemCount() = moviesList.size
@@ -30,7 +30,7 @@ class MoviesAdapter (
             .load("${IMG_API_PATH}${movie.poster}")
             .into(holder.binding.moviePoster)
 
-        holder.itemView.setOnClickListener { clickListener(movie) }
+        holder.itemView.setOnClickListener { clickListener(movie.title, movie.descripcion, movie.poster, movie.estreno, movie.presupuesto, movie.duracion, movie.ingresos) }
     }
 
     fun updateMovies(results: List<MovieSearch>?) {

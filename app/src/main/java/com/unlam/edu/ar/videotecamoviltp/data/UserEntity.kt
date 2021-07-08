@@ -3,7 +3,6 @@ package com.unlam.edu.ar.videotecamoviltp.data
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.Index
 import androidx.room.PrimaryKey
 
 @Entity (tableName = "users")

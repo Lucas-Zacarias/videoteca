@@ -2,8 +2,6 @@ package com.unlam.edu.ar.videotecamoviltp.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.unlam.edu.ar.videotecamoviltp.classes.UserModel
-
 
 @Dao
 interface UserDAO {

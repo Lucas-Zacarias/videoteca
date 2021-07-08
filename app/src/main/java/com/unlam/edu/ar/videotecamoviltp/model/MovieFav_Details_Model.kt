@@ -3,7 +3,7 @@ package com.unlam.edu.ar.videotecamoviltp.model
 import com.google.gson.annotations.SerializedName
 
 data class MovieFav_Details_Model(
-    var id: Integer,
+    var id: Int,
 
     @SerializedName("poster_path")
     var poster: String,

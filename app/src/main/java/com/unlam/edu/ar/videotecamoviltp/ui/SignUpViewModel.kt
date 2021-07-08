@@ -1,7 +1,5 @@
-package com.unlam.edu.ar.videotecamoviltp
+package com.unlam.edu.ar.videotecamoviltp.ui
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import com.unlam.edu.ar.videotecamoviltp.data.UserEntity
 import com.unlam.edu.ar.videotecamoviltp.data.UserEntityRepository

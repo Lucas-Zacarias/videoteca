@@ -12,13 +12,13 @@
         android:theme="@style/Theme.Videotecamoviltp"
 
         android:name=".injectDependencies.MoviesApp">
-        <activity android:name=".SignUpActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait"/>
-        <activity android:name=".FavActivity" android:screenOrientation="portrait" android:theme="@style/Theme.Videotecamoviltp.NoActionBar"></activity>
-        <activity android:name=".LogInActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait"></activity>
-        <activity android:name=".MovieDetailsActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait"></activity>
-        <activity android:name=".UserActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait" />
-        <activity android:name=".ui.SearchActivity"></activity>
-        <activity android:name=".ui.HomeActivity">
+        <activity android:name=".ui.SignUpActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.FavActivity" android:screenOrientation="portrait" android:theme="@style/Theme.Videotecamoviltp.NoActionBar"></activity>
+        <activity android:name=".ui.LogInActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait"></activity>
+        <activity android:name=".ui.MovieDetailsActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar"></activity>
+        <activity android:name=".ui.UserActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait" />
+        <activity android:name=".ui.HomeActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar"></activity>
+        <activity android:name=".ui.SearchActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

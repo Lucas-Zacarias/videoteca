@@ -19,7 +19,16 @@ data class MovieSearch(
 
     //var genresIds: List<MovieGenre>
     @SerializedName("genre_ids")
-    var genresIds: List<Int>
+    var genresIds: List<Int>,
+
+    @SerializedName("revenue")
+    var ingresos: Int,
+
+    @SerializedName("runtime")
+    var duracion: Int,
+
+    @SerializedName("budget")
+    var presupuesto: Int
 )
 
 data class Movies(
