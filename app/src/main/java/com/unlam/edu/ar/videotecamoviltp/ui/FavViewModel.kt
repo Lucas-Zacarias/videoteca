@@ -1,4 +1,4 @@
-package com.unlam.edu.ar.videotecamoviltp
+package com.unlam.edu.ar.videotecamoviltp.ui
 
 import androidx.lifecycle.ViewModel
 import com.unlam.edu.ar.videotecamoviltp.data.FavEntityRepository

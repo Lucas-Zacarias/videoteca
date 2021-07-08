@@ -8,7 +8,7 @@ import com.unlam.edu.ar.videotecamoviltp.databinding.HomeImagesBinding
 import com.unlam.edu.ar.videotecamoviltp.model.GenreID
 
 class ImagesAdapter (
-    private val clickListener : (GenreID) -> Unit
+    private val clickListener : (String, String, String, String, Int, Int, Int) -> Unit
     ): RecyclerView.Adapter<ImageViewHolder>(){
         private val moviesList = mutableListOf<GenreID>()
 
@@ -28,9 +28,11 @@ class ImagesAdapter (
             Picasso.get()
                 .load("${IMG_API_PATH}${movie.poster}")
                 .into(holder.binding.imageViewAction)
+            holder.binding.imageViewAction.setOnClickListener {
+                clickListener(movie.title, movie.descripcion, movie.poster, movie.estreno, movie.presupuesto, movie.duracion, movie.ingresos)
             }
-
-        fun updateMovies(results: List<GenreID>?) {
+            }
+    fun updateMovies(results: List<GenreID>?) {
             moviesList.clear()
             if (results != null) {
                 moviesList.addAll(results)

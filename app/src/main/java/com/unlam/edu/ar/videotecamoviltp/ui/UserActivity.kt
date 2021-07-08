@@ -1,7 +1,8 @@
-package com.unlam.edu.ar.videotecamoviltp
+package com.unlam.edu.ar.videotecamoviltp.ui
 
 import android.content.Context
 import android.content.Intent
+import com.unlam.edu.ar.videotecamoviltp.UserViewModel
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,10 +10,9 @@ import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import com.unlam.edu.ar.videotecamoviltp.R
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityUserBinding
 import com.unlam.edu.ar.videotecamoviltp.sharedpreferences.Preferences
-import com.unlam.edu.ar.videotecamoviltp.ui.HomeActivity
-import com.unlam.edu.ar.videotecamoviltp.ui.SearchActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class UserActivity : AppCompatActivity() {

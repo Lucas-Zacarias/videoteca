@@ -1,6 +1,5 @@
 package com.unlam.edu.ar.videotecamoviltp.data
 
-import androidx.lifecycle.MutableLiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert

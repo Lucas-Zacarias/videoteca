@@ -2,18 +2,17 @@ package com.unlam.edu.ar.videotecamoviltp
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.unlam.edu.ar.videotecamoviltp.databinding.ListItemMovieBinding
-import com.unlam.edu.ar.videotecamoviltp.model.MovieFav_Details_Model
+import com.unlam.edu.ar.videotecamoviltp.model.GenreID
+import com.unlam.edu.ar.videotecamoviltp.ui.MovieDetailsActivity
 
 class MoviesFavAdapter() : RecyclerView.Adapter<MovieFavViewHolder>() {
 
-    private val movieList = mutableListOf<MovieFav_Details_Model>()
+    private val movieList = mutableListOf<GenreID>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieFavViewHolder {
         val movieBinding = ListItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -36,7 +35,7 @@ class MovieFavViewHolder(private val binding: ListItemMovieBinding):RecyclerView
     }
 
 
-    fun bindMovieItem(movie : MovieFav_Details_Model) {
+    fun bindMovieItem(movie: GenreID) {
         binding.titleTxt.text = movie.title
         binding.descriptionTxt.text = movie.descripcion
         binding.genres.text = movie.genreList.joinToString(separator = ", ") { it.genreName }
@@ -51,7 +50,7 @@ class MovieFavViewHolder(private val binding: ListItemMovieBinding):RecyclerView
         }
     }
 
-    private fun navigateToMovieDetails(id: Integer) {
+    private fun navigateToMovieDetails(id: Int) {
         val context:Context = itemView.context
         val intent = Intent(context, MovieDetailsActivity::class.java)
         context.startActivity(intent)

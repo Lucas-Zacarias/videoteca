@@ -1,8 +1,6 @@
 package com.unlam.edu.ar.videotecamoviltp.data
 
 import androidx.room.*
-
-
 @Dao
 interface UserDAO {
 

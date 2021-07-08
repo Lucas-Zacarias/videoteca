@@ -1,4 +1,4 @@
-package com.unlam.edu.ar.videotecamoviltp
+package com.unlam.edu.ar.videotecamoviltp.ui
 
 import android.content.Context
 import android.content.Intent
@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.unlam.edu.ar.videotecamoviltp.data.UserEntity
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivitySignUpBinding
-import com.unlam.edu.ar.videotecamoviltp.ui.HomeActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class SignUpActivity : AppCompatActivity() {
