@@ -11,7 +11,7 @@
         android:id="@+id/nombreAppTxtView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="@string/nombre_de_la_aplicacion"
         android:textAllCaps="true"
@@ -25,7 +25,7 @@
         android:id="@+id/imgApp"
         android:layout_width="180dp"
         android:layout_height="180dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="@string/icono_de_la_aplicacion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +49,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:text="@string/nombreDeUsuario"
         android:textColor="@color/white"
@@ -141,6 +141,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passEditTxt"
-        app:layout_constraintVertical_bias="0.4" />
+        app:layout_constraintVertical_bias="0.4"
+        android:backgroundTint="#0C164A"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
