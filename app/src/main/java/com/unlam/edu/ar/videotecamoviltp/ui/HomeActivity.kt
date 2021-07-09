@@ -3,6 +3,7 @@ package com.unlam.edu.ar.videotecamoviltp.ui
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.unlam.edu.ar.videotecamoviltp.ImagesAdapter
@@ -11,6 +12,10 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {
 
+    private lateinit var btnHome: ImageButton
+    private lateinit var btnSearch: ImageButton
+    private lateinit var btnUser: ImageButton
+    private lateinit var btnFavourites: ImageButton
     private lateinit var imagesAdapterAccion: ImagesAdapter
     private lateinit var imagesAdapterDrama: ImagesAdapter
     private lateinit var imagesAdapterComedia: ImagesAdapter
@@ -27,6 +32,8 @@ class HomeActivity : AppCompatActivity() {
         setupImagesAccion()
         setupImagesComedia()
         setupImagesTerror()
+        getViews()
+        setListeners()
         }
 
     private fun setupRecyclerView() {
@@ -113,6 +120,47 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    private fun getViews() {
+        btnHome = binding.btnHome
+        btnSearch = binding.btnSearch
+        btnUser = binding.btnUser
+        btnFavourites = binding.btnFavourites
+    }
+
+    private fun setListeners() {
+        btnHome.setOnClickListener{
+            navigateToHome()
+        }
+        btnUser.setOnClickListener{
+            navigateToUser()
+        }
+        btnSearch.setOnClickListener{
+            navigateToSearch()
+        }
+        btnFavourites.setOnClickListener{
+            navigateToFav()
+        }
+    }
+
+    private fun navigateToHome() {
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun navigateToUser() {
+        val intent = Intent(this, UserActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun navigateToSearch() {
+        val intent = Intent(this, SearchActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun navigateToFav() {
+        val intent = Intent(this, FavActivity::class.java)
+        startActivity(intent)
+    }
 }
 
 
