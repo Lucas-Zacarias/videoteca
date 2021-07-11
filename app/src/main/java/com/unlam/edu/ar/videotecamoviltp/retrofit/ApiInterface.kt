@@ -1,11 +1,11 @@
 package com.unlam.edu.ar.videotecamoviltp.retrofit
 
 import com.unlam.edu.ar.videotecamoviltp.model.Genres
-import com.unlam.edu.ar.videotecamoviltp.model.MovieGenre
 import com.unlam.edu.ar.videotecamoviltp.model.Movies
 import com.unlam.edu.ar.videotecamoviltp.model.*
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiInterface {
@@ -24,8 +24,8 @@ interface ApiInterface {
         @Query("with_genres") id: Int
     ): Call<Genres>
 
-    @GET("movie_id?$API_KEY%$LANGUAGE_SPANISH")
+    @GET("{movie_id}?api_key=${API_KEY}&${LANGUAGE_SPANISH}")
     fun getMovieID(
-        @Query("movie_id") id: Int
-    ): Call<MovieGenre>
+        @Path("movie_id") id: Int
+    ): Call<MovieFav_Details_Model>
   }

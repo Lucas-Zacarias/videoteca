@@ -23,7 +23,7 @@
             android:id="@+id/btnSelectFavourite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="16dp"
             android:background="#00000000"
             android:contentDescription="@string/boton_favs"
             app:layout_constraintBottom_toTopOf="@+id/divider"
@@ -41,22 +41,25 @@
 
         <ImageView
             android:id="@+id/imgCoverFilm"
-            android:layout_width="135dp"
-            android:layout_height="206dp"
+            android:layout_width="176dp"
+            android:layout_height="259dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:contentDescription="@string/cover"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider" />
 
         <TextView
             android:id="@+id/txtTitulo"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:text="@string/titulo"
             android:textColor="@color/white"
             android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/imgCoverFilm"
             app:layout_constraintTop_toTopOf="@+id/imgCoverFilm" />
 
@@ -75,7 +78,7 @@
             android:id="@+id/txtDuracion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="8dp"
             android:text="@string/duracion"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="@+id/txtAnio"
@@ -96,7 +99,7 @@
             android:id="@+id/txtIngresos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="8dp"
             android:text="@string/ingresos"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="@+id/txtPresupuesto"
@@ -116,29 +119,45 @@
         <TextView
             android:id="@+id/txtDescripcionSinopsis"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtSinopsis" />
 
-    <ImageButton
-        android:id="@+id/arrow_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:background="#00000000"
-        app:layout_constraintBottom_toBottomOf="@+id/txtFicha"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txtFicha"
-        app:srcCompat="@drawable/ic_arrow_back"
-        tools:ignore="ContentDescription" />
+        <ImageButton
+            android:id="@+id/arrow_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:background="#00000000"
+            app:layout_constraintBottom_toBottomOf="@+id/txtFicha"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txtFicha"
+            app:srcCompat="@drawable/ic_arrow_back"
+            tools:ignore="ContentDescription" />
 
-
-
+        <TextView
+            android:id="@+id/txtGenreList"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:maxLines="3"
+            android:text="@string/lista_de_generos"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/imgCoverFilm"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imgCoverFilm"
+            app:layout_constraintTop_toBottomOf="@+id/txtIngresos"
+            app:layout_constraintVertical_bias="0.049" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

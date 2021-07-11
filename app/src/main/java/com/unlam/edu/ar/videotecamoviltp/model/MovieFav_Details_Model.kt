@@ -8,7 +8,7 @@ data class MovieFav_Details_Model(
     @SerializedName("poster_path")
     var poster: String,
 
-    @SerializedName("original_title")
+    @SerializedName("title")
     var title: String,
 
     @SerializedName("overview")

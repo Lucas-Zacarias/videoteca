@@ -1,4 +1,4 @@
-package com.unlam.edu.ar.videotecamoviltp
+package com.unlam.edu.ar.videotecamoviltp.ui
 
 import android.content.Context
 import android.content.Intent
@@ -6,8 +6,6 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.unlam.edu.ar.videotecamoviltp.sharedpreferences.Preferences
-import com.unlam.edu.ar.videotecamoviltp.ui.HomeActivity
-import com.unlam.edu.ar.videotecamoviltp.ui.LogInActivity
 
 private lateinit var sharedPref: SharedPreferences
 

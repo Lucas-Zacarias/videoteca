@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Videotecamoviltp">
-        <activity android:name=".SplashActivity" android:theme="@style/SplashScreen">
+        <activity android:name=".ui.SplashActivity" android:theme="@style/SplashScreen">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
@@ -23,13 +23,7 @@
         <activity android:name=".ui.MovieDetailsActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar"></activity>
         <activity android:name=".ui.SignUpActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait" />
         <activity android:name=".ui.HomeActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar"></activity>
-        <activity android:name=".ui.SearchActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ui.SearchActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar"></activity>
     </application>
 
 </manifest>

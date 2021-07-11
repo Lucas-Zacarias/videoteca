@@ -1,7 +1,7 @@
 package com.unlam.edu.ar.videotecamoviltp.retrofit
 
 import com.unlam.edu.ar.videotecamoviltp.model.Genres
-import com.unlam.edu.ar.videotecamoviltp.model.MovieGenre
+import com.unlam.edu.ar.videotecamoviltp.model.MovieFav_Details_Model
 import com.unlam.edu.ar.videotecamoviltp.model.Movies
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -33,7 +33,7 @@ class APIService {
     fun getGenreID(genres: Int): Call<Genres> {
         return serviceDiscover.getGenreID(genres)
     }
-    fun getMovieID(id: Int): Call<MovieGenre>{
+    fun getMovieID(id: Int): Call<MovieFav_Details_Model>{
         return serviceMovie.getMovieID(id)
     }
 }

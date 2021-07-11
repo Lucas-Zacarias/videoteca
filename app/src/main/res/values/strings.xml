@@ -54,4 +54,6 @@
     <string name="ingresos">Ingresos</string>
     <string name="presupuesto">Presupuesto</string>
     <string name="nombre_de_usuario_no_encontrado">Nombre de usuario no encontrado</string>
+    <string name="ups_no_tenes_ningun_favorito_guardado_por_ahora">Ups! No tenés ningún favorito guardado por ahora (?</string>
+    <string name="imagen_de_lista_de_favoritos_vacia">Imagen de lista de favoritos vacía</string>
 </resources>

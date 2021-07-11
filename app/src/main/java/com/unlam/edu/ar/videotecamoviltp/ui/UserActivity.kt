@@ -2,7 +2,6 @@ package com.unlam.edu.ar.videotecamoviltp.ui
 
 import android.content.Context
 import android.content.Intent
-import com.unlam.edu.ar.videotecamoviltp.UserViewModel
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
