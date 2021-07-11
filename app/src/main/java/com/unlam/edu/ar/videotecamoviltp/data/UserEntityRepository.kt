@@ -18,12 +18,6 @@ class UserEntityRepository(private val userDAO: UserDAO) {
         return result
     }
 
-    fun deleteUser(user:UserEntity){
-        if(getUserByEmail(user.email) is UserEntity){
-            userDAO.delete(user)
-        }
-    }
-
     fun getUserById(id:Int): UserEntity? {
         return userDAO.getUserByID(id)
     }

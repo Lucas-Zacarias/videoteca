@@ -50,7 +50,7 @@ class MoviesFavAdapter() : RecyclerView.Adapter<MovieFavViewHolder>() {
 
     fun updateMovies(results: List<MovieFav_Details_Model>?) {
         movieList.clear()
-        if (results != null && results.isNotEmpty()) {
+        if (results != null) {
             movieList.addAll(results)
         }
     }

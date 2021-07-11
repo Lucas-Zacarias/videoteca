@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageButton
@@ -39,16 +40,16 @@ class FavActivity : AppCompatActivity() {
     }
 
     private fun getMovies() {
-        if(getMovieIdList().isNotEmpty()){
+        if (getMovieIdList().isNotEmpty()) {
             imgEmptyList.visibility = View.GONE
             txtEmptyList.visibility = View.GONE
-            favViewModel.updateMoviesLiveData(getMovieIdList())
-
-        }else{
+        } else {
             imgEmptyList.visibility = View.VISIBLE
             txtEmptyList.visibility = View.VISIBLE
         }
+        favViewModel.updateMoviesLiveData(getMovieIdList())
         setUpObserver()
+
     }
 
     private fun setUpObserver() {
