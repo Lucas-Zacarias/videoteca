@@ -1,6 +1,7 @@
 package com.unlam.edu.ar.videotecamoviltp.ui
 
-import android.content.Intent
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.ImageButton
@@ -8,8 +9,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
-import com.unlam.edu.ar.videotecamoviltp.ImagesAdapter
+import com.unlam.edu.ar.videotecamoviltp.R
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityMovieDetailsBinding
+import com.unlam.edu.ar.videotecamoviltp.model.MovieGenre
+import com.unlam.edu.ar.videotecamoviltp.sharedpreferences.Preferences
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMovieDetailsBinding
@@ -23,56 +27,19 @@ class MovieDetailsActivity : AppCompatActivity() {
     private lateinit var ingresos: TextView
     private lateinit var back: ImageButton
     private lateinit var fav: ImageButton
-    private lateinit var director: TextView
+    private val movieDetailsViewModel: MovieDetailsViewModel by viewModel()
+    private lateinit var sharedPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMovieDetailsBinding.inflate(LayoutInflater.from(this))
+        sharedPref = this.getSharedPreferences("FILE_PREFERENCES_USER_ID", Context.MODE_PRIVATE)
         setContentView(binding.root)
         getViews()
+        setMovie()
         setListeners()
-
-        val bundle: Intent = intent
-        val poster1 = bundle.getStringExtra("poster")
-        val title = bundle.getStringExtra("title")
-        val descripcion = bundle.getStringExtra("descripcion")
-        val estreno = bundle.getStringExtra("estreno")
-        val duracion = bundle.getStringExtra("duracion")
-        val presupuesto = bundle.getStringExtra("presupuesto")
-        val ingresos = bundle.getStringExtra("ingresos")
-        binding.txtTitulo.text = "$title"
-
-        if (descripcion != null){
-            binding.txtDescripcionSinopsis.text = "$descripcion"
-        }else{
-            binding.txtDescripcionSinopsis.text = "Informacion no encontrada"
-        }
-        if (estreno != null){
-            binding.txtAnio.text = "$estreno"
-        }else{
-            binding.txtAnio.text = "Informacion no encontrada"
-        }
-        if  (duracion != null){
-            binding.txtDuracion.text = "$duracion"
-        }else{
-            binding.txtDuracion.text = "Informacion no encontrada"
-        }
-        if (presupuesto != null){
-            binding.txtPresupuesto.text ="$presupuesto"
-        }else{
-            binding.txtPresupuesto.text ="Informacion no encontrada"
-        }
-        if (ingresos != null){
-            binding.txtIngresos.text = "$ingresos"
-        }else{
-            binding.txtIngresos.text = "Informacion no encontrada"
-        }
-
-
-        Picasso.get()
-            .load("${ImagesAdapter.IMG_API_PATH}${poster1}")
-            .into(binding.imgCoverFilm)
     }
+
     private fun getViews() {
         poster = binding.imgCoverFilm
         title = binding.txtTitulo
@@ -83,9 +50,99 @@ class MovieDetailsActivity : AppCompatActivity() {
         ingresos = binding.txtIngresos
         back = binding.arrowBack
         fav = binding.btnSelectFavourite
+        genre_list = binding.txtGenreList
     }
 
     private fun setListeners() {
         back.setOnClickListener { finish() } //Funcionalidad del boton de volver
+        fav.setOnClickListener{ addOrDeleteMovieOfFavList()}
+    }
+
+    private fun addOrDeleteMovieOfFavList() {
+        movieDetailsViewModel.addOrDeleteNewMovieFav(getMovieId(),getUserId())
+        setFavIcon()
+    }
+
+
+    private fun setMovie() {
+        movieDetailsViewModel.getMovieDetailsById(getMovieId())
+        setUpObserver()
+        setFavIcon()
+    }
+
+    private fun setUpObserver() {
+        movieDetailsViewModel.movieDetailsLiveData.observe(this,{movie->
+            title.text = movie.title
+            description.text = movie.descripcion
+            release_date.text = setReleaseDate(movie.estreno)
+            runtime.text = setRuntimeToHoursAndMinutes(movie.duracion)
+            presupuesto.text = setPresupuesto(movie.presupuesto)
+            ingresos.text = setIngresos(movie.ingresos)
+            genre_list.text = setGenreList(movie.genreList)
+
+            Picasso.get()
+                .load("${MoviesFavAdapter.IMG_API}${movie.poster}")
+                .placeholder(R.drawable.image_not_found)
+                .into(poster)
+        })
+    }
+
+    private fun setReleaseDate(estreno: String): String {
+        val fechaDividida = estreno.split("-")
+        return "Estreno: ${fechaDividida[2]} ${fechaDividida[1]} ${fechaDividida[0]}"
+    }
+
+    private fun setIngresos(ingresos: Int): String {
+        var revenue = "Ingresos:"
+        if(ingresos > 0){
+            revenue+= " $${ingresos}"
+        }else{
+            revenue+= " No disponible"
+        }
+        return revenue
+    }
+
+    private fun setPresupuesto(presupuesto: Int): String {
+        var budget = "Presupuesto:"
+        if(presupuesto > 0){
+            budget+= " $${presupuesto}"
+        }else{
+            budget+= " No disponible"
+        }
+        return budget
+    }
+
+    private fun setRuntimeToHoursAndMinutes(runtime:Int):String{
+        var duracion = "Duración:"
+        if(runtime==0){
+            duracion += " No disponible"
+        }else{
+            if((runtime/60)>0){
+                duracion += " ${runtime/60}h ${runtime%60}m"
+            }else{
+                duracion += " ${runtime%60}m"
+            }
+        }
+        return duracion
+    }
+
+    private fun setGenreList(genreList: List<MovieGenre>):String{
+        return genreList.joinToString(separator = ", ") { it.genreName }
+    }
+
+    private fun setFavIcon() {
+        if(movieDetailsViewModel.movieIntoFavList(getMovieId(),getUserId())){
+            fav.background = getDrawable(R.drawable.ic_fav_pressed)
+        }else{
+            fav.background = getDrawable(R.drawable.ic_fav_default)
+        }
+    }
+
+    private fun getMovieId():Int{
+        return intent.extras!!.getInt("movieId")
+    }
+
+    private fun getUserId():Int{
+        return Preferences.getSharedPreferenceUserId(sharedPref)
     }
 }

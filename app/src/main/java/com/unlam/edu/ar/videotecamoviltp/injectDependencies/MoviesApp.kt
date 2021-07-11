@@ -3,8 +3,6 @@ package com.unlam.edu.ar.videotecamoviltp.injectDependencies
 import android.app.Application
 import com.unlam.edu.ar.videotecamoviltp.*
 import com.unlam.edu.ar.videotecamoviltp.data.*
-import com.unlam.edu.ar.videotecamoviltp.model.GenreID
-import com.unlam.edu.ar.videotecamoviltp.model.MovieSearch
 import com.unlam.edu.ar.videotecamoviltp.data.FavDAO
 import com.unlam.edu.ar.videotecamoviltp.data.UserDAO
 import com.unlam.edu.ar.videotecamoviltp.data.VideotecaDatabase
@@ -22,11 +20,12 @@ import org.koin.dsl.module
 class MoviesApp : Application() {
     val appModule = module {
         single<RetrofitApiService> {APIImplementation()}
+        single{ MoviesRepository (get()) }
         single<MovieRepository> {MoviesRepository(get())}
         single{ MoviesAdapter }
         single{ UserEntityRepository(get()) }
         single{ FavEntityRepository(get()) }
-        single{ MoviesFavAdapter()}
+        single{ MoviesFavAdapter() }
         single<UserDAO>{ VideotecaDatabase.getInstance(get()).userDAO()}
         single<FavDAO>{ VideotecaDatabase.getInstance(get()).favDAO()}
         factory { ImagesAdapter }
@@ -36,6 +35,7 @@ class MoviesApp : Application() {
         viewModel { SignUpViewModel(get()) }
         viewModel { LogInViewModel(get()) }
         viewModel { UserViewModel(get()) }
+        viewModel { MovieDetailsViewModel(get(),get()) }
     }
     override fun onCreate() {
         super.onCreate()

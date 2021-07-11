@@ -1,6 +1,7 @@
 package com.unlam.edu.ar.videotecamoviltp.repositories
 
 import com.unlam.edu.ar.videotecamoviltp.model.Genres
+import com.unlam.edu.ar.videotecamoviltp.model.MovieFav_Details_Model
 import com.unlam.edu.ar.videotecamoviltp.model.MovieGenre
 import com.unlam.edu.ar.videotecamoviltp.model.Movies
 import com.unlam.edu.ar.videotecamoviltp.retrofit.RetrofitApiService
@@ -50,7 +51,20 @@ class MoviesRepository(val retrofitApiServices: RetrofitApiService) :
         })
     }
 
-    override fun getMovieID(query: Int, callback: (MovieGenre) -> Unit, onError: (String) -> Unit) {
+    override fun getMovieID(query: Int, callback: (MovieFav_Details_Model) -> Unit) {
+        retrofitApiServices.getMovieID(query,
+            object :  Callback<MovieFav_Details_Model> {
+                override fun onResponse(
+                    call: Call<MovieFav_Details_Model>,
+                    response: Response<MovieFav_Details_Model>
+                ) {
+                        callback(response.body()!!)
+                }
 
+                override fun onFailure(call: Call<MovieFav_Details_Model>, t: Throwable) {
+                }
+
+            }
+        )
     }
 }
