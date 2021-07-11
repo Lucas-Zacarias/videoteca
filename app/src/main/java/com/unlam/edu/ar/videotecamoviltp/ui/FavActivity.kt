@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageButton
@@ -34,22 +33,10 @@ class FavActivity : AppCompatActivity() {
         sharedPref = this.getSharedPreferences("FILE_PREFERENCES_USER_ID", Context.MODE_PRIVATE)
         setContentView(binding.root)
         getViews()
-      // setVisibilityOfElementsEmptyList()
         setListeners()
         setUpRecyclerView()
         getMovies()
     }
-
-    /*    private fun setVisibilityOfElementsEmptyList() {
-        if(getMovieIdList().isNotEmpty()){
-            imgEmptyList.visibility = View.GONE
-            txtEmptyList.visibility = View.GONE
-        }else{
-            imgEmptyList.visibility = View.VISIBLE
-            txtEmptyList.visibility = View.VISIBLE
-        }
-
-    }*/
 
     private fun getMovies() {
         if(getMovieIdList().isNotEmpty()){
@@ -68,7 +55,6 @@ class FavActivity : AppCompatActivity() {
         favViewModel.moviesFavLiveData.observe(this, {
             moviesFavAdapter.updateMovies(it)
             moviesFavAdapter.notifyDataSetChanged()
-            Log.i("MOVIES LIVE DATA", "CANTIDA DE MOVIES EN EL LIVE DATA ${favViewModel.moviesFavLiveData.value!!.size}")
         })
     }
 

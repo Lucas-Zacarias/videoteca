@@ -1,6 +1,5 @@
 package com.unlam.edu.ar.videotecamoviltp.ui
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.unlam.edu.ar.videotecamoviltp.data.FavEntityRepository
@@ -29,7 +28,6 @@ class FavViewModel(
     }
 
     fun updateMoviesLiveData(movieIDList:List<Int>){
-        Log.i("NRO ID", "${movieIDList.size}")
         for(movieId in movieIDList){
             getMovieDetailsById(movieId)
         }
