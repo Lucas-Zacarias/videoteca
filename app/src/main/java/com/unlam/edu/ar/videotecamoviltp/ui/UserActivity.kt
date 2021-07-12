@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import com.unlam.edu.ar.videotecamoviltp.R
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityUserBinding
@@ -22,7 +23,8 @@ class UserActivity : AppCompatActivity() {
     private lateinit var btnSignOff: Button
     private lateinit var txtUserName: TextView
     private val userViewModel: UserViewModel by viewModel()
-    private lateinit var sharedPref:SharedPreferences
+    private lateinit var sharedPref: SharedPreferences
+    private lateinit var imgUserIcon: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +42,7 @@ class UserActivity : AppCompatActivity() {
         btnFav = binding.btnFavourites
         btnSignOff = binding.btnCerrarSesion
         txtUserName = binding.txrUserName
+        imgUserIcon = binding.imgUserIcon
     }
 
 

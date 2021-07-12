@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.unlam.edu.ar.videotecamoviltp.ImagesAdapter
+import com.unlam.edu.ar.videotecamoviltp.ui.ImagesAdapter
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityHomeBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
