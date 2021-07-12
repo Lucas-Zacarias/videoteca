@@ -1,11 +1,14 @@
-package com.unlam.edu.ar.videotecamoviltp
+package com.unlam.edu.ar.videotecamoviltp.ui
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.unlam.edu.ar.videotecamoviltp.databinding.HomeImagesBinding
 import com.unlam.edu.ar.videotecamoviltp.model.GenreID
+import com.unlam.edu.ar.videotecamoviltp.ui.MovieDetailsActivity
 
 class ImagesAdapter (
     private val clickListener : (String, String, String, String, Int, Int, Int) -> Unit
@@ -29,7 +32,11 @@ class ImagesAdapter (
                 .load("${IMG_API_PATH}${movie.poster}")
                 .into(holder.binding.imageViewAction)
             holder.binding.imageViewAction.setOnClickListener {
-                clickListener(movie.title, movie.descripcion, movie.poster, movie.estreno, movie.presupuesto, movie.duracion, movie.ingresos)
+                val context: Context = holder.itemView.context
+                val intent = Intent(context, MovieDetailsActivity::class.java)
+                intent.putExtra("movieId", movie.id)
+                context.startActivity(intent)
+               // clickListener(movie.title, movie.descripcion, movie.poster, movie.estreno, movie.presupuesto, movie.duracion, movie.ingresos)
             }
             }
     fun updateMovies(results: List<GenreID>?) {
