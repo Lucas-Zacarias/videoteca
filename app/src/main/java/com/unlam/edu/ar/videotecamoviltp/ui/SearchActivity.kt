@@ -37,9 +37,7 @@ class SearchActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         binding.recyclerview.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        moviesAdapter = MoviesAdapter{ s: String, s1: String, s2: String, s3: String, i: Int, i1: Int, i2: Int ->
-            navigateToDetail(s, s1, s2, s3, i, i1, i2)
-        }
+        moviesAdapter = MoviesAdapter()
         binding.recyclerview.adapter = moviesAdapter
     }
 
@@ -58,24 +56,10 @@ class SearchActivity : AppCompatActivity() {
                     }
                     return true
                 }
-
                 override fun onQueryTextChange(newText: String?): Boolean {
                     return false
                 }
             })
-    }
-
-    private fun navigateToDetail(title: String, descripcion: String, poster: String, estreno: String, presupuesto: Int, duracion: Int, ingresos: Int){
-        val intent = Intent (this, MovieDetailsActivity::class.java).apply {
-            putExtra("title", title )
-            putExtra("descripcion", descripcion)
-            putExtra("poster", poster)
-            putExtra("estreno", estreno)
-            putExtra("presupuesto", presupuesto)
-            putExtra("duracion", duracion)
-            putExtra("ingresos", ingresos)
-        }
-        startActivity(intent)
     }
 
     private fun getViews() {

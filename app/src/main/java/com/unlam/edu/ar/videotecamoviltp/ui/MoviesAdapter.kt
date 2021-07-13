@@ -11,7 +11,6 @@ import com.unlam.edu.ar.videotecamoviltp.model.MovieSearch
 import com.unlam.edu.ar.videotecamoviltp.ui.MovieDetailsActivity
 
 class MoviesAdapter (
-    private val clickListener : (String, String, String, String, Int, Int, Int) -> Unit
 ): RecyclerView.Adapter<MovieViewHolder>(){
     private val moviesList = mutableListOf<MovieSearch>()
     override fun getItemCount() = moviesList.size
@@ -38,7 +37,6 @@ class MoviesAdapter (
             val intent = Intent(context, MovieDetailsActivity::class.java)
             intent.putExtra("movieId", movie.id)
             context.startActivity(intent)
-            //clickListener(movie.title, movie.descripcion, movie.poster, movie.estreno, movie.presupuesto, movie.duracion, movie.ingresos)
         }
     }
 
