@@ -8,11 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.unlam.edu.ar.videotecamoviltp.databinding.HomeImagesBinding
 import com.unlam.edu.ar.videotecamoviltp.model.GenreID
-import com.unlam.edu.ar.videotecamoviltp.ui.MovieDetailsActivity
 
-class ImagesAdapter (
-    private val clickListener : (String, String, String, String, Int, Int, Int) -> Unit
-    ): RecyclerView.Adapter<ImageViewHolder>(){
+class ImagesAdapter : RecyclerView.Adapter<ImageViewHolder>(){
         private val moviesList = mutableListOf<GenreID>()
 
         override fun getItemCount() = moviesList.size
@@ -36,7 +33,6 @@ class ImagesAdapter (
                 val intent = Intent(context, MovieDetailsActivity::class.java)
                 intent.putExtra("movieId", movie.id)
                 context.startActivity(intent)
-               // clickListener(movie.title, movie.descripcion, movie.poster, movie.estreno, movie.presupuesto, movie.duracion, movie.ingresos)
             }
             }
     fun updateMovies(results: List<GenreID>?) {

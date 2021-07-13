@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.unlam.edu.ar.videotecamoviltp.ui.ImagesAdapter
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityHomeBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -38,38 +37,17 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         binding.recyclerview1.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        imagesAdapterAccion = ImagesAdapter{ s: String, s1: String, s2: String, s3: String,i: Int, i1: Int, i2: Int ->
-            navigateToDetail (s, s1, s2, s3, i, i1, i2)
-        }
+        imagesAdapterAccion = ImagesAdapter()
         binding.recyclerview1.adapter = imagesAdapterAccion
         binding.recyclerview2.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        imagesAdapterComedia = ImagesAdapter{ s: String, s1: String, s2: String, s3: String, i: Int, i1: Int, i2: Int ->
-            navigateToDetail(s, s1, s2, s3, i, i1, i2)
-        }
+        imagesAdapterComedia = ImagesAdapter()
         binding.recyclerview2.adapter = imagesAdapterComedia
         binding.recyclerview3.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        imagesAdapterTerror = ImagesAdapter { s: String, s1: String, s2: String, s3: String, i: Int, i1: Int, i2: Int ->
-            navigateToDetail(s, s1, s2, s3, i, i1, i2)
-        }
+        imagesAdapterTerror = ImagesAdapter()
         binding.recyclerview3.adapter = imagesAdapterTerror
         binding.recyclerview4.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        imagesAdapterDrama = ImagesAdapter { s: String, s1: String, s2: String, s3: String, i: Int, i1: Int, i2: Int ->
-            navigateToDetail(s, s1, s2, s3, i, i1, i2)
-        }
+        imagesAdapterDrama = ImagesAdapter()
         binding.recyclerview4.adapter = imagesAdapterDrama
-    }
-
-    private fun navigateToDetail(title: String, descripcion: String, poster: String, estreno: String, presupuesto: Int, duracion: Int, ingresos: Int){
-        val intent = Intent (this, MovieDetailsActivity::class.java).apply {
-            putExtra("title", title )
-            putExtra("descripcion", descripcion)
-            putExtra("poster", poster)
-            putExtra("estreno", estreno)
-            putExtra("presupuesto", presupuesto)
-            putExtra("duracion", duracion)
-            putExtra("ingresos", ingresos)
-        }
-        startActivity(intent)
     }
     private fun setupObserversDrama(){
         vmHome.moviesListDataDrama.observe(this,{

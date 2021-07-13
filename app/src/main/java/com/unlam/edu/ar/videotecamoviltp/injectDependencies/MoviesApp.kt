@@ -3,9 +3,6 @@ package com.unlam.edu.ar.videotecamoviltp.injectDependencies
 import android.app.Application
 import com.unlam.edu.ar.videotecamoviltp.*
 import com.unlam.edu.ar.videotecamoviltp.data.*
-import com.unlam.edu.ar.videotecamoviltp.data.FavDAO
-import com.unlam.edu.ar.videotecamoviltp.data.UserDAO
-import com.unlam.edu.ar.videotecamoviltp.data.VideotecaDatabase
 import com.unlam.edu.ar.videotecamoviltp.repositories.MovieRepository
 import com.unlam.edu.ar.videotecamoviltp.repositories.MoviesRepository
 import com.unlam.edu.ar.videotecamoviltp.retrofit.APIImplementation
@@ -28,7 +25,6 @@ class MoviesApp : Application() {
         single{ MoviesFavAdapter() }
         single<UserDAO>{ VideotecaDatabase.getInstance(get()).userDAO()}
         single<FavDAO>{ VideotecaDatabase.getInstance(get()).favDAO()}
-        factory { ImagesAdapter }
         viewModel { FavViewModel(get(),get()) }
         viewModel { SearchViewModel(get()) }
         viewModel { HomeViewModel(get()) }
