@@ -1,4 +1,4 @@
-package com.unlam.edu.ar.videotecamoviltp.ui
+package com.unlam.edu.ar.videotecamoviltp.ui.adapters
 
 import android.content.Context
 import android.content.Intent
@@ -11,13 +11,12 @@ import com.unlam.edu.ar.videotecamoviltp.databinding.ListItemMovieBinding
 import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieFav_Details_Model
 import com.unlam.edu.ar.videotecamoviltp.ui.activities.MovieDetailsActivity
 
-class MoviesFavAdapter() : RecyclerView.Adapter<MovieFavViewHolder>() {
+class MoviesFavAdapter(private val movieList: List<MovieFav_Details_Model>) :
+    RecyclerView.Adapter<MovieFavViewHolder>() {
 
     companion object {
         const val IMG_API: String = "https://image.tmdb.org/t/p/w500"
     }
-
-    private val movieList = mutableListOf<MovieFav_Details_Model>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieFavViewHolder {
         val movieBinding =
@@ -49,12 +48,6 @@ class MoviesFavAdapter() : RecyclerView.Adapter<MovieFavViewHolder>() {
         return movieList.size
     }
 
-    fun updateMovies(results: List<MovieFav_Details_Model>?) {
-        movieList.clear()
-        if (results != null) {
-            movieList.addAll(results)
-        }
-    }
 }
 
 

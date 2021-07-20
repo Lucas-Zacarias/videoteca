@@ -1,4 +1,4 @@
-package com.unlam.edu.ar.videotecamoviltp
+package com.unlam.edu.ar.videotecamoviltp.ui.adapters
 
 import android.content.Context
 import android.content.Intent

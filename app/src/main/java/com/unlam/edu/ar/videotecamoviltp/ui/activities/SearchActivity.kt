@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.unlam.edu.ar.videotecamoviltp.MoviesAdapter
+import com.unlam.edu.ar.videotecamoviltp.ui.adapters.MoviesAdapter
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivitySearchrecicledBinding
 import com.unlam.edu.ar.videotecamoviltp.ui.viewmodels.SearchViewModel
 import org.koin.android.viewmodel.ext.android.viewModel

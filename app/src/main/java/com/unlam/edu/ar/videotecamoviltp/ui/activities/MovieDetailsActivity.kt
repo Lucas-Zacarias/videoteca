@@ -14,7 +14,7 @@ import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityMovieDetailsBinding
 import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieGenre
 import com.unlam.edu.ar.videotecamoviltp.domain.sharedpreferences.Preferences
 import com.unlam.edu.ar.videotecamoviltp.ui.viewmodels.MovieDetailsViewModel
-import com.unlam.edu.ar.videotecamoviltp.ui.MoviesFavAdapter
+import com.unlam.edu.ar.videotecamoviltp.ui.adapters.MoviesFavAdapter
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieDetailsActivity : AppCompatActivity() {

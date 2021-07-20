@@ -9,11 +9,11 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityFavBinding
 import com.unlam.edu.ar.videotecamoviltp.domain.sharedpreferences.Preferences
-import com.unlam.edu.ar.videotecamoviltp.ui.*
+import com.unlam.edu.ar.videotecamoviltp.ui.adapters.MoviesFavAdapter
 import com.unlam.edu.ar.videotecamoviltp.ui.viewmodels.FavViewModel
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -26,7 +26,8 @@ class FavActivity : AppCompatActivity() {
     private lateinit var txtEmptyList: TextView
     private lateinit var binding: ActivityFavBinding
     private val favViewModel: FavViewModel by viewModel()
-    private val moviesFavAdapter: MoviesFavAdapter by inject()
+    //private val moviesFavAdapter: MoviesFavAdapter by inject()
+    private lateinit var moviesFavAdapter: MoviesFavAdapter
     private lateinit var sharedPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,18 +51,18 @@ class FavActivity : AppCompatActivity() {
         }
         favViewModel.updateMoviesLiveData(getMovieIdList())
         setUpObserver()
-
     }
 
     private fun setUpObserver() {
         favViewModel.moviesFavLiveData.observe(this, {
-            moviesFavAdapter.updateMovies(it)
+            binding.recyclerview.adapter = MoviesFavAdapter(it)
             moviesFavAdapter.notifyDataSetChanged()
         })
     }
 
     private fun setUpRecyclerView() {
         binding.recyclerview.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
+        moviesFavAdapter = MoviesFavAdapter(emptyList())
         binding.recyclerview.adapter = moviesFavAdapter
     }
 
