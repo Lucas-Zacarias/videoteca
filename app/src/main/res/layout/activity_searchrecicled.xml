@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/borde_redondo"
-        app:queryHint="@string/buscar1"/>
+        app:queryHint="@string/buscar1" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -25,19 +25,24 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="45dp"
         android:background="#1F2E81"
-        app:layout_constraintTop_toBottomOf="@id/guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline"
         tools:listitem="@layout/list_item_movie">
+
     </androidx.recyclerview.widget.RecyclerView>
+
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/barContent"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="45dp"
         android:background="#0C164A"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -52,15 +57,13 @@
             android:background="#00FFFFFF"
             android:contentDescription="@string/boton_home"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnUser"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_baseline_home_24" />
 
         <ImageButton
             android:id="@+id/btnSearch"
-            android:layout_width="44dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00FFFFFF"
             android:contentDescription="@string/boton_search"

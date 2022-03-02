@@ -28,8 +28,8 @@ class ImagesAdapter : RecyclerView.Adapter<ImageViewHolder>(){
             val movie = moviesList[position]
             Picasso.get()
                 .load("$IMG_API_PATH${movie.poster}")
-                .into(holder.binding.imageViewAction)
-            holder.binding.imageViewAction.setOnClickListener {
+                .into(holder.binding.imageViewHome)
+            holder.binding.imageViewHome.setOnClickListener {
                 val context: Context = holder.itemView.context
                 val intent = Intent(context, MovieDetailsActivity::class.java)
                 intent.putExtra("movieId", movie.id)

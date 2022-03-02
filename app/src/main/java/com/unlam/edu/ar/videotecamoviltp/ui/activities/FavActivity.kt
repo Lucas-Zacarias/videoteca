@@ -42,13 +42,13 @@ class FavActivity : AppCompatActivity() {
     }
 
     private fun getMovies() {
-        if (getMovieIdList().isNotEmpty()) {
-            imgEmptyList.visibility = View.GONE
-            txtEmptyList.visibility = View.GONE
-        } else {
+        if (getMovieIdList().isEmpty()) {
             imgEmptyList.visibility = View.VISIBLE
             txtEmptyList.visibility = View.VISIBLE
-        }
+        } /*else {
+            imgEmptyList.visibility = View.VISIBLE
+            txtEmptyList.visibility = View.VISIBLE
+        }*/
         favViewModel.updateMoviesLiveData(getMovieIdList())
         setUpObserver()
     }

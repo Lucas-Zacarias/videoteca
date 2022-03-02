@@ -14,7 +14,6 @@ import com.unlam.edu.ar.videotecamoviltp.data.retrofit.APIImplementation
 import com.unlam.edu.ar.videotecamoviltp.data.retrofit.RetrofitApiService
 import com.unlam.edu.ar.videotecamoviltp.ui.*
 import com.unlam.edu.ar.videotecamoviltp.ui.adapters.MoviesAdapter
-import com.unlam.edu.ar.videotecamoviltp.ui.adapters.MoviesFavAdapter
 import com.unlam.edu.ar.videotecamoviltp.ui.viewmodels.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger

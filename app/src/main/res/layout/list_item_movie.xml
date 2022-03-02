@@ -1,28 +1,29 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="4dp"
+    android:layout_marginTop="1dp"
     android:background="#1F2E81">
 
     <ImageView
         android:id="@+id/moviePoster"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="90dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="1dp"
+        android:contentDescription="@string/portada_de_pelicula"
+        android:scaleType="fitStart"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideVertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars"
-        android:contentDescription="@string/portada_de_pelicula"/>
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/titleTxt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
+        android:layout_marginStart="2dp"
+        android:gravity="top"
         android:text="@string/titulo_de_la_pelicula"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -30,40 +31,26 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/genres"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="2dp"
-        android:text="@string/lista_de_generos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideVertical"
-        app:layout_constraintTop_toBottomOf="@+id/titleTxt"
-        android:textColor="@color/white"/>
-
-    <TextView
         android:id="@+id/descriptionTxt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
+        android:layout_marginStart="2dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginEnd="1dp"
         android:ellipsize="end"
         android:maxLines="3"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/guideVertical"
-        app:layout_constraintTop_toBottomOf="@+id/genres"
-        tools:text="@tools:sample/lorem/random"
-        android:textColor="@color/white"/>
+        app:layout_constraintStart_toStartOf="@+id/guideVertical"
+        app:layout_constraintTop_toBottomOf="@+id/titleTxt"
+        tools:text="@tools:sample/lorem/random" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideVertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="100dp" />
+        app:layout_constraintGuide_begin="90dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideVertical2"

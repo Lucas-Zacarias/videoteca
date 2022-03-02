@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import com.unlam.edu.ar.videotecamoviltp.R
 import com.unlam.edu.ar.videotecamoviltp.databinding.ListItemMovieBinding
 import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieSearch
 import com.unlam.edu.ar.videotecamoviltp.ui.activities.MovieDetailsActivity
@@ -30,6 +31,7 @@ class MoviesAdapter (
         holder.binding.descriptionTxt.text = movie.descripcion
         Picasso.get()
             .load("${IMG_API_PATH}${movie.poster}")
+            .placeholder(R.drawable.image_not_found_icon)
             .into(holder.binding.moviePoster)
 
         holder.itemView.setOnClickListener {

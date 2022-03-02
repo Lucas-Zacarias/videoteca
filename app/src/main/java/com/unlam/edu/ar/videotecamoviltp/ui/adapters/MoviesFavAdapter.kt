@@ -28,11 +28,10 @@ class MoviesFavAdapter(private val movieList: List<MovieFav_Details_Model>) :
         val movie = movieList[position]
         holder.binding.titleTxt.text = movie.title
         holder.binding.descriptionTxt.text = movie.descripcion
-        holder.binding.genres.text = movie.genreList.joinToString(separator = ", ") { it.genreName }
 
         Picasso.get()
             .load("$IMG_API${movie.poster}")
-            .placeholder(R.drawable.image_not_found)
+            .placeholder(R.drawable.image_not_found_icon)
             .into(holder.binding.moviePoster)
 
         holder.itemView.setOnClickListener {

@@ -35,7 +35,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/barContent"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="45dp"
         android:background="#0C164A"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,15 +50,13 @@
             android:background="#00FFFFFF"
             android:contentDescription="@string/boton_home"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnUser"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_baseline_home_24" />
 
         <ImageButton
             android:id="@+id/btnSearch"
-            android:layout_width="44dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00FFFFFF"
             android:contentDescription="@string/boton_search"
@@ -106,7 +104,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/favsTextView"
         app:srcCompat="@drawable/ic_favs_empty"
-        android:contentDescription="@string/imagen_de_lista_de_favoritos_vacia"/>
+        android:contentDescription="@string/imagen_de_lista_de_favoritos_vacia"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/txtEmptyList"
@@ -122,5 +121,6 @@
         app:layout_constraintEnd_toEndOf="@+id/recyclerview"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgEmptyList"
-        app:layout_constraintVertical_bias="0.241" />
+        app:layout_constraintVertical_bias="0.241"
+        android:visibility="gone"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

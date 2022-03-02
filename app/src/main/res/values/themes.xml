@@ -17,6 +17,7 @@
     <style name="Theme.Videotecamoviltp.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:editTextColor">@android:color/white</item>
     </style>
 
     <style name="Theme.Videotecamoviltp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

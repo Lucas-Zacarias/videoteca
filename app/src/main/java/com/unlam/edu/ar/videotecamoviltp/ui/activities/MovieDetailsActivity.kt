@@ -84,7 +84,7 @@ class MovieDetailsActivity : AppCompatActivity() {
 
             Picasso.get()
                 .load("${MoviesFavAdapter.IMG_API}${movie.poster}")
-                .placeholder(R.drawable.image_not_found)
+                .placeholder(R.drawable.image_not_found_icon)
                 .into(poster)
         })
     }
