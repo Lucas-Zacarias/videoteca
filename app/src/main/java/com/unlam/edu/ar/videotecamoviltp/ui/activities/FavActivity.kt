@@ -45,10 +45,8 @@ class FavActivity : AppCompatActivity() {
         if (getMovieIdList().isEmpty()) {
             imgEmptyList.visibility = View.VISIBLE
             txtEmptyList.visibility = View.VISIBLE
-        } /*else {
-            imgEmptyList.visibility = View.VISIBLE
-            txtEmptyList.visibility = View.VISIBLE
-        }*/
+        }
+
         favViewModel.updateMoviesLiveData(getMovieIdList())
         setUpObserver()
     }
