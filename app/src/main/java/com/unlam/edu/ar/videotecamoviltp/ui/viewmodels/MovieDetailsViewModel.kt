@@ -2,24 +2,33 @@ package com.unlam.edu.ar.videotecamoviltp.ui.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.unlam.edu.ar.videotecamoviltp.data.repositories.database.FavEntityRepository
 import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieFav_Details_Model
-import com.unlam.edu.ar.videotecamoviltp.data.repositories.retrofit.MoviesRepository
+import com.unlam.edu.ar.videotecamoviltp.data.repositories.retrofit.MovieByIDRepository
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class MovieDetailsViewModel(private val moviesRepository: MoviesRepository, private val favEntityRepository: FavEntityRepository):ViewModel() {
+class MovieDetailsViewModel(
+    private val moviesRepository: MovieByIDRepository,
+    private val favEntityRepository: FavEntityRepository
+    ) :ViewModel() {
+
     val movieDetailsLiveData = MutableLiveData<MovieFav_Details_Model>()
+    val errorMessage = MutableLiveData<String>()
 
     fun getMovieDetailsById(movieId: Int) {
-        viewModelScope.launch(Dispatchers.IO) {
-            moviesRepository.getMovieID(
-                (movieId),
-                {
-                    movieDetailsLiveData.value = it
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = moviesRepository.getMovieByID(movieId)
+            if (response.isSuccessful && response.body() != null) {
+                withContext(Dispatchers.Main) {
+                    movieDetailsLiveData.value = response.body()
                 }
-            )
+            } else {
+                errorMessage.value = response.message()
+                errorMessage.value = response.errorBody().toString()
+            }
         }
     }
 

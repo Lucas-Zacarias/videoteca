@@ -4,34 +4,41 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.unlam.edu.ar.videotecamoviltp.data.repositories.database.FavEntityRepository
 import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieFav_Details_Model
-import com.unlam.edu.ar.videotecamoviltp.data.repositories.retrofit.MoviesRepository
+import com.unlam.edu.ar.videotecamoviltp.data.repositories.retrofit.MovieByIDRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class FavViewModel(
-    private val moviesRepository: MoviesRepository,
+    private val movieRepository: MovieByIDRepository,
     private val favEntityRepository: FavEntityRepository
 ) : ViewModel() {
 
-    val moviesFavLiveData = MutableLiveData<List<MovieFav_Details_Model>>()
-    private var moviesList:List<MovieFav_Details_Model> = ArrayList()
+    val moviesFavLiveData = MutableLiveData<MutableList<MovieFav_Details_Model>>()
+    private var moviesList: MutableList<MovieFav_Details_Model> = emptyList<MovieFav_Details_Model>().toMutableList()
+    val errorMessage = MutableLiveData<String>()
 
-    private fun getMovieDetailsById(movieId:Int){
-
-        moviesRepository.getMovieID(
-            (movieId)
-        ) {
-            moviesList += it
-            moviesFavLiveData.value = moviesList
+    fun updateMoviesLiveData(movieIDList: List<Int>) {
+        CoroutineScope(Dispatchers.IO).launch {
+            for (movieId in movieIDList) {
+                val response = movieRepository.getMovieByID(movieId)
+                if (response.isSuccessful && response.body() != null) {
+                    val movie = response.body()!!
+                    moviesList.add(movie)
+                    withContext(Dispatchers.Main) {
+                        moviesFavLiveData.value = moviesList
+                    }
+                } else {
+                    val error = response.errorBody().toString()
+                    errorMessage.value = error
+                }
+            }
         }
     }
 
-    fun updateMoviesLiveData(movieIDList:List<Int>){
-            for (movieId in movieIDList) {
-                getMovieDetailsById(movieId)
-            }
-    }
-
-    fun getMoviesFavIDListByUserID(userId:Int):List<Int>{
+    fun getMoviesFavIDListByUserID(userId: Int): List<Int> {
         return favEntityRepository.getMovieFavIdByUserId(userId)
     }
 }
