@@ -28,4 +28,10 @@
             @drawable/splash
         </item>
     </style>
+
+    <style name="AppSearchView" parent="Widget.AppCompat.SearchView">
+        <item name="android:textColorHint">#808080</item>
+        <item name="android:textColorSecondary">#808080</item>
+        <item name="android:textColorPrimary">#ffffff</item>
+    </style>
 </resources>

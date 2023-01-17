@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.SearchActivity">
+    tools:context=".ui.activities.SearchActivity"
+    android:background="#1F2E81">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchview1"
@@ -14,26 +15,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/borde_redondo"
-        app:queryHint="@string/buscar1" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="56dp" />
+        app:queryHint="@string/buscar1"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginTop="8dp"
+        android:theme="@style/AppSearchView"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="45dp"
-        android:background="#1F2E81"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline"
-        tools:listitem="@layout/list_item_movie">
+        app:layout_constraintTop_toBottomOf="@id/searchview1"
+        tools:listitem="@layout/list_item_movie"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginTop="8dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
