@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="titleStyleText">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">54sp</item>
+        <item name= "android:fontFamily">@font/roboto_bold_italic</item>
+    </style>
+    <style name="genreStyleText">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">22sp</item>
+        <item name= "android:fontFamily">@font/roboto_bold</item>
+    </style>
+</resources>
