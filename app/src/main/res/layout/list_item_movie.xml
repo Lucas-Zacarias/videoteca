@@ -4,19 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="1dp"
-    android:background="#1F2E81">
+    android:background="#1F2E81"
+    android:layout_marginBottom="5dp">
 
-    <ImageView
-        android:id="@+id/moviePoster"
-        android:layout_width="90dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/moviePosterCardView"
+        android:layout_width="100dp"
         android:layout_height="150dp"
-        android:layout_marginStart="1dp"
-        android:contentDescription="@string/portada_de_pelicula"
-        android:scaleType="fitStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp">
+
+        <ImageView
+            android:id="@+id/moviePoster"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/portada_de_pelicula"
+            android:scaleType="fitXY"
+            tools:srcCompat="@tools:sample/avatars" />
+
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/titleTxt"
@@ -25,10 +34,11 @@
         android:layout_marginStart="2dp"
         android:gravity="top"
         android:text="@string/titulo_de_la_pelicula"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/guideVertical"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textAppearance="@style/movieTitleStyleText"
+        app:layout_constraintStart_toEndOf="@+id/moviePosterCardView"
+        app:layout_constraintTop_toTopOf="parent"
+        android:maxLines="2"
+        android:ellipsize="end"/>
 
     <TextView
         android:id="@+id/descriptionTxt"
@@ -39,23 +49,10 @@
         android:layout_marginEnd="1dp"
         android:ellipsize="end"
         android:maxLines="3"
-        android:textColor="@color/white"
+        android:textAppearance="@style/largeTextStyleText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideVertical"
+        app:layout_constraintStart_toEndOf="@+id/moviePosterCardView"
         app:layout_constraintTop_toBottomOf="@+id/titleTxt"
         tools:text="@tools:sample/lorem/random" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideVertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="90dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideVertical2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="362dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
