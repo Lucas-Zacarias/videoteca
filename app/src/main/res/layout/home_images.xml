@@ -5,16 +5,25 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageViewHome"
+    <androidx.cardview.widget.CardView
         android:layout_width="100dp"
         android:layout_height="150dp"
-        android:layout_marginRight="1dp"
-        android:contentDescription="@string/portada_de_pelicula"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:layout_marginEnd="5dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp">
+
+        <ImageView
+            android:id="@+id/imageViewHome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/portada_de_pelicula"
+            tools:srcCompat="@tools:sample/avatars"
+            android:scaleType="fitXY"/>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
