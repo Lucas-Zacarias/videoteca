@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="1dp"
-    android:background="#1F2E81"
     android:layout_marginBottom="5dp">
 
     <androidx.cardview.widget.CardView

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1F2E81"
     tools:context=".ui.activities.MovieDetailsActivity">
 
         <com.google.android.material.textview.MaterialTextView
@@ -39,15 +38,30 @@
             android:background="#979E9F"
             app:layout_constraintTop_toBottomOf="@+id/txtFicha" />
 
-        <ImageView
-            android:id="@+id/imgCoverFilm"
-            android:layout_width="176dp"
-            android:layout_height="259dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:contentDescription="@string/cover"
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/moviePosterCardView"
+            android:layout_width="180dp"
+            android:layout_height="260dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider" />
+            app:layout_constraintTop_toBottomOf="@+id/divider"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp">
+
+                <ImageView
+                    android:id="@+id/imgCoverFilm"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/cover"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider"
+                    tools:srcCompat="@tools:sample/avatars"
+                    android:scaleType="fitXY"/>
+
+        </androidx.cardview.widget.CardView>
+
 
         <TextView
             android:id="@+id/txtTitulo"
@@ -60,8 +74,8 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/imgCoverFilm"
-            app:layout_constraintTop_toTopOf="@+id/imgCoverFilm" />
+            app:layout_constraintStart_toEndOf="@+id/moviePosterCardView"
+            app:layout_constraintTop_toTopOf="@+id/moviePosterCardView" />
 
         <TextView
             android:id="@+id/txtAnio"
@@ -71,7 +85,7 @@
             android:layout_marginTop="8dp"
             android:text="@string/anio"
             android:textColor="@color/white"
-            app:layout_constraintStart_toEndOf="@+id/imgCoverFilm"
+            app:layout_constraintStart_toEndOf="@+id/moviePosterCardView"
             app:layout_constraintTop_toBottomOf="@+id/txtTitulo" />
 
         <TextView
@@ -92,7 +106,7 @@
             android:layout_marginTop="8dp"
             android:text="@string/presupuesto"
             android:textColor="@color/white"
-            app:layout_constraintStart_toEndOf="@+id/imgCoverFilm"
+            app:layout_constraintStart_toEndOf="@+id/moviePosterCardView"
             app:layout_constraintTop_toBottomOf="@+id/txtDuracion" />
 
         <TextView
@@ -113,8 +127,8 @@
             android:text="@string/sinopsis"
             android:textColor="@color/white"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/imgCoverFilm"
-            app:layout_constraintTop_toBottomOf="@+id/imgCoverFilm" />
+            app:layout_constraintStart_toStartOf="@+id/moviePosterCardView"
+            app:layout_constraintTop_toBottomOf="@+id/moviePosterCardView" />
 
         <TextView
             android:id="@+id/txtDescripcionSinopsis"
@@ -123,8 +137,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:textColor="@color/white"
+            android:textAppearance="@style/largeTextStyleText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -152,10 +165,10 @@
             android:maxLines="3"
             android:text="@string/lista_de_generos"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/imgCoverFilm"
+            app:layout_constraintBottom_toBottomOf="@+id/moviePosterCardView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/imgCoverFilm"
+            app:layout_constraintStart_toEndOf="@+id/moviePosterCardView"
             app:layout_constraintTop_toBottomOf="@+id/txtIngresos"
             app:layout_constraintVertical_bias="0.049" />
 

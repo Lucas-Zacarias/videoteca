@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.HomeActivity"
-    android:background="#1F2E81">
+    tools:context=".ui.activities.HomeActivity">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -137,7 +136,7 @@
         android:id="@+id/barContent"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:background="#0C164A"
+        android:background="#091138"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

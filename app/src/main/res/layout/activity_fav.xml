@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.FavActivity"
-    android:background="#1F2E81">
+    tools:context=".ui.activities.FavActivity">
 
     <TextView
         android:id="@+id/favsTextView"
@@ -36,7 +35,6 @@
         android:id="@+id/barContent"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:background="#0C164A"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
