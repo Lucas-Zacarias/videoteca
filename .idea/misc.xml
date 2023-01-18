@@ -4,12 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/drawable/borde_redondo.xml" value="0.1535" />
+        <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.1505" />
         <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/drawable/ic_close.xml" value="0.1" />
         <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/activity_fav.xml" value="0.20425724637681159" />
-        <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/activity_home.xml" value="0.1" />
+        <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/activity_home.xml" value="0.176" />
         <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/activity_log_in.xml" value="0.20425724637681159" />
         <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/activity_movie_details.xml" value="0.1" />
-        <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/activity_searchrecicled.xml" value="0.1" />
+        <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/activity_searchrecicled.xml" value="0.16" />
         <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/activity_sign_up.xml" value="0.20425724637681159" />
         <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/activity_user.xml" value="0.20425724637681159" />
         <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/home_images.xml" value="0.1" />
