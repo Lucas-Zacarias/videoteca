@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import com.unlam.edu.ar.videotecamoviltp.databinding.HomeImagesBinding
+import com.unlam.edu.ar.videotecamoviltp.databinding.RvHomeChildItemMovieLayoutBinding
 import com.unlam.edu.ar.videotecamoviltp.domain.model.GenreID
 import com.unlam.edu.ar.videotecamoviltp.ui.activities.MovieDetailsActivity
 
@@ -16,7 +16,7 @@ class ImagesAdapter : RecyclerView.Adapter<ImageViewHolder>(){
         override fun getItemCount() = moviesList.size
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
-            val imageBinding = HomeImagesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            val imageBinding = RvHomeChildItemMovieLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             return ImageViewHolder(imageBinding)
         }
 
@@ -43,4 +43,4 @@ class ImagesAdapter : RecyclerView.Adapter<ImageViewHolder>(){
             }
         }
     }
-class ImageViewHolder(val binding: HomeImagesBinding ) : RecyclerView.ViewHolder(binding.root)
+class ImageViewHolder(val binding: RvHomeChildItemMovieLayoutBinding ) : RecyclerView.ViewHolder(binding.root)

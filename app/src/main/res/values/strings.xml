@@ -56,4 +56,6 @@
     <string name="nombre_de_usuario_no_encontrado">Nombre de usuario no encontrado</string>
     <string name="ups_no_tenes_ningun_favorito_guardado_por_ahora">Ups! No tenés ningún favorito guardado por ahora</string>
     <string name="imagen_de_lista_de_favoritos_vacia">Imagen de lista de favoritos vacía</string>
+    <string name="fav_button">Botón de películas marcadas como favoritas</string>
+    <string name="account_button">Botón de cuenta de usuario</string>
 </resources>

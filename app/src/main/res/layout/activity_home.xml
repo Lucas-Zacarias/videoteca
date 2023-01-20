@@ -39,7 +39,8 @@
         app:layout_constraintEnd_toStartOf="@+id/ibUser"
         android:backgroundTint="@color/background_color"
         android:src="@drawable/ic_baseline_favorite_border_24"
-        android:layout_marginEnd="8dp"/>
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/fav_button" />
 
     <ImageButton
         android:id="@+id/ibUser"
@@ -51,9 +52,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/homeSearchView"
         android:backgroundTint="@color/background_color"
-        android:src="@drawable/ic_account" />
+        android:src="@drawable/ic_account"
+        android:contentDescription="@string/account_button"/>
 
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvNestedGenres"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/homeSearchView"
+        app:layout_constraintBottom_toTopOf="@+id/barContent"
+        tools:listitem="@layout/rv_home_parent_layout"/>
+
+    <!--<ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -62,7 +72,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/homeSearchView"
-        android:layout_marginStart="4dp"
         android:layout_marginTop="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -81,6 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:layout_marginStart="5dp"
                 android:text="@string/accion"
                 android:textAppearance="@style/genreStyleText"
                 app:layout_constraintStart_toStartOf="parent"
@@ -95,7 +105,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/accion"
-                tools:listitem="@layout/home_images">
+                tools:listitem="@layout/rv_home_child_item_movie_layout">
 
             </androidx.recyclerview.widget.RecyclerView>
 
@@ -118,7 +128,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/comedia"
-                tools:listitem="@layout/home_images" />
+                tools:listitem="@layout/rv_home_child_item_movie_layout" />
 
             <TextView
                 android:id="@+id/terror"
@@ -139,7 +149,7 @@
                 app:layout_constraintHorizontal_bias="0.592"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/terror"
-                tools:listitem="@layout/home_images" />
+                tools:listitem="@layout/rv_home_child_item_movie_layout" />
 
             <TextView
                 android:id="@+id/drama"
@@ -160,13 +170,13 @@
                 app:layout_constraintHorizontal_bias="0.592"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/drama"
-                tools:listitem="@layout/home_images">
+                tools:listitem="@layout/rv_home_child_item_movie_layout">
 
             </androidx.recyclerview.widget.RecyclerView>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </ScrollView>-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/barContent"
