@@ -8,10 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.unlam.edu.ar.videotecamoviltp.R
 import com.unlam.edu.ar.videotecamoviltp.databinding.ListItemMovieBinding
-import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieFav_Details_Model
+import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieDetailsModel
 import com.unlam.edu.ar.videotecamoviltp.ui.activities.MovieDetailsActivity
 
-class MoviesFavAdapter(private val movieList: List<MovieFav_Details_Model>) :
+class MoviesFavAdapter(private val movieList: List<MovieDetailsModel>) :
     RecyclerView.Adapter<MovieFavViewHolder>() {
 
     companion object {
@@ -27,7 +27,7 @@ class MoviesFavAdapter(private val movieList: List<MovieFav_Details_Model>) :
     override fun onBindViewHolder(holder: MovieFavViewHolder, position: Int) {
         val movie = movieList[position]
         holder.binding.titleTxt.text = movie.title
-        holder.binding.descriptionTxt.text = movie.descripcion
+        holder.binding.descriptionTxt.text = movie.description
 
         Picasso.get()
             .load("$IMG_API${movie.poster}")

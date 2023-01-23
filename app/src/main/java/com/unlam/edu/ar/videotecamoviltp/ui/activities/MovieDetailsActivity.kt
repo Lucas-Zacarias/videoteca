@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
 import com.unlam.edu.ar.videotecamoviltp.R
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityMovieDetailsBinding
-import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieGenre
+import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieGenreModel
 import com.unlam.edu.ar.videotecamoviltp.domain.sharedpreferences.Preferences
 import com.unlam.edu.ar.videotecamoviltp.ui.viewmodels.MovieDetailsViewModel
 import com.unlam.edu.ar.videotecamoviltp.ui.adapters.MoviesFavAdapter
@@ -75,11 +75,11 @@ class MovieDetailsActivity : AppCompatActivity() {
     private fun setUpObserver() {
         movieDetailsViewModel.movieDetailsLiveData.observe(this,{movie->
             title.text = movie.title
-            description.text = movie.descripcion
-            release_date.text = setReleaseDate(movie.estreno)
-            runtime.text = setRuntimeToHoursAndMinutes(movie.duracion)
-            presupuesto.text = setPresupuesto(movie.presupuesto)
-            ingresos.text = setIngresos(movie.ingresos)
+            description.text = movie.description
+            release_date.text = setReleaseDate(movie.releaseDate)
+            runtime.text = setRuntimeToHoursAndMinutes(movie.runtime)
+            presupuesto.text = setPresupuesto(movie.budget)
+            ingresos.text = setIngresos(movie.revenue)
             genre_list.text = setGenreList(movie.genreList)
 
             Picasso.get()
@@ -128,7 +128,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         return duracion
     }
 
-    private fun setGenreList(genreList: List<MovieGenre>):String{
+    private fun setGenreList(genreList: List<MovieGenreModel>):String{
         return genreList.joinToString(separator = ", ") { it.genreName }
     }
 

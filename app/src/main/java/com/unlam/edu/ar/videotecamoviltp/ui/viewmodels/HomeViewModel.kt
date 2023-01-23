@@ -2,7 +2,7 @@ package com.unlam.edu.ar.videotecamoviltp.ui.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.unlam.edu.ar.videotecamoviltp.domain.model.Genres
+import com.unlam.edu.ar.videotecamoviltp.domain.model.MoviesByGenreModel
 import com.unlam.edu.ar.videotecamoviltp.data.repositories.retrofit.MoviesByGenreRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -11,10 +11,10 @@ import kotlinx.coroutines.withContext
 
 class HomeViewModel(private val moviesRepository: MoviesByGenreRepository):
     ViewModel(){
-    val moviesListDataAccion = MutableLiveData<Genres>()
-    val moviesListDataDrama = MutableLiveData<Genres>()
-    val moviesListDataTerror = MutableLiveData<Genres>()
-    val moviesListDataComedia = MutableLiveData<Genres>()
+    val moviesListDataAccion = MutableLiveData<MoviesByGenreModel>()
+    val moviesListDataDrama = MutableLiveData<MoviesByGenreModel>()
+    val moviesListDataTerror = MutableLiveData<MoviesByGenreModel>()
+    val moviesListDataComedia = MutableLiveData<MoviesByGenreModel>()
     val errorMessage = MutableLiveData<String>()
 
     fun getMovieAction(genre_ID: Int = 28) {

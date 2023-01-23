@@ -1,6 +1,6 @@
 package com.unlam.edu.ar.videotecamoviltp.data.repositories.retrofit
 
-import com.unlam.edu.ar.videotecamoviltp.domain.model.Genres
+import com.unlam.edu.ar.videotecamoviltp.domain.model.MoviesByGenreModel
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -13,7 +13,7 @@ class MoviesByGenreRepository {
         .build()
         .create(ApiInterface::class.java)
 
-    suspend fun getGenreID(genreID:Int): Response<Genres> {
-        return serviceDiscoverMoviesByGenre.getGenreID(genreID)
+    suspend fun getGenreID(genreID:Int): Response<MoviesByGenreModel> {
+        return serviceDiscoverMoviesByGenre.getMovieByGenreID(genreID)
     }
 }

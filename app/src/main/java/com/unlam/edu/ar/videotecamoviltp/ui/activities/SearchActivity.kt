@@ -43,7 +43,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun setupObservers(){
-        vm.moviesList.observe(this, Observer {
+        vm.moviesSearchModelList.observe(this, Observer {
             moviesAdapter.updateMovies(it.results)
             moviesAdapter.notifyDataSetChanged()
         })

@@ -2,36 +2,30 @@ package com.unlam.edu.ar.videotecamoviltp.domain.model
 
 import com.google.gson.annotations.SerializedName
 
-data class MovieFav_Details_Model(
-    var id: Int,
+data class MovieDetailsModel(
+    val id: Int,
 
     @SerializedName("poster_path")
-    var poster: String,
+    val poster: String,
 
     @SerializedName("title")
-    var title: String,
+    val title: String,
 
     @SerializedName("overview")
-    var descripcion: String,
+    val description: String,
 
     @SerializedName("release_date")
-    var estreno: String,
+    val releaseDate: String,
 
     @SerializedName("genres")
-    var genreList: List<MovieGenre>,
+    val genreList: List<MovieGenreModel>,
 
     @SerializedName("runtime")
-    var duracion: Int,
+    val runtime: Int,
 
     @SerializedName("budget")
-    var presupuesto: Int,
+    val budget: Int,
 
     @SerializedName("revenue")
-    var ingresos: Int
-)
-
-data class MovieGenre(
-    var id : Int,
-    @SerializedName(value = "name")
-    var genreName: String
+    val revenue: Int
 )

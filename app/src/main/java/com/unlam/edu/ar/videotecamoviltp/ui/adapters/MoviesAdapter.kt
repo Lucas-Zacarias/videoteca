@@ -8,12 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.unlam.edu.ar.videotecamoviltp.R
 import com.unlam.edu.ar.videotecamoviltp.databinding.ListItemMovieBinding
-import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieSearch
+import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieSearchModel
 import com.unlam.edu.ar.videotecamoviltp.ui.activities.MovieDetailsActivity
 
 class MoviesAdapter (
 ): RecyclerView.Adapter<MovieViewHolder>(){
-    private val moviesList = mutableListOf<MovieSearch>()
+    private val moviesList = mutableListOf<MovieSearchModel>()
     override fun getItemCount() = moviesList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -28,7 +28,7 @@ class MoviesAdapter (
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val movie = moviesList[position]
         holder.binding.titleTxt.text = movie.title
-        holder.binding.descriptionTxt.text = movie.descripcion
+        holder.binding.descriptionTxt.text = movie.description
         Picasso.get()
             .load("${IMG_API_PATH}${movie.poster}")
             .placeholder(R.drawable.image_not_found_icon)
@@ -42,7 +42,7 @@ class MoviesAdapter (
         }
     }
 
-    fun updateMovies(results: List<MovieSearch>?) {
+    fun updateMovies(results: List<MovieSearchModel>?) {
         moviesList.clear()
         if (results != null) {
             moviesList.addAll(results)

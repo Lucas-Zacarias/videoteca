@@ -3,7 +3,7 @@ package com.unlam.edu.ar.videotecamoviltp.ui.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.unlam.edu.ar.videotecamoviltp.data.repositories.database.FavEntityRepository
-import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieFav_Details_Model
+import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieDetailsModel
 import com.unlam.edu.ar.videotecamoviltp.data.repositories.retrofit.MovieByIDRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +15,7 @@ class MovieDetailsViewModel(
     private val favEntityRepository: FavEntityRepository
     ) :ViewModel() {
 
-    val movieDetailsLiveData = MutableLiveData<MovieFav_Details_Model>()
+    val movieDetailsLiveData = MutableLiveData<MovieDetailsModel>()
     val errorMessage = MutableLiveData<String>()
 
     fun getMovieDetailsById(movieId: Int) {
