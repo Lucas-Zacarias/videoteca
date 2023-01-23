@@ -10,13 +10,11 @@ import com.unlam.edu.ar.videotecamoviltp.R
 import com.unlam.edu.ar.videotecamoviltp.databinding.ListItemMovieBinding
 import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieDetailsModel
 import com.unlam.edu.ar.videotecamoviltp.ui.activities.MovieDetailsActivity
+import com.unlam.edu.ar.videotecamoviltp.utils.IMGPathAPI
 
 class MoviesFavAdapter(private val movieList: List<MovieDetailsModel>) :
     RecyclerView.Adapter<MovieFavViewHolder>() {
 
-    companion object {
-        const val IMG_API: String = "https://image.tmdb.org/t/p/w500"
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieFavViewHolder {
         val movieBinding =
@@ -30,7 +28,7 @@ class MoviesFavAdapter(private val movieList: List<MovieDetailsModel>) :
         holder.binding.descriptionTxt.text = movie.description
 
         Picasso.get()
-            .load("$IMG_API${movie.poster}")
+            .load("${IMGPathAPI.IMG_API_PATH}${movie.poster}")
             .placeholder(R.drawable.image_not_found_icon)
             .into(holder.binding.moviePoster)
 

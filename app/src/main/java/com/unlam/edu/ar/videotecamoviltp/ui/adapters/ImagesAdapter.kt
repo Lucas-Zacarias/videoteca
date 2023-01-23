@@ -9,6 +9,7 @@ import com.squareup.picasso.Picasso
 import com.unlam.edu.ar.videotecamoviltp.databinding.RvHomeChildItemMovieLayoutBinding
 import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieByGenreModel
 import com.unlam.edu.ar.videotecamoviltp.ui.activities.MovieDetailsActivity
+import com.unlam.edu.ar.videotecamoviltp.utils.IMGPathAPI
 
 class ImagesAdapter : RecyclerView.Adapter<ImageViewHolder>(){
         private val moviesList = mutableListOf<MovieByGenreModel>()
@@ -20,14 +21,10 @@ class ImagesAdapter : RecyclerView.Adapter<ImageViewHolder>(){
             return ImageViewHolder(imageBinding)
         }
 
-        companion object {
-            const val IMG_API_PATH : String = "https://image.tmdb.org/t/p/w500"
-        }
-
         override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
             val movie = moviesList[position]
             Picasso.get()
-                .load("$IMG_API_PATH${movie.poster}")
+                .load("${IMGPathAPI.IMG_API_PATH}${movie.poster}")
                 .into(holder.binding.imageViewHome)
             holder.binding.imageViewHome.setOnClickListener {
                 val context: Context = holder.itemView.context

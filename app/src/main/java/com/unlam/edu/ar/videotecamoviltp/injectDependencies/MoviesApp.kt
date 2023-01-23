@@ -19,7 +19,6 @@ import org.koin.dsl.module
 
 class MoviesApp : Application() {
     val appModule = module {
-        single{ MoviesAdapter }
         single{ UserEntityRepository(get()) }
         single{ FavEntityRepository(get()) }
         single<UserDAO>{ VideotecaDatabase.getInstance(get()).userDAO()}

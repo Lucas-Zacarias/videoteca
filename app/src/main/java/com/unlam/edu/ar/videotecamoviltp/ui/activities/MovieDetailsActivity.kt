@@ -15,6 +15,7 @@ import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieGenreModel
 import com.unlam.edu.ar.videotecamoviltp.domain.sharedpreferences.Preferences
 import com.unlam.edu.ar.videotecamoviltp.ui.viewmodels.MovieDetailsViewModel
 import com.unlam.edu.ar.videotecamoviltp.ui.adapters.MoviesFavAdapter
+import com.unlam.edu.ar.videotecamoviltp.utils.IMGPathAPI
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MovieDetailsActivity : AppCompatActivity() {
@@ -83,7 +84,7 @@ class MovieDetailsActivity : AppCompatActivity() {
             genre_list.text = setGenreList(movie.genreList)
 
             Picasso.get()
-                .load("${MoviesFavAdapter.IMG_API}${movie.poster}")
+                .load("${IMGPathAPI.IMG_API_PATH}${movie.poster}")
                 .placeholder(R.drawable.image_not_found_icon)
                 .into(poster)
         })
