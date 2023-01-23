@@ -11,17 +11,17 @@ import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieByGenreModel
 import com.unlam.edu.ar.videotecamoviltp.ui.activities.MovieDetailsActivity
 import com.unlam.edu.ar.videotecamoviltp.utils.IMGPathAPI
 
-class ImagesAdapter : RecyclerView.Adapter<ImageViewHolder>(){
+class MoviePosterAdapter : RecyclerView.Adapter<MoviePosterViewHolder>(){
         private val moviesList = mutableListOf<MovieByGenreModel>()
 
         override fun getItemCount() = moviesList.size
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviePosterViewHolder {
             val imageBinding = RvHomeChildItemMovieLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-            return ImageViewHolder(imageBinding)
+            return MoviePosterViewHolder(imageBinding)
         }
 
-        override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
+        override fun onBindViewHolder(holder: MoviePosterViewHolder, position: Int) {
             val movie = moviesList[position]
             Picasso.get()
                 .load("${IMGPathAPI.IMG_API_PATH}${movie.poster}")
@@ -40,4 +40,4 @@ class ImagesAdapter : RecyclerView.Adapter<ImageViewHolder>(){
             }
         }
     }
-class ImageViewHolder(val binding: RvHomeChildItemMovieLayoutBinding ) : RecyclerView.ViewHolder(binding.root)
+class MoviePosterViewHolder(val binding: RvHomeChildItemMovieLayoutBinding ) : RecyclerView.ViewHolder(binding.root)

@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityHomeBinding
 import com.unlam.edu.ar.videotecamoviltp.ui.viewmodels.HomeViewModel
-import com.unlam.edu.ar.videotecamoviltp.ui.adapters.ImagesAdapter
+import com.unlam.edu.ar.videotecamoviltp.ui.adapters.MoviePosterAdapter
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {
@@ -17,10 +17,10 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var btnSearch: ImageButton
     private lateinit var btnUser: ImageButton
     private lateinit var btnFavourites: ImageButton
-    private lateinit var imagesAdapterAccion: ImagesAdapter
-    private lateinit var imagesAdapterDrama: ImagesAdapter
-    private lateinit var imagesAdapterComedia: ImagesAdapter
-    private lateinit var imagesAdapterTerror: ImagesAdapter
+    private lateinit var moviePosterAdapterAccion: MoviePosterAdapter
+    private lateinit var imagesAdapterDrama: MoviePosterAdapter
+    private lateinit var moviePosterAdapterComedia: MoviePosterAdapter
+    private lateinit var imagesAdapterTerror: MoviePosterAdapter
     private lateinit var binding: ActivityHomeBinding
     private val vmHome: HomeViewModel by viewModel()
 
@@ -39,16 +39,16 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         binding.recyclerview1.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        imagesAdapterAccion = ImagesAdapter()
-        binding.recyclerview1.adapter = imagesAdapterAccion
+        moviePosterAdapterAccion = MoviePosterAdapter()
+        binding.recyclerview1.adapter = moviePosterAdapterAccion
         binding.recyclerview2.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        imagesAdapterComedia = ImagesAdapter()
-        binding.recyclerview2.adapter = imagesAdapterComedia
+        moviePosterAdapterComedia = MoviePosterAdapter()
+        binding.recyclerview2.adapter = moviePosterAdapterComedia
         binding.recyclerview3.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        imagesAdapterTerror = ImagesAdapter()
+        imagesAdapterTerror = MoviePosterAdapter()
         binding.recyclerview3.adapter = imagesAdapterTerror
         binding.recyclerview4.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        imagesAdapterDrama = ImagesAdapter()
+        imagesAdapterDrama = MoviePosterAdapter()
         binding.recyclerview4.adapter = imagesAdapterDrama
     }
     private fun setupObserversDrama(){
@@ -59,14 +59,14 @@ class HomeActivity : AppCompatActivity() {
     }
    private fun setupObserversAccion(){
         vmHome.moviesListDataAccion.observe(this,{
-            imagesAdapterAccion.updateMovies(it.results)
-            imagesAdapterAccion.notifyDataSetChanged()
+            moviePosterAdapterAccion.updateMovies(it.results)
+            moviePosterAdapterAccion.notifyDataSetChanged()
         })
     }
     private fun setupObserversComedia(){
         vmHome.moviesListDataComedia.observe(this,{
-            imagesAdapterComedia.updateMovies(it.results)
-            imagesAdapterComedia.notifyDataSetChanged()
+            moviePosterAdapterComedia.updateMovies(it.results)
+            moviePosterAdapterComedia.notifyDataSetChanged()
         })
     }
     private fun setupObserversTerror(){
