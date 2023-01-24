@@ -21,7 +21,7 @@ class HomeViewModel(private val moviesRepository: MoviesByGenreRepository):
             for(movieGenre in GenresUtil.genresList){
                 val response = moviesRepository.getMovieListByGenreID(movieGenre.id)
                 if(response.isSuccessful && response.body() != null){
-                        moviesList.add(MoviesByGenreModel(movieGenre.genreName, response.body()!!.moviesByGenreModel))
+                        moviesList.add(MoviesByGenreModel(movieGenre.genreName, response.body()!!.moviesByGenreModel.shuffled()))
 
                 }else{
                     errorMessage.value = response.errorBody().toString()
