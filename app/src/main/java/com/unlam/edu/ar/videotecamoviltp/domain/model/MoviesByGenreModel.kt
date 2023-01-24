@@ -6,5 +6,5 @@ data class MoviesByGenreModel(
     val genreTitle: String,
 
     @SerializedName("results")
-    val results: List<MovieByGenreModel>
+    val movieList: List<MovieDataByGenreModel>
 )

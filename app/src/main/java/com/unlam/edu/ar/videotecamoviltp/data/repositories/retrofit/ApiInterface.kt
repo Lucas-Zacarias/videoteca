@@ -1,6 +1,6 @@
 package com.unlam.edu.ar.videotecamoviltp.data.repositories.retrofit
 
-import com.unlam.edu.ar.videotecamoviltp.domain.model.MoviesByGenreModel
+import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieByGenreModel
 import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieDetailsModel
 import com.unlam.edu.ar.videotecamoviltp.domain.model.MoviesSearchModel
 import retrofit2.Response
@@ -18,7 +18,7 @@ interface ApiInterface {
     suspend fun getMovieByTitle(@Query("query") title: String): Response<MoviesSearchModel>
 
     @GET("movie?api_key=$API_KEY&$LANGUAGE_SPANISH&with_genres=genre_id")
-    suspend fun getMovieByGenreID(@Query("with_genres") id: Int): Response<MoviesByGenreModel>
+    suspend fun getMoviesByGenreID(@Query("with_genres") id: Int): Response<MovieByGenreModel>
 
     @GET("{movie_id}?api_key=$API_KEY&$LANGUAGE_SPANISH")
     suspend fun getMovieByID(@Path("movie_id") id: Int): Response<MovieDetailsModel>
