@@ -3,7 +3,10 @@ package com.unlam.edu.ar.videotecamoviltp.ui.activities
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,6 +33,7 @@ class HomeActivity : AppCompatActivity() {
         setupRecyclerView()
         getViews()
         setListeners()
+        showData()
         }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -47,6 +51,13 @@ class HomeActivity : AppCompatActivity() {
             recyclerView.adapter = adapter
             adapter.notifyDataSetChanged()
         }
+    }
+
+    private fun showData(){
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.rvNestedGenresLoading.visibility = View.GONE
+            binding.rvNestedGenres.visibility = View.VISIBLE
+        }, 3000)
     }
 
     private fun getViews() {
