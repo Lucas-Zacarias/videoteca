@@ -12,7 +12,7 @@ import kotlinx.coroutines.withContext
 class SearchViewModel (private val moviesRepository: MoviesByTitleRepository):
     ViewModel(){
         val moviesSearchModelList = MutableLiveData<MoviesSearchModel>()
-        val errorMessage = MutableLiveData<String>()
+        private val errorMessage = MutableLiveData<String>()
 
     fun getMovie(query: String) {
         CoroutineScope(Dispatchers.IO).launch {

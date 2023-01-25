@@ -6,12 +6,6 @@ data class MovieDataByGenreModel(
     @SerializedName("id")
     val id: Int,
 
-    @SerializedName("title")
-    val title: String,
-
     @SerializedName("poster_path")
-    val poster: String,
-
-    @SerializedName("genre_ids")
-    val genre: List<Int>
+    val poster: String
 )

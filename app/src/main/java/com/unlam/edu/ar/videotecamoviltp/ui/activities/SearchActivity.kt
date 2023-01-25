@@ -1,5 +1,6 @@
 package com.unlam.edu.ar.videotecamoviltp.ui.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +8,9 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.unlam.edu.ar.videotecamoviltp.ui.adapters.MoviesAdapter
+import com.unlam.edu.ar.videotecamoviltp.ui.adapters.MoviesSearchAdapter
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivitySearchrecicledBinding
 import com.unlam.edu.ar.videotecamoviltp.ui.viewmodels.SearchViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -20,7 +22,6 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var btnSearch: ImageButton
     private lateinit var btnUser: ImageButton
     private lateinit var btnFavourites: ImageButton
-    private lateinit var moviesAdapter: MoviesAdapter
     private lateinit var binding: ActivitySearchrecicledBinding
     private val vm: SearchViewModel by viewModel()
 
@@ -30,26 +31,24 @@ class SearchActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSearchViewListener()
         setupRecyclerView()
-        setupObservers()
         getViews()
         setListeners()
     }
 
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun setupRecyclerView() {
-        binding.recyclerview.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        moviesAdapter = MoviesAdapter()
-        binding.recyclerview.adapter = moviesAdapter
+        binding.recyclerview.layoutManager = GridLayoutManager(this, 3)
+        vm.moviesSearchModelList.observe(this) { movies ->
+            val adapter = MoviesSearchAdapter(movies.results)
+            binding.recyclerview.adapter = adapter
+            adapter.notifyDataSetChanged()
+        }
     }
 
-    private fun setupObservers(){
-        vm.moviesSearchModelList.observe(this, Observer {
-            moviesAdapter.updateMovies(it.results)
-            moviesAdapter.notifyDataSetChanged()
-        })
-    }
+
     private fun setSearchViewListener() {
-        binding.searchview1.setOnQueryTextListener(
+        binding.searchView.setOnQueryTextListener(
             object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     query?.run {
