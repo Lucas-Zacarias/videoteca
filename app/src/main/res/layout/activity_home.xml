@@ -63,7 +63,7 @@
         app:layout_constraintBottom_toTopOf="@+id/barContent"
         tools:listitem="@layout/rv_home_parent_item_layout"
         android:visibility="gone"
-        tools:visibility="gone"/>
+        tools:visibility="visible"/>
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:layout_width="match_parent"
@@ -78,7 +78,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:visibility="visible"
-            tools:visibility="visible"
+            tools:visibility="gone"
             app:layout_constraintTop_toBottomOf="@+id/homeSearchView"
             app:layout_constraintBottom_toTopOf="@+id/barContent">
 
