@@ -31,6 +31,7 @@ class SearchActivity : AppCompatActivity() {
         setupRecyclerView()
         getViews()
         setListeners()
+        vm.getPopularMovies()
     }
 
 
@@ -49,12 +50,19 @@ class SearchActivity : AppCompatActivity() {
         binding.searchView.setOnQueryTextListener(
             object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
-                    query?.run {
-                        vm.getMovie(this)
-                    }
+                    if(query.isNullOrBlank())
+                        vm.getPopularMovies()
+                    else
+                        vm.getMovie(query.trim())
+
                     return true
                 }
                 override fun onQueryTextChange(newText: String?): Boolean {
+                    if(newText.isNullOrBlank())
+                        vm.getPopularMovies()
+                    else
+                        vm.getMovie(newText.trim())
+
                     return false
                 }
             })

@@ -22,4 +22,7 @@ interface ApiInterface {
 
     @GET("{movie_id}?api_key=$API_KEY&$LANGUAGE_SPANISH")
     suspend fun getMovieByID(@Path("movie_id") id: Int): Response<MovieDetailsModel>
+
+    @GET("movie?api_key=$API_KEY&$LANGUAGE_SPANISH&sort_by=popularity.desc&page=1")
+    suspend fun getPopularMovies(): Response<MoviesSearchModel>
   }
