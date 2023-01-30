@@ -84,7 +84,7 @@ class MovieDetailsActivity : AppCompatActivity() {
 
             Picasso.get()
                 .load("${IMGPathAPI.IMG_API_PATH}${movie.poster}")
-                .placeholder(R.drawable.image_not_found_icon)
+                .error(R.drawable.ic_movie_poster_not_found)
                 .into(poster)
         })
     }

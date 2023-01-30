@@ -29,6 +29,7 @@ class MoviePosterChildAdapter(private val movieList: List<MovieDataByGenreModel>
 
         Picasso.get()
             .load("${IMGPathAPI.IMG_API_PATH}${movie.poster}")
+            .error(R.drawable.ic_movie_poster_not_found)
             .into(holder.poster)
 
         holder.poster.setOnClickListener {
