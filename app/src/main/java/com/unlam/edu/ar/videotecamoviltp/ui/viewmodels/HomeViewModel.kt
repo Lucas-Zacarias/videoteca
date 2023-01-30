@@ -23,14 +23,13 @@ class HomeViewModel(private val moviesRepository: MoviesByGenreRepository):
                 val response = moviesRepository.getMovieListByGenreID(movieGenre.id)
                 if(response.isSuccessful && response.body() != null){
                         moviesList.add(MoviesByGenreModel(movieGenre.genreName, response.body()!!.moviesByGenreModel.shuffled()))
-                        withContext(Dispatchers.Main){
-                            moviesListByGenre.value = moviesList
-                        }
                 }else{
                     errorMessage.value = response.errorBody().toString()
                 }
             }
-
+            withContext(Dispatchers.Main){
+                moviesListByGenre.value = moviesList
+            }
         }
     }
 }

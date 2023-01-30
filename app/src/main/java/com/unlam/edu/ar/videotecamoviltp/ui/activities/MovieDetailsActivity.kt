@@ -14,7 +14,6 @@ import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityMovieDetailsBinding
 import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieGenreModel
 import com.unlam.edu.ar.videotecamoviltp.domain.sharedpreferences.Preferences
 import com.unlam.edu.ar.videotecamoviltp.ui.viewmodels.MovieDetailsViewModel
-import com.unlam.edu.ar.videotecamoviltp.ui.adapters.MoviesFavAdapter
 import com.unlam.edu.ar.videotecamoviltp.utils.IMGPathAPI
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -95,7 +94,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         return "Estreno: ${fechaDividida[2]} ${fechaDividida[1]} ${fechaDividida[0]}"
     }
 
-    private fun setIngresos(ingresos: Int): String {
+    private fun setIngresos(ingresos: Long): String {
         var revenue = "Ingresos:"
         if(ingresos > 0){
             revenue+= " $${ingresos}"
