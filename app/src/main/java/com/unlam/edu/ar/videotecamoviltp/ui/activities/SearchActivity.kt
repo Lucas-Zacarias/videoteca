@@ -8,7 +8,7 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
-import com.unlam.edu.ar.videotecamoviltp.databinding.ActivitySearchrecicledBinding
+import com.unlam.edu.ar.videotecamoviltp.databinding.ActivitySearchBinding
 import com.unlam.edu.ar.videotecamoviltp.ui.adapters.MoviesSearchAdapter
 import com.unlam.edu.ar.videotecamoviltp.ui.viewmodels.SearchViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -20,17 +20,23 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var btnSearch: ImageButton
     private lateinit var btnUser: ImageButton
     private lateinit var btnFavourites: ImageButton
-    private lateinit var binding: ActivitySearchrecicledBinding
+    private lateinit var binding: ActivitySearchBinding
     private val vm: SearchViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySearchrecicledBinding.inflate(LayoutInflater.from(this))
+
+        binding = ActivitySearchBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
+
+        getPopularMovies()
         setSearchViewListener()
         setupRecyclerView()
         getViews()
         setListeners()
+    }
+
+    private fun getPopularMovies(){
         vm.getPopularMovies()
     }
 
