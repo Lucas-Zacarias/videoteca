@@ -3,8 +3,6 @@ package com.unlam.edu.ar.videotecamoviltp.ui.activities
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageButton
@@ -28,16 +26,17 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityHomeBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
-        setupRecyclerView()
+
+        setUpRecyclerView()
         getViews()
         setListeners()
-        showData()
         }
 
     @SuppressLint("NotifyDataSetChanged")
-    private fun setupRecyclerView() {
+    private fun setUpRecyclerView() {
         recyclerView = binding.rvNestedGenres
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(
@@ -47,17 +46,18 @@ class HomeActivity : AppCompatActivity() {
         )
         vmHome.getMoviesByGenre()
         vmHome.moviesListByGenre.observe(this) { movies ->
+
             val adapter = MoviePosterParentAdapter(movies)
             recyclerView.adapter = adapter
             adapter.notifyDataSetChanged()
+
+            showData()
         }
     }
 
-    private fun showData(){
-        Handler(Looper.getMainLooper()).postDelayed({
-            binding.rvNestedGenresLoading.visibility = View.GONE
-            binding.rvNestedGenres.visibility = View.VISIBLE
-        }, 3000)
+    private fun showData() {
+        binding.rvNestedGenresLoading.visibility = View.GONE
+        binding.rvNestedGenres.visibility = View.VISIBLE
     }
 
     private fun getViews() {

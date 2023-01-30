@@ -27,5 +27,5 @@ data class MovieDetailsModel(
     val budget: Int,
 
     @SerializedName("revenue")
-    val revenue: Int
+    val revenue: Long
 )
