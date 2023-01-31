@@ -5,21 +5,16 @@ import com.unlam.edu.ar.videotecamoviltp.domain.entities.FavEntity
 
 class FavEntityRepository(private val favDAO: FavDAO) {
 
-    fun getMovieFavIdByUserId(userId:Int): List<Int>{
+    suspend fun getMovieFavIdsByUserId(userId:Int): List<Int> {
         return favDAO.getAllIdMovieFavByUserId(userId)
     }
 
-    fun movieIdIntoFavList(movieId:Int, userId: Int):Boolean{
-        val moviesId = getMovieFavIdByUserId(userId)
-        var result = false
-        if(moviesId.contains(movieId)){
-            result = true
-        }
-        return result
+    suspend fun isMovieIdIntoFavList(movieId:Int, userId: Int):Boolean{
+        return getMovieFavIdsByUserId(userId).contains(movieId)
     }
 
-    fun addOrDeleteNewMovieFav(movieId: Int, userId: Int){
-        if(movieIdIntoFavList(movieId,userId)){
+    suspend fun addOrDeleteNewMovieFav(movieId: Int, userId: Int){
+        if(isMovieIdIntoFavList(movieId,userId)){
             favDAO.delete(FavEntity(movieId,userId))
         }else{
             favDAO.insert(FavEntity(movieId,userId))

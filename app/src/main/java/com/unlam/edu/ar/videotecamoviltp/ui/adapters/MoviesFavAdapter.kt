@@ -41,9 +41,7 @@ class MoviesFavAdapter(private val movieList: List<MovieDetailsModel>) :
     }
 
 
-    override fun getItemCount(): Int {
-        return movieList.size
-    }
+    override fun getItemCount(): Int = movieList.size
 
 }
 

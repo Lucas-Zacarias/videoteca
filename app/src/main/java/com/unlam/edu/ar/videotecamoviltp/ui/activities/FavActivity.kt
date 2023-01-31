@@ -1,5 +1,6 @@
 package com.unlam.edu.ar.videotecamoviltp.ui.activities
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -15,7 +16,6 @@ import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityFavBinding
 import com.unlam.edu.ar.videotecamoviltp.domain.sharedpreferences.Preferences
 import com.unlam.edu.ar.videotecamoviltp.ui.adapters.MoviesFavAdapter
 import com.unlam.edu.ar.videotecamoviltp.ui.viewmodels.FavViewModel
-import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class FavActivity : AppCompatActivity() {
@@ -26,42 +26,47 @@ class FavActivity : AppCompatActivity() {
     private lateinit var txtEmptyList: TextView
     private lateinit var binding: ActivityFavBinding
     private val favViewModel: FavViewModel by viewModel()
-    //private val moviesFavAdapter: MoviesFavAdapter by inject()
-    private lateinit var moviesFavAdapter: MoviesFavAdapter
     private lateinit var sharedPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFavBinding.inflate(LayoutInflater.from(this))
-        sharedPref = this.getSharedPreferences("FILE_PREFERENCES_USER_ID", Context.MODE_PRIVATE)
         setContentView(binding.root)
+
+        setSharedPreferences()
         getViews()
         setListeners()
-        setUpRecyclerView()
         getMovies()
+        setUpRecyclerView()
+    }
+
+    private fun setSharedPreferences(){
+        sharedPref = this.getSharedPreferences(
+            "FILE_PREFERENCES_USER_ID",
+            Context.MODE_PRIVATE)
     }
 
     private fun getMovies() {
-        if (getMovieIdList().isEmpty()) {
-            imgEmptyList.visibility = View.VISIBLE
-            txtEmptyList.visibility = View.VISIBLE
-        }
-
-        favViewModel.updateMoviesLiveData(getMovieIdList())
-        setUpObserver()
+        favViewModel.getMovieFavsByUserID(getUserId())
     }
 
-    private fun setUpObserver() {
-        favViewModel.moviesFavLiveData.observe(this, {
-            binding.recyclerview.adapter = MoviesFavAdapter(it)
-            moviesFavAdapter.notifyDataSetChanged()
-        })
-    }
-
+    @SuppressLint("NotifyDataSetChanged")
     private fun setUpRecyclerView() {
         binding.recyclerview.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
-        moviesFavAdapter = MoviesFavAdapter(emptyList())
-        binding.recyclerview.adapter = moviesFavAdapter
+
+        favViewModel.moviesFavLiveData.observe(this) { movieList ->
+            if(movieList.isEmpty()){
+                imgEmptyList.visibility = View.VISIBLE
+                txtEmptyList.visibility = View.VISIBLE
+            }else{
+                imgEmptyList.visibility = View.INVISIBLE
+                txtEmptyList.visibility = View.INVISIBLE
+                val adapter = MoviesFavAdapter(movieList)
+                binding.recyclerview.adapter = adapter
+                adapter.notifyDataSetChanged()
+            }
+
+        }
     }
 
     private fun getViews() {
@@ -101,9 +106,5 @@ class FavActivity : AppCompatActivity() {
 
     private fun getUserId():Int{
         return Preferences.getSharedPreferenceUserId(sharedPref)
-    }
-
-    private fun getMovieIdList(): List<Int> {
-        return favViewModel.getMoviesFavIDListByUserID(getUserId())
     }
 }
