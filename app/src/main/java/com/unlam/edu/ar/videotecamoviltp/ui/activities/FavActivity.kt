@@ -56,11 +56,8 @@ class FavActivity : AppCompatActivity() {
 
         favViewModel.moviesFavLiveData.observe(this) { movieList ->
             if(movieList.isEmpty()){
-                imgEmptyList.visibility = View.VISIBLE
-                txtEmptyList.visibility = View.VISIBLE
+                showImageNotFavMovies()
             }else{
-                imgEmptyList.visibility = View.GONE
-                txtEmptyList.visibility = View.GONE
                 val adapter = MoviesFavAdapter(movieList)
                 binding.recyclerview.adapter = adapter
                 adapter.notifyDataSetChanged()
@@ -71,7 +68,15 @@ class FavActivity : AppCompatActivity() {
         }
     }
 
+    private fun showImageNotFavMovies(){
+        binding.rvFavMoviesLoading.visibility = View.GONE
+        imgEmptyList.visibility = View.VISIBLE
+        txtEmptyList.visibility = View.VISIBLE
+    }
+
     private fun showData(){
+        imgEmptyList.visibility = View.GONE
+        txtEmptyList.visibility = View.GONE
         binding.rvFavMoviesLoading.visibility = View.GONE
         binding.recyclerview.visibility = View.VISIBLE
     }
