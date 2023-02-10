@@ -11,7 +11,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityFavBinding
 import com.unlam.edu.ar.videotecamoviltp.domain.sharedpreferences.Preferences
 import com.unlam.edu.ar.videotecamoviltp.ui.adapters.MoviesFavAdapter
@@ -52,21 +52,28 @@ class FavActivity : AppCompatActivity() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun setUpRecyclerView() {
-        binding.recyclerview.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
+        binding.recyclerview.layoutManager = GridLayoutManager(this, 3)
 
         favViewModel.moviesFavLiveData.observe(this) { movieList ->
             if(movieList.isEmpty()){
                 imgEmptyList.visibility = View.VISIBLE
                 txtEmptyList.visibility = View.VISIBLE
             }else{
-                imgEmptyList.visibility = View.INVISIBLE
-                txtEmptyList.visibility = View.INVISIBLE
+                imgEmptyList.visibility = View.GONE
+                txtEmptyList.visibility = View.GONE
                 val adapter = MoviesFavAdapter(movieList)
                 binding.recyclerview.adapter = adapter
                 adapter.notifyDataSetChanged()
+
+                showData()
             }
 
         }
+    }
+
+    private fun showData(){
+        binding.rvFavMoviesLoading.visibility = View.GONE
+        binding.recyclerview.visibility = View.VISIBLE
     }
 
     private fun getViews() {
