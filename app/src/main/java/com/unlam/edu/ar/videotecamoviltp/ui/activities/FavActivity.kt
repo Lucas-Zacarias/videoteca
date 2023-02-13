@@ -35,7 +35,6 @@ class FavActivity : AppCompatActivity() {
         setSharedPreferences()
         getViews()
         setListeners()
-        getMovies()
         setUpRecyclerView()
     }
 
@@ -53,6 +52,8 @@ class FavActivity : AppCompatActivity() {
     @SuppressLint("NotifyDataSetChanged")
     private fun setUpRecyclerView() {
         binding.recyclerview.layoutManager = GridLayoutManager(this, 3)
+
+        getMovies()
 
         favViewModel.moviesFavLiveData.observe(this) { movieList ->
             if(movieList.isEmpty()){
@@ -124,14 +125,4 @@ class FavActivity : AppCompatActivity() {
     private fun getUserId():Int{
         return Preferences.getSharedPreferenceUserId(sharedPref)
     }
-
-
-    /*override fun onRestart() {
-        super.onRestart()
-        getMovies()
-    }*/
-
-    /*Con el onRestart puedo actualizar la lista de favs pero no se me borra la lista que ya tenia
-     para actualizarse con la nueva, es algo para seguir viendo*/
-
 }
