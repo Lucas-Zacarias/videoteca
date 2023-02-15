@@ -1,6 +1,5 @@
 package com.unlam.edu.ar.videotecamoviltp.ui.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.unlam.edu.ar.videotecamoviltp.data.repositories.database.FavEntityRepository
@@ -18,10 +17,11 @@ class FavViewModel(
 ) : ViewModel() {
 
     val moviesFavLiveData = MutableLiveData<List<MovieDetailsModel>>()
-    private val moviesList: MutableList<MovieDetailsModel> = mutableListOf()
+
     private val errorMessage = MutableLiveData<String>()
 
     fun getMovieFavsByUserID(userID: Int) {
+        val moviesList: MutableList<MovieDetailsModel> = mutableListOf()
 
         CoroutineScope(Dispatchers.IO).launch {
 

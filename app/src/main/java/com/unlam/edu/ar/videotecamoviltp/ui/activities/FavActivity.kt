@@ -12,11 +12,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import com.unlam.edu.ar.videotecamoviltp.R
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityFavBinding
 import com.unlam.edu.ar.videotecamoviltp.domain.sharedpreferences.Preferences
 import com.unlam.edu.ar.videotecamoviltp.ui.adapters.MoviesFavAdapter
 import com.unlam.edu.ar.videotecamoviltp.ui.viewmodels.FavViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
+
 class FavActivity : AppCompatActivity() {
     private lateinit var btnHome: ImageButton
     private lateinit var btnSearch: ImageButton
@@ -34,8 +36,17 @@ class FavActivity : AppCompatActivity() {
 
         setSharedPreferences()
         getViews()
+        configSwipe()
         setListeners()
         setUpRecyclerView()
+    }
+
+    private fun configSwipe() {
+        binding.swipeRV.setProgressBackgroundColorSchemeResource(R.color.black)
+        binding.swipeRV.setColorSchemeColors(getColor(R.color.white))
+        binding.swipeRV.setOnRefreshListener {
+            getMovies()
+        }
     }
 
     private fun setSharedPreferences(){
@@ -73,6 +84,7 @@ class FavActivity : AppCompatActivity() {
         binding.rvFavMoviesLoading.visibility = View.GONE
         imgEmptyList.visibility = View.VISIBLE
         txtEmptyList.visibility = View.VISIBLE
+        binding.swipeRV.isRefreshing = false
     }
 
     private fun showData(){
@@ -80,6 +92,7 @@ class FavActivity : AppCompatActivity() {
         txtEmptyList.visibility = View.GONE
         binding.rvFavMoviesLoading.visibility = View.GONE
         binding.recyclerview.visibility = View.VISIBLE
+        binding.swipeRV.isRefreshing = false
     }
 
     private fun showShimmer(){
@@ -124,5 +137,10 @@ class FavActivity : AppCompatActivity() {
 
     private fun getUserId():Int{
         return Preferences.getSharedPreferenceUserId(sharedPref)
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        getMovies()
     }
 }
