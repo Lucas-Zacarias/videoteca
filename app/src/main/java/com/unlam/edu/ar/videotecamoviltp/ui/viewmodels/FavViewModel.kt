@@ -3,8 +3,8 @@ package com.unlam.edu.ar.videotecamoviltp.ui.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.unlam.edu.ar.videotecamoviltp.data.repositories.database.FavEntityRepository
-import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieDetailsModel
 import com.unlam.edu.ar.videotecamoviltp.data.repositories.retrofit.MovieByIDRepository
+import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieDetailsModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -16,29 +16,33 @@ class FavViewModel(
     private val favEntityRepository: FavEntityRepository
 ) : ViewModel() {
 
-    val moviesFavLiveData = MutableLiveData<MutableList<MovieDetailsModel>>()
-    private var moviesList: MutableList<MovieDetailsModel> = emptyList<MovieDetailsModel>().toMutableList()
-    val errorMessage = MutableLiveData<String>()
+    val moviesFavLiveData = MutableLiveData<List<MovieDetailsModel>>()
 
-    fun updateMoviesLiveData(movieIDList: List<Int>) {
+    private val errorMessage = MutableLiveData<String>()
+
+    fun getMovieFavsByUserID(userID: Int) {
+        val moviesList: MutableList<MovieDetailsModel> = mutableListOf()
+
         CoroutineScope(Dispatchers.IO).launch {
-            for (movieId in movieIDList) {
-                val response = movieRepository.getMovieByID(movieId)
-                if (response.isSuccessful && response.body() != null) {
-                    val movie = response.body()!!
-                    moviesList.add(movie)
-                    withContext(Dispatchers.Main) {
-                        moviesFavLiveData.value = moviesList
+
+            val movieIDList = favEntityRepository.getMovieFavIdsByUserId(userID)
+
+            if (movieIDList.isNotEmpty()) {
+                for (movieID in movieIDList) {
+                    val response = movieRepository.getMovieByID(movieID)
+
+                    if (response.isSuccessful && response.body() != null) {
+                        val movieDetails = response.body()!!
+                        moviesList.add(movieDetails)
+                    } else {
+                        val error = response.errorBody().toString()
+                        errorMessage.value = error
                     }
-                } else {
-                    val error = response.errorBody().toString()
-                    errorMessage.value = error
                 }
             }
+            withContext(Dispatchers.Main) {
+                moviesFavLiveData.value = moviesList
+            }
         }
-    }
-
-    fun getMoviesFavIDListByUserID(userId: Int): List<Int> {
-        return favEntityRepository.getMovieFavIdByUserId(userId)
     }
 }

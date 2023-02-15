@@ -10,13 +10,13 @@ import com.unlam.edu.ar.videotecamoviltp.domain.entities.FavEntity
 interface FavDAO {
 
     @Query("SELECT favs.favId from favs WHERE favs.userId = :userId")
-    fun getAllIdMovieFavByUserId(userId:Int): List<Int>
+    suspend fun getAllIdMovieFavByUserId(userId:Int): List<Int>
     //busca por id del usuario todos los id de las movies que tiene como fav y los devuelve en una lista
 
     @Insert
-    fun insert(favEntity: FavEntity)
+    suspend fun insert(favEntity: FavEntity)
 
     @Delete
-    fun delete(favEntity: FavEntity)
+    suspend fun delete(favEntity: FavEntity)
 
 }

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.unlam.edu.ar.videotecamoviltp.R
-import com.unlam.edu.ar.videotecamoviltp.databinding.ListItemMovieBinding
+import com.unlam.edu.ar.videotecamoviltp.databinding.RvFavChildItemMovieLayoutBinding
 import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieDetailsModel
 import com.unlam.edu.ar.videotecamoviltp.ui.activities.MovieDetailsActivity
 import com.unlam.edu.ar.videotecamoviltp.utils.IMGPathAPI
@@ -18,19 +18,17 @@ class MoviesFavAdapter(private val movieList: List<MovieDetailsModel>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieFavViewHolder {
         val movieBinding =
-            ListItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            RvFavChildItemMovieLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MovieFavViewHolder(movieBinding)
     }
 
     override fun onBindViewHolder(holder: MovieFavViewHolder, position: Int) {
         val movie = movieList[position]
-        holder.binding.titleTxt.text = movie.title
-        holder.binding.descriptionTxt.text = movie.description
 
         Picasso.get()
             .load("${IMGPathAPI.IMG_API_PATH}${movie.poster}")
             .error(R.drawable.ic_movie_poster_not_found)
-            .into(holder.binding.moviePoster)
+            .into(holder.binding.imageViewHome)
 
         holder.itemView.setOnClickListener {
             val context: Context = holder.itemView.context
@@ -41,11 +39,9 @@ class MoviesFavAdapter(private val movieList: List<MovieDetailsModel>) :
     }
 
 
-    override fun getItemCount(): Int {
-        return movieList.size
-    }
+    override fun getItemCount(): Int = movieList.size
 
 }
 
 
-class MovieFavViewHolder(val binding: ListItemMovieBinding) : RecyclerView.ViewHolder(binding.root)
+class MovieFavViewHolder(val binding: RvFavChildItemMovieLayoutBinding) : RecyclerView.ViewHolder(binding.root)

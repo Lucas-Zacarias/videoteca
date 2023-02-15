@@ -2,9 +2,10 @@ package com.unlam.edu.ar.videotecamoviltp.ui.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.unlam.edu.ar.videotecamoviltp.data.repositories.database.FavEntityRepository
-import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieDetailsModel
 import com.unlam.edu.ar.videotecamoviltp.data.repositories.retrofit.MovieByIDRepository
+import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieDetailsModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -16,7 +17,8 @@ class MovieDetailsViewModel(
     ) :ViewModel() {
 
     val movieDetailsLiveData = MutableLiveData<MovieDetailsModel>()
-    val errorMessage = MutableLiveData<String>()
+    val isMovieFavLiveData = MutableLiveData<Boolean>()
+    private val errorMessage = MutableLiveData<String>()
 
     fun getMovieDetailsById(movieId: Int) {
         CoroutineScope(Dispatchers.IO).launch {
@@ -32,11 +34,16 @@ class MovieDetailsViewModel(
         }
     }
 
-    fun movieIntoFavList(movieId: Int, userId: Int): Boolean {
-        return favEntityRepository.movieIdIntoFavList(movieId, userId)
+    fun isMovieIntoFavList(movieId: Int, userId: Int) {
+        viewModelScope.launch {
+            isMovieFavLiveData.value = favEntityRepository.isMovieIdIntoFavList(movieId, userId)
+        }
     }
 
     fun addOrDeleteNewMovieFav(movieId: Int, userId: Int) {
-        favEntityRepository.addOrDeleteNewMovieFav(movieId, userId)
+        viewModelScope.launch{
+            favEntityRepository.addOrDeleteNewMovieFav(movieId, userId)
+            isMovieFavLiveData.value = favEntityRepository.isMovieIdIntoFavList(movieId, userId)
+        }
     }
 }

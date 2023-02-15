@@ -20,16 +20,60 @@
         app:layout_constraintTop_toTopOf="parent"
         android:gravity="center_vertical"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
-        android:layout_width="0dp"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRV"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/favsTextView"
-        tools:listitem="@layout/list_item_movie"
-        app:layout_constraintBottom_toTopOf="@id/barContent"/>
+        app:layout_constraintBottom_toTopOf="@id/barContent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="10dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/favsTextView"
+            app:layout_constraintBottom_toTopOf="@id/barContent"
+            tools:listitem="@layout/rv_fav_child_item_movie_layout"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/favsTextView"
+        app:layout_constraintBottom_toTopOf="@id/barContent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:shimmer_auto_start="true"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:id="@+id/rvFavMoviesLoading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="visible"
+            tools:visibility="gone">
+
+            <include layout="@layout/fav_movies_loading_layout"/>
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/barContent"
@@ -95,13 +139,13 @@
 
     <ImageView
         android:id="@+id/imgEmptyList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/recyclerview"
+        android:layout_width="400dp"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toTopOf="@+id/barContent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/favsTextView"
-        app:srcCompat="@drawable/ic_favs_empty"
+        app:srcCompat="@drawable/ic_movie_poster_not_found"
         android:contentDescription="@string/imagen_de_lista_de_favoritos_vacia"
         android:visibility="gone"/>
 
@@ -112,13 +156,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:gravity="center"
-        android:text="@string/ups_no_tenes_ningun_favorito_guardado_por_ahora"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/barContent"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerview"
+        android:text="@string/no_tenes_ningun_favorito_guardado"
+        android:textAppearance="@style/genreStyleText"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgEmptyList"
-        app:layout_constraintVertical_bias="0.241"
         android:visibility="gone"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

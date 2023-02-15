@@ -62,18 +62,16 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     private fun addOrDeleteMovieOfFavList() {
         movieDetailsViewModel.addOrDeleteNewMovieFav(getMovieId(),getUserId())
-        setFavIcon()
     }
 
 
     private fun setMovie() {
         movieDetailsViewModel.getMovieDetailsById(getMovieId())
-        setUpObserver()
-        setFavIcon()
+        setUpObservers()
     }
 
-    private fun setUpObserver() {
-        movieDetailsViewModel.movieDetailsLiveData.observe(this,{movie->
+    private fun setUpObservers() {
+        movieDetailsViewModel.movieDetailsLiveData.observe(this) { movie ->
             title.text = movie.title
             description.text = movie.description
             release_date.text = setReleaseDate(movie.releaseDate)
@@ -86,7 +84,17 @@ class MovieDetailsActivity : AppCompatActivity() {
                 .load("${IMGPathAPI.IMG_API_PATH}${movie.poster}")
                 .error(R.drawable.ic_movie_poster_not_found)
                 .into(poster)
-        })
+
+            movieDetailsViewModel.isMovieIntoFavList(getMovieId(),getUserId())
+        }
+
+        movieDetailsViewModel.isMovieFavLiveData.observe(this) { isMovieFav ->
+            if (isMovieFav) {
+                isMovieFav()
+            } else {
+                isNotMovieFav()
+            }
+        }
     }
 
     private fun setReleaseDate(estreno: String): String {
@@ -132,19 +140,19 @@ class MovieDetailsActivity : AppCompatActivity() {
         return genreList.joinToString(separator = ", ") { it.genreName }
     }
 
-    private fun setFavIcon() {
-        if(movieDetailsViewModel.movieIntoFavList(getMovieId(),getUserId())){
-            fav.background = getDrawable(R.drawable.ic_fav_pressed)
-        }else{
-            fav.background = getDrawable(R.drawable.ic_fav_default)
-        }
-    }
-
     private fun getMovieId():Int{
         return intent.extras!!.getInt("movieId")
     }
 
     private fun getUserId():Int{
         return Preferences.getSharedPreferenceUserId(sharedPref)
+    }
+
+    private fun isMovieFav(){
+        fav.background = getDrawable(R.drawable.ic_fav_pressed)
+    }
+
+    private fun isNotMovieFav(){
+        fav.background = getDrawable(R.drawable.ic_fav_default)
     }
 }

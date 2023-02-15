@@ -1,5 +1,6 @@
 package com.unlam.edu.ar.videotecamoviltp.ui.activities
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -10,12 +11,12 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
+import com.unlam.edu.ar.videotecamoviltp.R
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityFavBinding
 import com.unlam.edu.ar.videotecamoviltp.domain.sharedpreferences.Preferences
 import com.unlam.edu.ar.videotecamoviltp.ui.adapters.MoviesFavAdapter
 import com.unlam.edu.ar.videotecamoviltp.ui.viewmodels.FavViewModel
-import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class FavActivity : AppCompatActivity() {
@@ -26,42 +27,77 @@ class FavActivity : AppCompatActivity() {
     private lateinit var txtEmptyList: TextView
     private lateinit var binding: ActivityFavBinding
     private val favViewModel: FavViewModel by viewModel()
-    //private val moviesFavAdapter: MoviesFavAdapter by inject()
-    private lateinit var moviesFavAdapter: MoviesFavAdapter
     private lateinit var sharedPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFavBinding.inflate(LayoutInflater.from(this))
-        sharedPref = this.getSharedPreferences("FILE_PREFERENCES_USER_ID", Context.MODE_PRIVATE)
         setContentView(binding.root)
+
+        setSharedPreferences()
         getViews()
+        configSwipe()
         setListeners()
         setUpRecyclerView()
-        getMovies()
+    }
+
+    private fun configSwipe() {
+        binding.swipeRV.setProgressBackgroundColorSchemeResource(R.color.black)
+        binding.swipeRV.setColorSchemeColors(getColor(R.color.white))
+        binding.swipeRV.setOnRefreshListener {
+            getMovies()
+        }
+    }
+
+    private fun setSharedPreferences(){
+        sharedPref = this.getSharedPreferences(
+            "FILE_PREFERENCES_USER_ID",
+            Context.MODE_PRIVATE)
     }
 
     private fun getMovies() {
-        if (getMovieIdList().isEmpty()) {
-            imgEmptyList.visibility = View.VISIBLE
-            txtEmptyList.visibility = View.VISIBLE
-        }
-
-        favViewModel.updateMoviesLiveData(getMovieIdList())
-        setUpObserver()
+        favViewModel.getMovieFavsByUserID(getUserId())
+        showShimmer()
     }
 
-    private fun setUpObserver() {
-        favViewModel.moviesFavLiveData.observe(this, {
-            binding.recyclerview.adapter = MoviesFavAdapter(it)
-            moviesFavAdapter.notifyDataSetChanged()
-        })
-    }
-
+    @SuppressLint("NotifyDataSetChanged")
     private fun setUpRecyclerView() {
-        binding.recyclerview.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
-        moviesFavAdapter = MoviesFavAdapter(emptyList())
-        binding.recyclerview.adapter = moviesFavAdapter
+        binding.recyclerview.layoutManager = GridLayoutManager(this, 3)
+
+        getMovies()
+
+        favViewModel.moviesFavLiveData.observe(this) { movieList ->
+            if(movieList.isEmpty()){
+                showImageNotFavMovies()
+            }else{
+                val adapter = MoviesFavAdapter(movieList)
+                binding.recyclerview.adapter = adapter
+                adapter.notifyDataSetChanged()
+
+                showData()
+            }
+
+        }
+    }
+
+    private fun showImageNotFavMovies(){
+        binding.rvFavMoviesLoading.visibility = View.GONE
+        imgEmptyList.visibility = View.VISIBLE
+        txtEmptyList.visibility = View.VISIBLE
+        binding.swipeRV.isRefreshing = false
+    }
+
+    private fun showData(){
+        imgEmptyList.visibility = View.GONE
+        txtEmptyList.visibility = View.GONE
+        binding.rvFavMoviesLoading.visibility = View.GONE
+        binding.recyclerview.visibility = View.VISIBLE
+        binding.swipeRV.isRefreshing = false
+    }
+
+    private fun showShimmer(){
+        binding.rvFavMoviesLoading.visibility = View.VISIBLE
+        binding.recyclerview.visibility = View.GONE
     }
 
     private fun getViews() {
@@ -103,7 +139,8 @@ class FavActivity : AppCompatActivity() {
         return Preferences.getSharedPreferenceUserId(sharedPref)
     }
 
-    private fun getMovieIdList(): List<Int> {
-        return favViewModel.getMoviesFavIDListByUserID(getUserId())
+    override fun onRestart() {
+        super.onRestart()
+        getMovies()
     }
 }
