@@ -14,10 +14,11 @@ class HomeViewModel(private val moviesRepository: MoviesByGenreRepository):
     ViewModel(){
 
     val moviesListByGenre = MutableLiveData<List<MoviesByGenreModel>>()
-    private var moviesList: MutableList<MoviesByGenreModel> = emptyList<MoviesByGenreModel>().toMutableList()
     private val errorMessage = MutableLiveData<String>()
 
     fun getMoviesByGenre(){
+        val moviesList: MutableList<MoviesByGenreModel> = emptyList<MoviesByGenreModel>().toMutableList()
+
         CoroutineScope(Dispatchers.IO).launch {
             for(movieGenre in GenresUtil.genresList){
                 val response = moviesRepository.getMovieListByGenreID(movieGenre.id)
