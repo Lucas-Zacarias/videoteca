@@ -9,6 +9,7 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.unlam.edu.ar.videotecamoviltp.R
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityHomeBinding
 import com.unlam.edu.ar.videotecamoviltp.ui.adapters.MoviePosterParentAdapter
 import com.unlam.edu.ar.videotecamoviltp.ui.viewmodels.HomeViewModel
@@ -30,10 +31,21 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
 
+        configSwipe()
         setUpRecyclerView()
         getViews()
         setListeners()
         }
+    
+    private fun configSwipe(){
+        binding.swipeHome.setProgressBackgroundColorSchemeResource(R.color.black)
+        binding.swipeHome.setColorSchemeColors(getColor(R.color.white))
+        binding.swipeHome.setOnRefreshListener {
+            binding.rvNestedGenresLoading.visibility = View.VISIBLE
+            binding.rvNestedGenres.visibility = View.GONE
+            vmHome.getMoviesByGenre()
+        }
+    }
 
     @SuppressLint("NotifyDataSetChanged")
     private fun setUpRecyclerView() {
@@ -58,6 +70,7 @@ class HomeActivity : AppCompatActivity() {
     private fun showData() {
         binding.rvNestedGenresLoading.visibility = View.GONE
         binding.rvNestedGenres.visibility = View.VISIBLE
+        binding.swipeHome.isRefreshing = false
     }
 
     private fun getViews() {
