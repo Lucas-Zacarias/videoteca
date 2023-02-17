@@ -17,7 +17,6 @@ import com.unlam.edu.ar.videotecamoviltp.databinding.FragmentMovieDetailsBinding
 import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieDetailsModel
 import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieGenreModel
 import com.unlam.edu.ar.videotecamoviltp.domain.sharedpreferences.Preferences
-import com.unlam.edu.ar.videotecamoviltp.ui.viewmodels.MovieDetailsViewModel
 import com.unlam.edu.ar.videotecamoviltp.utils.IMGPathAPI
 import org.koin.android.viewmodel.ext.android.viewModel
 

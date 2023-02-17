@@ -28,9 +28,6 @@
             android:name=".ui.activities.LogInActivity"
             android:theme="@style/Theme.Videotecamoviltp.NoActionBar"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.activities.MovieDetailsActivity"
-            android:theme="@style/Theme.Videotecamoviltp.NoActionBar" />
         <activity android:name=".ui.activities.SignUpActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activities.HomeActivity"
