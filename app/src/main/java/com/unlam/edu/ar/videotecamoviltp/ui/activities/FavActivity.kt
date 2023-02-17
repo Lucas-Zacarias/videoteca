@@ -23,7 +23,6 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class FavActivity : AppCompatActivity() {
     private lateinit var btnHome: ImageButton
     private lateinit var btnSearch: ImageButton
-    private lateinit var btnUser: ImageButton
     private lateinit var imgEmptyList: ImageView
     private lateinit var txtEmptyList: TextView
     private lateinit var binding: ActivityFavBinding
@@ -104,7 +103,6 @@ class FavActivity : AppCompatActivity() {
     private fun getViews() {
         btnHome = binding.btnHome
         btnSearch = binding.btnSearch
-        btnUser = binding.btnUser
         imgEmptyList = binding.imgEmptyList
         txtEmptyList = binding.txtEmptyList
     }
@@ -113,9 +111,6 @@ class FavActivity : AppCompatActivity() {
         btnHome.setOnClickListener{
             navigateToHome()
         }
-        btnUser.setOnClickListener{
-            navigateToUser()
-        }
         btnSearch.setOnClickListener{
             navigateToSearch()
         }
@@ -123,11 +118,6 @@ class FavActivity : AppCompatActivity() {
 
     private fun navigateToHome() {
         val intent = Intent(this, HomeActivity::class.java)
-        startActivity(intent)
-    }
-
-    private fun navigateToUser() {
-        val intent = Intent(this, UserActivity::class.java)
         startActivity(intent)
     }
 

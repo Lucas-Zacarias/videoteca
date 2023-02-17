@@ -94,6 +94,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnSearch"
             app:srcCompat="@drawable/ic_baseline_home_24" />
 
         <ImageButton
@@ -103,9 +104,8 @@
             android:background="#00FFFFFF"
             android:contentDescription="@string/boton_search"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnUser"
-            app:layout_constraintHorizontal_bias="0.29"
-            app:layout_constraintStart_toEndOf="@+id/btnHome"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_baseline_search_24" />
 
@@ -116,23 +116,11 @@
             android:background="#00FFFFFF"
             android:contentDescription="@string/boton_favs"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnUser"
-            app:layout_constraintHorizontal_bias="0.52"
-            app:layout_constraintStart_toEndOf="@+id/btnSearch"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_favorite_border_24" />
-
-        <ImageButton
-            android:id="@+id/btnUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:background="#00FFFFFF"
-            android:contentDescription="@string/boton_user"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_person_outline_24" />
+            app:layout_constraintStart_toEndOf="@id/btnSearch"
+            app:srcCompat="@drawable/ic_baseline_favorite_border_24"
+            android:layout_marginEnd="32dp"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
