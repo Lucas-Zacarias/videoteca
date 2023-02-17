@@ -97,4 +97,7 @@ dependencies {
 
     //Swipe to refresh
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+    //OkHttp
+    implementation 'com.squareup.okhttp3:okhttp:3.14.9'
 }
