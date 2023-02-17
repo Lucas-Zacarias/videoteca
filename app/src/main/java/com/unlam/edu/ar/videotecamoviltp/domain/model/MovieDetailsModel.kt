@@ -21,11 +21,5 @@ data class MovieDetailsModel(
     val genreList: List<MovieGenreModel>,
 
     @SerializedName("runtime")
-    val runtime: Int,
-
-    @SerializedName("budget")
-    val budget: Int,
-
-    @SerializedName("revenue")
-    val revenue: Long
+    val runtime: Int
 )

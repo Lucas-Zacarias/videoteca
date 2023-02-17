@@ -1,7 +1,5 @@
 package com.unlam.edu.ar.videotecamoviltp.ui.adapters
 
-import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,10 +7,11 @@ import com.squareup.picasso.Picasso
 import com.unlam.edu.ar.videotecamoviltp.R
 import com.unlam.edu.ar.videotecamoviltp.databinding.RvFavChildItemMovieLayoutBinding
 import com.unlam.edu.ar.videotecamoviltp.domain.model.MovieDetailsModel
-import com.unlam.edu.ar.videotecamoviltp.ui.activities.MovieDetailsActivity
 import com.unlam.edu.ar.videotecamoviltp.utils.IMGPathAPI
 
-class MoviesFavAdapter(private val movieList: List<MovieDetailsModel>) :
+class MoviesFavAdapter(
+    private val movieList: List<MovieDetailsModel>,
+    private val movieClickListener:(Int) -> Unit) :
     RecyclerView.Adapter<MovieFavViewHolder>() {
 
 
@@ -31,10 +30,7 @@ class MoviesFavAdapter(private val movieList: List<MovieDetailsModel>) :
             .into(holder.binding.imageViewHome)
 
         holder.itemView.setOnClickListener {
-            val context: Context = holder.itemView.context
-            val intent = Intent(context, MovieDetailsActivity::class.java)
-            intent.putExtra("movieId", movie.id)
-            context.startActivity(intent)
+            movieClickListener(movie.id)
         }
     }
 

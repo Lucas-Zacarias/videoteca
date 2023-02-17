@@ -8,8 +8,10 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
+import com.unlam.edu.ar.videotecamoviltp.R
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivitySearchBinding
 import com.unlam.edu.ar.videotecamoviltp.ui.adapters.MoviesSearchAdapter
+import com.unlam.edu.ar.videotecamoviltp.ui.moviedetails.MovieDetailsFragment
 import com.unlam.edu.ar.videotecamoviltp.ui.viewmodels.SearchViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -45,7 +47,7 @@ class SearchActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         binding.recyclerview.layoutManager = GridLayoutManager(this, 3)
         vm.moviesSearchModelList.observe(this) { movies ->
-            val adapter = MoviesSearchAdapter(movies.results)
+            val adapter = MoviesSearchAdapter(movies.results) { movieId -> goToMovieDetails(movieId) }
             binding.recyclerview.adapter = adapter
             adapter.notifyDataSetChanged()
         }
@@ -114,5 +116,17 @@ class SearchActivity : AppCompatActivity() {
     private fun navigateToFav() {
         val intent = Intent(this, FavActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun goToMovieDetails(movieId: Int){
+        val bundle = Bundle()
+        bundle.putInt("movieId", movieId)
+
+        val movieDetailsFragment = MovieDetailsFragment()
+        movieDetailsFragment.arguments = bundle
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.flSearch, movieDetailsFragment)
+            .commit()
     }
 }

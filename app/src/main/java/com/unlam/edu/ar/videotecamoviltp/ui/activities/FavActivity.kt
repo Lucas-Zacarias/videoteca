@@ -16,6 +16,7 @@ import com.unlam.edu.ar.videotecamoviltp.R
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityFavBinding
 import com.unlam.edu.ar.videotecamoviltp.domain.sharedpreferences.Preferences
 import com.unlam.edu.ar.videotecamoviltp.ui.adapters.MoviesFavAdapter
+import com.unlam.edu.ar.videotecamoviltp.ui.moviedetails.MovieDetailsFragment
 import com.unlam.edu.ar.videotecamoviltp.ui.viewmodels.FavViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -70,7 +71,7 @@ class FavActivity : AppCompatActivity() {
             if(movieList.isEmpty()){
                 showImageNotFavMovies()
             }else{
-                val adapter = MoviesFavAdapter(movieList)
+                val adapter = MoviesFavAdapter(movieList) { movieId -> goToMovieDetails(movieId) }
                 binding.recyclerview.adapter = adapter
                 adapter.notifyDataSetChanged()
 
@@ -142,5 +143,17 @@ class FavActivity : AppCompatActivity() {
     override fun onRestart() {
         super.onRestart()
         getMovies()
+    }
+
+    private fun goToMovieDetails(movieId: Int){
+        val bundle = Bundle()
+        bundle.putInt("movieId", movieId)
+
+        val movieDetailsFragment = MovieDetailsFragment()
+        movieDetailsFragment.arguments = bundle
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.flFav, movieDetailsFragment)
+            .commit()
     }
 }

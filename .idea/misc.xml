@@ -7,6 +7,14 @@
         <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/drawable/ic_account.xml" value="0.2135" />
         <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.1505" />
         <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/drawable/ic_close.xml" value="0.1" />
+        <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/drawable/ic_closecircle_svgrepo_com__1_.xml" value="0.161" />
+        <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/drawable/ic_default_fav.xml" value="0.161" />
+        <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/drawable/ic_fav_default.xml" value="0.161" />
+        <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/drawable/ic_fav_pressed.xml" value="0.161" />
+        <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/drawable/ic_info.xml" value="0.161" />
+        <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/drawable/ic_pressed_fav.xml" value="0.161" />
+        <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/drawable/rounded_edge.xml" value="0.161" />
+        <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/drawable/selector_ic_movie_fav.xml" value="0.161" />
         <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/activity_fav.xml" value="0.2" />
         <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/activity_log_in.xml" value="0.20425724637681159" />
@@ -16,10 +24,12 @@
         <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/activity_sign_up.xml" value="0.20425724637681159" />
         <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/activity_user.xml" value="0.20425724637681159" />
         <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/fav_movies_loading_layout.xml" value="0.2" />
-        <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/genre_movies_loading_layout.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/genre_movies_loading_layout.xml" value="0.1" />
         <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/home_images.xml" value="0.1" />
         <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/home_movie_poster_item_loading_layout.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/list_item_movie.xml" value="0.1" />
+        <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/movie_details_layout.xml" value="0.264" />
+        <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/movie_details_loading_layout.xml" value="0.264" />
         <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/movie_poster_item_loading.xml" value="0.1" />
         <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/movie_poster_item_loading_layout.xml" value="0.18432971014492755" />
         <entry key="..\:/Users/User/Documents/My projects/videoteca/app/src/main/res/layout/rv_child_item_layout.xml" value="0.24895833333333334" />

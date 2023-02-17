@@ -10,6 +10,7 @@ import com.unlam.edu.ar.videotecamoviltp.data.repositories.retrofit.MovieByIDRep
 import com.unlam.edu.ar.videotecamoviltp.data.repositories.retrofit.MoviesByGenreRepository
 import com.unlam.edu.ar.videotecamoviltp.data.repositories.retrofit.MoviesByTitleRepository
 import com.unlam.edu.ar.videotecamoviltp.data.repositories.retrofit.PopularMoviesRepository
+import com.unlam.edu.ar.videotecamoviltp.ui.moviedetails.MovieDetailsViewModel
 import com.unlam.edu.ar.videotecamoviltp.ui.viewmodels.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
