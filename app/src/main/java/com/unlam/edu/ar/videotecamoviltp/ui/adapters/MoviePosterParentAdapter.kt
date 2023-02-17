@@ -9,7 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.unlam.edu.ar.videotecamoviltp.R
 import com.unlam.edu.ar.videotecamoviltp.domain.model.MoviesByGenreModel
 
-class MoviePosterParentAdapter(private val movieList: List<MoviesByGenreModel>) :
+class MoviePosterParentAdapter(
+    private val movieList: List<MoviesByGenreModel>,
+    private val movieClickListener:(Int) -> Unit
+) :
     RecyclerView.Adapter<MoviePosterParentAdapter.ParentViewHolder>() {
 
     inner class ParentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -35,7 +38,7 @@ class MoviePosterParentAdapter(private val movieList: List<MoviesByGenreModel>) 
             false
         )
 
-        val adapter = MoviePosterChildAdapter(parentItem.movieList)
+        val adapter = MoviePosterChildAdapter(parentItem.movieList, movieClickListener)
         holder.childRecyclerView.adapter = adapter
     }
 

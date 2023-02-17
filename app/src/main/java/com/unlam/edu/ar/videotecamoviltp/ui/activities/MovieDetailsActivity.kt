@@ -8,6 +8,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import com.squareup.picasso.Picasso
 import com.unlam.edu.ar.videotecamoviltp.R
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityMovieDetailsBinding
@@ -149,10 +150,10 @@ class MovieDetailsActivity : AppCompatActivity() {
     }
 
     private fun isMovieFav(){
-        fav.background = getDrawable(R.drawable.ic_fav_pressed)
+        fav.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.ic_fav_pressed))
     }
 
     private fun isNotMovieFav(){
-        fav.background = getDrawable(R.drawable.ic_fav_default)
+        fav.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.ic_fav_default))
     }
 }

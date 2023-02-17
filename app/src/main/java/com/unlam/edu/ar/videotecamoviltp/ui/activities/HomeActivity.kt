@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.unlam.edu.ar.videotecamoviltp.R
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityHomeBinding
 import com.unlam.edu.ar.videotecamoviltp.ui.adapters.MoviePosterParentAdapter
+import com.unlam.edu.ar.videotecamoviltp.ui.moviedetails.MovieDetailsFragment
 import com.unlam.edu.ar.videotecamoviltp.ui.viewmodels.HomeViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -59,7 +60,7 @@ class HomeActivity : AppCompatActivity() {
         vmHome.getMoviesByGenre()
         vmHome.moviesListByGenre.observe(this) { movies ->
 
-            val adapter = MoviePosterParentAdapter(movies)
+            val adapter = MoviePosterParentAdapter(movies) { movieId -> goToMovieDetails(movieId) }
             recyclerView.adapter = adapter
             adapter.notifyDataSetChanged()
 
@@ -113,5 +114,17 @@ class HomeActivity : AppCompatActivity() {
     private fun navigateToFav() {
         val intent = Intent(this, FavActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun goToMovieDetails(movieId: Int){
+        val bundle = Bundle()
+        bundle.putInt("movieId", movieId)
+
+        val movieDetailsFragment = MovieDetailsFragment()
+        movieDetailsFragment.arguments = bundle
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.flHome, movieDetailsFragment)
+            .commit()
     }
 }

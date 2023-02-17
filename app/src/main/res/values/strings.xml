@@ -57,6 +57,6 @@
     <string name="account_button">Botón de cuenta de usuario</string>
     <string name="close_button">Botón de cerrar detalles de la película</string>
     <string name="more_movie_info">Ícono de más información sobre la película</string>
-    <string name="more_details">Detalles y más</string>
+    <string name="more_details">Más detalles</string>
     <string name="button_more_movie_info">Botón para ir a más información sobre la película</string>
 </resources>
