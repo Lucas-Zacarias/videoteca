@@ -141,11 +141,11 @@ class MovieDetailsFragment : Fragment() {
     }
 
     private fun isMovieFav(){
-        favButton.setImageDrawable(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_pressed_fav))
+        favButton.setImageDrawable(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_fav_pressed))
     }
 
     private fun isNotMovieFav(){
-        favButton.setImageDrawable(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_default_fav))
+        favButton.setImageDrawable(AppCompatResources.getDrawable(requireContext(), R.drawable.ic_fav_default))
     }
 
     private fun closeMovieDetailsFragment(){

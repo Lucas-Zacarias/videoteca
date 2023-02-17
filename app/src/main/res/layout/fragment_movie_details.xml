@@ -16,7 +16,7 @@
             android:id="@+id/ibMovieFav"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:src="@drawable/ic_default_fav"
+            android:src="@drawable/ic_fav_default"
             android:backgroundTint="@color/transparent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@id/ibClose"
