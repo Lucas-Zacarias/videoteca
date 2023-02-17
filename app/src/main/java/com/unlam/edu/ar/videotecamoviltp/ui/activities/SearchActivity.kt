@@ -20,7 +20,6 @@ class SearchActivity : AppCompatActivity() {
 
     private lateinit var btnHome: ImageButton
     private lateinit var btnSearch: ImageButton
-    private lateinit var btnUser: ImageButton
     private lateinit var btnFavourites: ImageButton
     private lateinit var binding: ActivitySearchBinding
     private val vm: SearchViewModel by viewModel()
@@ -79,16 +78,12 @@ class SearchActivity : AppCompatActivity() {
     private fun getViews() {
         btnHome = binding.btnHome
         btnSearch = binding.btnSearch
-        btnUser = binding.btnUser
         btnFavourites = binding.btnFavourites
     }
 
     private fun setListeners() {
         btnHome.setOnClickListener{
             navigateToHome()
-        }
-        btnUser.setOnClickListener{
-            navigateToUser()
         }
         btnSearch.setOnClickListener{
             navigateToSearch()
@@ -100,11 +95,6 @@ class SearchActivity : AppCompatActivity() {
 
     private fun navigateToHome() {
         val intent = Intent(this, HomeActivity::class.java)
-        startActivity(intent)
-    }
-
-    private fun navigateToUser() {
-        val intent = Intent(this, UserActivity::class.java)
         startActivity(intent)
     }
 

@@ -19,7 +19,6 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         </activity>
-        <activity android:name=".ui.activities.UserActivity" android:theme="@style/Theme.Videotecamoviltp.NoActionBar" android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.activities.FavActivity"
             android:screenOrientation="portrait"

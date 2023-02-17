@@ -13,6 +13,7 @@ import com.unlam.edu.ar.videotecamoviltp.R
 import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityHomeBinding
 import com.unlam.edu.ar.videotecamoviltp.ui.adapters.MoviePosterParentAdapter
 import com.unlam.edu.ar.videotecamoviltp.ui.moviedetails.MovieDetailsFragment
+import com.unlam.edu.ar.videotecamoviltp.ui.user.UserFragment
 import com.unlam.edu.ar.videotecamoviltp.ui.viewmodels.HomeViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -20,11 +21,11 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var btnHome: ImageButton
     private lateinit var btnSearch: ImageButton
-    private lateinit var btnUser: ImageButton
     private lateinit var btnFavourites: ImageButton
     private lateinit var recyclerView: RecyclerView
     private lateinit var binding: ActivityHomeBinding
     private val vmHome: HomeViewModel by viewModel()
+    private lateinit var userButton: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,16 +78,13 @@ class HomeActivity : AppCompatActivity() {
     private fun getViews() {
         btnHome = binding.btnHome
         btnSearch = binding.btnSearch
-        btnUser = binding.btnUser
         btnFavourites = binding.btnFavourites
+        userButton = binding.ibUser
     }
 
     private fun setListeners() {
         btnHome.setOnClickListener{
             navigateToHome()
-        }
-        btnUser.setOnClickListener{
-            navigateToUser()
         }
         btnSearch.setOnClickListener{
             navigateToSearch()
@@ -94,15 +92,13 @@ class HomeActivity : AppCompatActivity() {
         btnFavourites.setOnClickListener{
             navigateToFav()
         }
+        userButton.setOnClickListener {
+            goToUserAccount()
+        }
     }
 
     private fun navigateToHome() {
         val intent = Intent(this, HomeActivity::class.java)
-        startActivity(intent)
-    }
-
-    private fun navigateToUser() {
-        val intent = Intent(this, UserActivity::class.java)
         startActivity(intent)
     }
 
@@ -125,6 +121,14 @@ class HomeActivity : AppCompatActivity() {
 
         supportFragmentManager.beginTransaction()
             .replace(R.id.flHome, movieDetailsFragment)
+            .commit()
+    }
+
+    private fun goToUserAccount(){
+        val userFragment = UserFragment()
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.flHome, userFragment)
             .commit()
     }
 }
