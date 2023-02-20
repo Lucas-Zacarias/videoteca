@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.unlam.edu.ar.videotecamoviltp.ui.home.HomeFragment">
+        <action
+            android:id="@+id/action_homeFragment_to_searchMoviesFragment"
+            app:destination="@id/searchMoviesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_favExtendedFragment"
+            app:destination="@id/favExtendedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchMoviesFragment"
+        android:name="com.unlam.edu.ar.videotecamoviltp.ui.searchmovies.SearchMoviesFragment"
+        tools:layout="@layout/fragment_search_movies" >
+        <action
+            android:id="@+id/action_searchMoviesFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favExtendedFragment"
+        android:name="com.unlam.edu.ar.videotecamoviltp.ui.favs.FavExtendedFragment"
+        android:label="fragment_fav_extended"
+        tools:layout="@layout/fragment_fav_extended" >
+        <action
+            android:id="@+id/action_favExtendedFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+</navigation>

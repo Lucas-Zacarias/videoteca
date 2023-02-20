@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     tools:context=".ui.moviedetails.MovieDetailsFragment"
     android:padding="10dp"
-    android:background="@drawable/rounded_corners">
+    android:background="@drawable/rounded_corners"
+    android:layout_gravity="bottom">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,8 +15,8 @@
 
         <ImageButton
             android:id="@+id/ibMovieFav"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:src="@drawable/ic_fav_default"
             android:backgroundTint="@color/transparent"
             app:layout_constraintTop_toTopOf="parent"
@@ -24,8 +25,8 @@
             android:contentDescription="@string/boton_de_favorito"/>
 
         <ImageButton
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:id="@+id/ibClose"
             android:src="@drawable/ic_close"
             android:backgroundTint="@color/transparent"
@@ -134,7 +135,7 @@
             android:src="@drawable/ic_info"
             app:layout_constraintTop_toTopOf="@id/divider"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="10dp"
             android:contentDescription="@string/more_movie_info"/>
 
         <TextView
@@ -143,7 +144,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/ivMoreMovieInfo"
             app:layout_constraintTop_toTopOf="@id/ivMoreMovieInfo"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/ivMoreMovieInfo"
             android:text="@string/more_details"
             android:textAppearance="@style/largeTextStyleText"
             android:layout_marginStart="8dp"/>
@@ -156,6 +157,7 @@
             android:background="@color/transparent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/ivMoreMovieInfo"
+            app:layout_constraintBottom_toBottomOf="@id/ivMoreMovieInfo"
             android:contentDescription="@string/button_more_movie_info"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

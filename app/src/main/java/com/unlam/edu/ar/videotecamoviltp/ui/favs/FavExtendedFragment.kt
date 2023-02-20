@@ -1,38 +1,48 @@
-package com.unlam.edu.ar.videotecamoviltp.ui.activities
+package com.unlam.edu.ar.videotecamoviltp.ui.favs
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.unlam.edu.ar.videotecamoviltp.R
-import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityFavBinding
+import com.unlam.edu.ar.videotecamoviltp.databinding.FragmentFavExtendedBinding
 import com.unlam.edu.ar.videotecamoviltp.domain.sharedpreferences.Preferences
 import com.unlam.edu.ar.videotecamoviltp.ui.adapters.MoviesFavAdapter
 import com.unlam.edu.ar.videotecamoviltp.ui.moviedetails.MovieDetailsFragment
-import com.unlam.edu.ar.videotecamoviltp.ui.viewmodels.FavViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class FavActivity : AppCompatActivity() {
-    private lateinit var btnHome: ImageButton
-    private lateinit var btnSearch: ImageButton
+class FavExtendedFragment: Fragment() {
+    private var _binding: FragmentFavExtendedBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var back: ImageButton
+    private lateinit var favRV: RecyclerView
     private lateinit var imgEmptyList: ImageView
     private lateinit var txtEmptyList: TextView
-    private lateinit var binding: ActivityFavBinding
     private val favViewModel: FavViewModel by viewModel()
     private lateinit var sharedPref: SharedPreferences
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityFavBinding.inflate(LayoutInflater.from(this))
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentFavExtendedBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         setSharedPreferences()
         getViews()
@@ -41,37 +51,56 @@ class FavActivity : AppCompatActivity() {
         setUpRecyclerView()
     }
 
+    private fun setSharedPreferences(){
+        sharedPref = requireContext().getSharedPreferences(
+            "FILE_PREFERENCES_USER_ID",
+            Context.MODE_PRIVATE)
+    }
+
+    private fun getViews(){
+        back = binding.ibBack
+        favRV = binding.recyclerview
+        imgEmptyList = binding.imgEmptyList
+        txtEmptyList = binding.txtEmptyList
+    }
+
     private fun configSwipe() {
         binding.swipeRV.setProgressBackgroundColorSchemeResource(R.color.black)
-        binding.swipeRV.setColorSchemeColors(getColor(R.color.white))
+        binding.swipeRV.setColorSchemeColors(
+            ContextCompat.getColor(requireContext(), R.color.white))
         binding.swipeRV.setOnRefreshListener {
             getMovies()
         }
     }
 
-    private fun setSharedPreferences(){
-        sharedPref = this.getSharedPreferences(
-            "FILE_PREFERENCES_USER_ID",
-            Context.MODE_PRIVATE)
+    private fun setListeners(){
+        back.setOnClickListener {
+            goToHome()
+        }
     }
 
-    private fun getMovies() {
+    private fun goToHome(){
+        Navigation.findNavController(binding.root)
+            .navigate(R.id.action_favExtendedFragment_to_homeFragment)
+    }
+
+    private fun getMovies(){
         favViewModel.getMovieFavsByUserID(getUserId())
         showShimmer()
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private fun setUpRecyclerView() {
-        binding.recyclerview.layoutManager = GridLayoutManager(this, 3)
+    private fun setUpRecyclerView(){
+        favRV.layoutManager = GridLayoutManager(requireContext(), 3)
 
         getMovies()
 
-        favViewModel.moviesFavLiveData.observe(this) { movieList ->
+        favViewModel.moviesFavLiveData.observe(viewLifecycleOwner){ movieList ->
             if(movieList.isEmpty()){
                 showImageNotFavMovies()
             }else{
-                val adapter = MoviesFavAdapter(movieList) { movieId -> goToMovieDetails(movieId) }
-                binding.recyclerview.adapter = adapter
+                val adapter = MoviesFavAdapter(movieList) { movieId -> goToMovieDetails(movieId)}
+                favRV.adapter = adapter
                 adapter.notifyDataSetChanged()
 
                 showData()
@@ -100,39 +129,8 @@ class FavActivity : AppCompatActivity() {
         binding.recyclerview.visibility = View.GONE
     }
 
-    private fun getViews() {
-        btnHome = binding.btnHome
-        btnSearch = binding.btnSearch
-        imgEmptyList = binding.imgEmptyList
-        txtEmptyList = binding.txtEmptyList
-    }
-
-    private fun setListeners() {
-        btnHome.setOnClickListener{
-            navigateToHome()
-        }
-        btnSearch.setOnClickListener{
-            navigateToSearch()
-        }
-    }
-
-    private fun navigateToHome() {
-        val intent = Intent(this, HomeActivity::class.java)
-        startActivity(intent)
-    }
-
-    private fun navigateToSearch() {
-        val intent = Intent(this, SearchActivity::class.java)
-        startActivity(intent)
-    }
-
     private fun getUserId():Int{
         return Preferences.getSharedPreferenceUserId(sharedPref)
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        getMovies()
     }
 
     private fun goToMovieDetails(movieId: Int){
@@ -142,8 +140,9 @@ class FavActivity : AppCompatActivity() {
         val movieDetailsFragment = MovieDetailsFragment()
         movieDetailsFragment.arguments = bundle
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.flFav, movieDetailsFragment)
+        childFragmentManager.beginTransaction()
+            .replace(R.id.flFavExtended, movieDetailsFragment)
             .commit()
     }
+
 }

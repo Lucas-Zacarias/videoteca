@@ -6,8 +6,6 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.unlam.edu.ar.videotecamoviltp.domain.sharedpreferences.Preferences
-import com.unlam.edu.ar.videotecamoviltp.ui.activities.HomeActivity
-import com.unlam.edu.ar.videotecamoviltp.ui.activities.LogInActivity
 
 private lateinit var sharedPref: SharedPreferences
 
@@ -28,7 +26,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun navigateToHome() {
-        val intent = Intent(this, HomeActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
 

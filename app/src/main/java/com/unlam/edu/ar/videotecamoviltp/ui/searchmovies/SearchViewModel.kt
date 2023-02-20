@@ -1,4 +1,4 @@
-package com.unlam.edu.ar.videotecamoviltp.ui.viewmodels
+package com.unlam.edu.ar.videotecamoviltp.ui.searchmovies
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
