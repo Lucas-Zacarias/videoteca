@@ -16,8 +16,8 @@
 
         <ImageButton
             android:id="@+id/ibBack"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:background="@color/transparent"
             android:contentDescription="@string/button_to_back"
             app:layout_constraintStart_toStartOf="parent"

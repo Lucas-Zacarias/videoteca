@@ -22,14 +22,14 @@
 
         <ImageButton
             android:id="@+id/ibSearchMovies"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginTop="4dp"
             android:background="@drawable/borde_redondo"
-            android:src="@drawable/ic_baseline_search_24"
+            android:src="@drawable/ic_search"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ibFav"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="8dp"
             android:contentDescription="@string/button_search_movies"/>
 
         <ImageButton
@@ -41,8 +41,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/ibSearchMovies"
             app:layout_constraintEnd_toStartOf="@+id/ibUser"
             android:backgroundTint="@color/background_color"
-            android:src="@drawable/ic_baseline_favorite_border_24"
-            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_favorite"
             android:contentDescription="@string/fav_button" />
 
         <ImageButton
@@ -50,7 +49,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="5dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/ibSearchMovies"

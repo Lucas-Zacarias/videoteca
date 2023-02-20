@@ -11,6 +11,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.unlam.edu.ar.videotecamoviltp.R
@@ -30,6 +31,7 @@ class FavFragment: Fragment() {
     private lateinit var refresh: ImageButton
     private lateinit var back: ImageButton
     private lateinit var favRV: RecyclerView
+    private lateinit var favsExtended: ImageButton
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,6 +63,7 @@ class FavFragment: Fragment() {
         refresh = binding.ibRefresh
         back = binding.ibClose
         favRV = binding.recyclerview
+        favsExtended = binding.ibFavsExtended
     }
 
     private fun setListeners(){
@@ -69,6 +72,9 @@ class FavFragment: Fragment() {
         }
         back.setOnClickListener {
             closeFavFragment()
+        }
+        favsExtended.setOnClickListener {
+            goToFavExtendedFragment()
         }
     }
 
@@ -130,7 +136,7 @@ class FavFragment: Fragment() {
         binding.divider.visibility = View.GONE
         binding.ivMoreMovieInfo.visibility = View.GONE
         binding.tvMoreMovieInfo.visibility = View.GONE
-        binding.ibMoreMovieInfo.visibility = View.GONE
+        binding.ibFavsExtended.visibility = View.GONE
     }
 
     private fun showImageNotFavMovies(){
@@ -140,7 +146,7 @@ class FavFragment: Fragment() {
         binding.divider.visibility = View.GONE
         binding.ivMoreMovieInfo.visibility = View.GONE
         binding.tvMoreMovieInfo.visibility = View.GONE
-        binding.ibMoreMovieInfo.visibility = View.GONE
+        binding.ibFavsExtended.visibility = View.GONE
     }
 
     private fun showData(){
@@ -151,6 +157,11 @@ class FavFragment: Fragment() {
         binding.divider.visibility = View.VISIBLE
         binding.ivMoreMovieInfo.visibility = View.VISIBLE
         binding.tvMoreMovieInfo.visibility = View.VISIBLE
-        binding.ibMoreMovieInfo.visibility = View.VISIBLE
+        binding.ibFavsExtended.visibility = View.VISIBLE
+    }
+
+    private fun goToFavExtendedFragment(){
+        Navigation.findNavController(binding.root)
+            .navigate(R.id.action_homeFragment_to_favExtendedFragment)
     }
 }

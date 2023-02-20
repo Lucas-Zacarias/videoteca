@@ -22,10 +22,6 @@
         </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activities.FavActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Videotecamoviltp.NoActionBar" />
-        <activity
             android:name=".ui.activities.LogInActivity"
             android:theme="@style/Theme.Videotecamoviltp.NoActionBar"
             android:screenOrientation="portrait" />

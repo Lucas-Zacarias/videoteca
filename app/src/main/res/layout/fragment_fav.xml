@@ -153,7 +153,7 @@
                 tools:visibility="visible"/>
 
             <ImageButton
-                android:id="@+id/ibMoreMovieInfo"
+                android:id="@+id/ibFavsExtended"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_arrow_right"
