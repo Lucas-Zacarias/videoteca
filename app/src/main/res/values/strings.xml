@@ -59,4 +59,10 @@
     <string name="more_movie_info">Ícono de más información sobre la película</string>
     <string name="more_details">Más detalles</string>
     <string name="button_more_movie_info">Botón para ir a más información sobre la película</string>
+    <string name="button_to_back">Botón para ir para atrás</string>
+    <string name="button_search_movies">Botón para buscar películas</string>
+    <string name="button_close_fav_list">Botón de cerrar listado de películas favoritas</string>
+    <string name="button_refresh">Botón de refrescar listado de películas favoritas</string>
+    <string name="button_see_all_favs">Botón para ver todas las películas favoritas</string>
+    <string name="see_all">Ver todas</string>
 </resources>

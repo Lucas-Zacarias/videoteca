@@ -7,7 +7,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.user.UserFragment"
     android:padding="10dp"
-    android:background="@drawable/rounded_corners">
+    android:background="@drawable/rounded_corners"
+    android:layout_gravity="bottom">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

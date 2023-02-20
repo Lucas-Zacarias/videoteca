@@ -17,7 +17,7 @@ import com.unlam.edu.ar.videotecamoviltp.databinding.ActivityFavBinding
 import com.unlam.edu.ar.videotecamoviltp.domain.sharedpreferences.Preferences
 import com.unlam.edu.ar.videotecamoviltp.ui.adapters.MoviesFavAdapter
 import com.unlam.edu.ar.videotecamoviltp.ui.moviedetails.MovieDetailsFragment
-import com.unlam.edu.ar.videotecamoviltp.ui.viewmodels.FavViewModel
+import com.unlam.edu.ar.videotecamoviltp.ui.favs.FavViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class FavActivity : AppCompatActivity() {
@@ -117,13 +117,13 @@ class FavActivity : AppCompatActivity() {
     }
 
     private fun navigateToHome() {
-        val intent = Intent(this, HomeActivity::class.java)
-        startActivity(intent)
+        /*val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)*/
     }
 
     private fun navigateToSearch() {
-        val intent = Intent(this, SearchActivity::class.java)
-        startActivity(intent)
+        /*val intent = Intent(this, SearchActivity::class.java)
+        startActivity(intent)*/
     }
 
     private fun getUserId():Int{

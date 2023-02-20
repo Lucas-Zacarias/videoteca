@@ -5,6 +5,11 @@
         <item name="android:textSize">54sp</item>
         <item name= "android:fontFamily">@font/roboto_bold_italic</item>
     </style>
+    <style name="favTitleStyleText">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">28sp</item>
+        <item name= "android:fontFamily">@font/roboto_bold</item>
+    </style>
     <style name="genreStyleText">
         <item name="android:textColor">#ffffff</item>
         <item name="android:textSize">22sp</item>
