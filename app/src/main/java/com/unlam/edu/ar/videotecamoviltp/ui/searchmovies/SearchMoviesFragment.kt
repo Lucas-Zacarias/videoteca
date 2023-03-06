@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -66,9 +65,8 @@ class SearchMoviesFragment: Fragment() {
     }
 
     private fun backToHome() {
-        val navOptions = NavOptions.Builder().setPopUpTo(R.id.searchMoviesFragment, true).build()
         Navigation.findNavController(binding.root)
-            .navigate(R.id.action_searchMoviesFragment_to_homeFragment, null, navOptions)
+            .navigateUp()
     }
 
     private fun setSearchViewListener(){

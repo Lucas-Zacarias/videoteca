@@ -81,7 +81,7 @@ class FavExtendedFragment: Fragment() {
 
     private fun goToHome(){
         Navigation.findNavController(binding.root)
-            .navigate(R.id.action_favExtendedFragment_to_homeFragment)
+            .navigateUp()
     }
 
     private fun getMovies(){
